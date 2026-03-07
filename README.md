@@ -1,47 +1,42 @@
-# OpenNext Starter
+# GetImgTools
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+Free online image tools — compress, resize, convert, and edit images directly in your browser. 100% private, no signup required.
 
-## Getting Started
+**Live:** [https://getimgtools.com](https://getimgtools.com)
 
-Read the documentation at https://opennext.js.org/cloudflare.
+## Tech Stack
 
-## Develop
+- **Framework:** Next.js 16 (App Router, Turbopack)
+- **Hosting:** Cloudflare Workers via OpenNext
+- **Styling:** Tailwind CSS v4
+- **Image Processing:** Canvas API, browser-image-compression, Web Workers
+- **Icons:** Lucide React
 
-Run the Next.js development server:
+## Tools
+
+| Category | Tools |
+|----------|-------|
+| Compress | JPG, PNG, WebP (soon), Bulk (soon), Reduce Size (soon) |
+| Convert | to WebP, to JPG, to PNG, SVG to PNG |
+| Edit & Utility | Resize, Rotate/Flip, Crop (soon), Remove EXIF, Image to Base64 |
+
+All processing happens client-side — files never leave the browser.
+
+## Development
 
 ```bash
+npm install
 npm run dev
-# or similar package manager command
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
-
-## Preview
-
-Preview the application locally on the Cloudflare runtime:
+## Preview (Cloudflare runtime)
 
 ```bash
 npm run preview
-# or similar package manager command
 ```
 
 ## Deploy
 
-Deploy the application to Cloudflare:
-
 ```bash
 npm run deploy
-# or similar package manager command
 ```
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!

@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#135bec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#101622",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<title>getimgtools.com - Powerful Image Tools, Simplified</title>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100">
+<!-- Top Navigation Bar -->
+<header class="sticky top-0 z-50 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex items-center justify-between h-16">
+<div class="flex items-center gap-2">
+<div class="text-primary">
+<svg class="size-8" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z" fill="currentColor"></path>
+</svg>
+</div>
+<span class="text-xl font-bold tracking-tight">getimgtools.com</span>
+</div>
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Tools</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Pricing</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">API</a>
+<a class="text-sm font-medium hover:text-primary transition-colors" href="#">Blog</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="text-sm font-medium px-4 py-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-lg transition-colors">Log in</button>
+<button class="bg-primary text-white text-sm font-bold px-5 py-2 rounded-lg hover:bg-primary/90 transition-colors">Sign Up</button>
+</div>
+</div>
+</div>
+</header>
+<main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<!-- Left Sidebar / Ad Placement 1 -->
+<aside class="hidden lg:block lg:col-span-2">
+<div class="sticky top-24">
+<div class="w-full aspect-[160/600] bg-slate-200 dark:bg-slate-800 rounded-lg flex flex-col items-center justify-center p-4 text-center">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Advertisement</span>
+<div class="w-full h-full border border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-center text-slate-400 text-xs">
+                            Tower Ad Placeholder
+                        </div>
+</div>
+</div>
+</aside>
+<!-- Main Tool Interface -->
+<section class="lg:col-span-8">
+<div class="text-center mb-8">
+<h1 class="text-3xl sm:text-4xl font-extrabold tracking-tight mb-2">Compress, Resize &amp; Convert</h1>
+<p class="text-slate-500 dark:text-slate-400">The fastest way to process your images in the browser.</p>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-hidden">
+<!-- Tool Selector Tabs -->
+<div class="flex border-b border-slate-200 dark:border-slate-800 p-1 bg-slate-50 dark:bg-slate-900/50">
+<button class="flex-1 py-3 px-4 text-sm font-semibold rounded-lg bg-white dark:bg-slate-800 shadow-sm border border-slate-200 dark:border-slate-700 text-primary">
+<span class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">compress</span> Compress
+                            </span>
+</button>
+<button class="flex-1 py-3 px-4 text-sm font-semibold rounded-lg text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">
+<span class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">aspect_ratio</span> Resize
+                            </span>
+</button>
+<button class="flex-1 py-3 px-4 text-sm font-semibold rounded-lg text-slate-500 hover:text-slate-700 dark:hover:text-slate-300">
+<span class="flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">sync_alt</span> Convert
+                            </span>
+</button>
+</div>
+<!-- Upload Zone -->
+<div class="p-8">
+<div class="group relative flex flex-col items-center justify-center border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-xl py-20 px-6 transition-colors hover:border-primary hover:bg-primary/5 cursor-pointer">
+<div class="w-16 h-16 bg-primary/10 rounded-full flex items-center justify-center text-primary mb-4 group-hover:scale-110 transition-transform">
+<span class="material-symbols-outlined text-[32px]">cloud_upload</span>
+</div>
+<h3 class="text-xl font-bold mb-2">Drag &amp; drop images here</h3>
+<p class="text-slate-500 text-sm mb-6">Support for PNG, JPG, WEBP, SVG (Max 50MB)</p>
+<button class="bg-primary text-white px-8 py-3 rounded-lg font-bold shadow-lg shadow-primary/20 hover:shadow-primary/40 transition-all">
+                                Select Files
+                            </button>
+</div>
+<!-- Quick Settings -->
+<div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-4 border-t border-slate-100 dark:border-slate-800 pt-8">
+<div class="space-y-2">
+<label class="text-xs font-bold text-slate-400 uppercase">Output Format</label>
+<select class="w-full bg-slate-50 dark:bg-slate-800 border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-primary">
+<option>Same as source</option>
+<option>JPG</option>
+<option>PNG</option>
+<option>WebP</option>
+</select>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-slate-400 uppercase">Compression Level</label>
+<div class="flex items-center gap-3 h-10 px-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg">
+<input class="w-full accent-primary" type="range"/>
+<span class="text-sm font-medium w-8">80%</span>
+</div>
+</div>
+<div class="space-y-2">
+<label class="text-xs font-bold text-slate-400 uppercase">Metadata</label>
+<div class="flex items-center gap-2 h-10">
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox" value=""/>
+<div class="w-11 h-6 bg-slate-200 peer-focus:outline-none rounded-full peer dark:bg-slate-700 peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all dark:border-gray-600 peer-checked:bg-primary"></div>
+<span class="ml-3 text-sm font-medium text-slate-600 dark:text-slate-400">Keep EXIF</span>
+</label>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Ad Placement 2 (Horizontal) -->
+<div class="mt-8">
+<div class="w-full h-24 bg-slate-200 dark:bg-slate-800 rounded-lg flex flex-col items-center justify-center text-center">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-1">Advertisement</span>
+<div class="w-full h-full border border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-center text-slate-400 text-xs">
+                            Leaderboard Ad Placeholder
+                        </div>
+</div>
+</div>
+<!-- Secondary Tools Grid -->
+<div class="mt-16">
+<div class="flex items-center justify-between mb-6">
+<h2 class="text-xl font-bold">More Image Tools</h2>
+<a class="text-primary text-sm font-bold hover:underline" href="#">View All Tools</a>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-4 gap-4">
+<a class="group p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-primary transition-colors text-center" href="#">
+<div class="w-10 h-10 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">crop</span>
+</div>
+<span class="text-sm font-semibold">Crop Image</span>
+</a>
+<a class="group p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-primary transition-colors text-center" href="#">
+<div class="w-10 h-10 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">branding_watermark</span>
+</div>
+<span class="text-sm font-semibold">Watermark</span>
+</a>
+<a class="group p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-primary transition-colors text-center" href="#">
+<div class="w-10 h-10 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">rotate_right</span>
+</div>
+<span class="text-sm font-semibold">Rotate</span>
+</a>
+<a class="group p-4 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl hover:border-primary transition-colors text-center" href="#">
+<div class="w-10 h-10 bg-slate-100 dark:bg-slate-800 rounded-lg flex items-center justify-center mx-auto mb-3 group-hover:text-primary transition-colors">
+<span class="material-symbols-outlined">auto_fix_high</span>
+</div>
+<span class="text-sm font-semibold">AI Upscale</span>
+</a>
+</div>
+</div>
+</section>
+<!-- Right Sidebar / Ad Placement 3 -->
+<aside class="hidden lg:block lg:col-span-2">
+<div class="sticky top-24">
+<div class="w-full aspect-[160/600] bg-slate-200 dark:bg-slate-800 rounded-lg flex flex-col items-center justify-center p-4 text-center">
+<span class="text-[10px] font-bold text-slate-400 uppercase tracking-widest mb-2">Advertisement</span>
+<div class="w-full h-full border border-dashed border-slate-300 dark:border-slate-700 flex items-center justify-center text-slate-400 text-xs">
+                            Tower Ad Placeholder
+                        </div>
+</div>
+</div>
+</aside>
+</div>
+</main>
+<!-- Footer -->
+<footer class="mt-20 border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-background-dark py-12">
+<div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+<div class="flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex flex-col items-center md:items-start gap-2">
+<div class="flex items-center gap-2">
+<div class="text-primary scale-75">
+<svg class="size-8" fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z" fill="currentColor"></path>
+</svg>
+</div>
+<span class="text-lg font-bold tracking-tight">getimgtools.com</span>
+</div>
+<p class="text-slate-500 text-sm">© 2024 getimgtools. All rights reserved.</p>
+</div>
+<div class="flex gap-8 text-sm font-medium text-slate-500">
+<a class="hover:text-primary transition-colors" href="#">Privacy Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Terms of Service</a>
+<a class="hover:text-primary transition-colors" href="#">Cookie Policy</a>
+<a class="hover:text-primary transition-colors" href="#">Contact</a>
+</div>
+<div class="flex gap-4">
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-800 text-slate-500 hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-[20px]">language</span>
+</button>
+<button class="w-10 h-10 flex items-center justify-center rounded-full border border-slate-200 dark:border-slate-800 text-slate-500 hover:text-primary hover:border-primary transition-all">
+<span class="material-symbols-outlined text-[20px]">dark_mode</span>
+</button>
+</div>
+</div>
+</div>
+</footer>
+</body></html>
