@@ -53,6 +53,11 @@ export default function RootLayout({
 		<html lang="en">
 			<head>
 				<link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+				<script
+					async
+					src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-9688747257143156"
+					crossOrigin="anonymous"
+				/>
 			</head>
 			<body className={`${inter.variable} antialiased`}>
 				<Header />
