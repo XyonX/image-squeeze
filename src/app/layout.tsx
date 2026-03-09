@@ -3,6 +3,7 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const inter = Inter({
 	variable: "--font-inter",
@@ -42,6 +43,9 @@ export const metadata: Metadata = {
 		index: true,
 		follow: true,
 	},
+	verification: {
+		google: "-d279xGg82co8lEwK9BxHRoJhwgLF-clvIsjw63jZRA",
+	},
 };
 
 export default function RootLayout({
@@ -60,6 +64,7 @@ export default function RootLayout({
 				/>
 			</head>
 			<body className={`${inter.variable} antialiased`}>
+				<GoogleAnalytics gaId="G-2ZJ8WLTB7P" />
 				<Header />
 				<div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6 lg:py-10">
 					<main className="min-h-[calc(100vh-12rem)]">
