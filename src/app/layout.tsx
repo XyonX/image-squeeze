@@ -27,6 +27,9 @@ export const metadata: Metadata = {
 		"free image tools",
 	],
 	metadataBase: new URL("https://getimgtools.com"),
+	alternates: {
+		canonical: "https://getimgtools.com",
+	},
 	openGraph: {
 		title: "GetImgTools — Free Online Image Tools",
 		description: "Compress, resize, convert images for free. 100% private — files never leave your browser.",

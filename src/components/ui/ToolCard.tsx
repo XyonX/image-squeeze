@@ -1,7 +1,7 @@
 import Link from "next/link";
 import type { Tool } from "@/lib/tools";
 
-const comingSoonTools = new Set(["compress-webp", "bulk-compress", "reduce-image-size", "crop-image"]);
+const comingSoonTools = new Set<string>();
 
 export function ToolCard({ tool }: { tool: Tool }) {
 	const isComingSoon = comingSoonTools.has(tool.id);
