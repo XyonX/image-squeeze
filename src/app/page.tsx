@@ -140,9 +140,9 @@ export default function HomePage() {
 							<span className="text-lg">🎯</span>
 						</div>
 						<div>
-							<p className="text-sm font-semibold text-slate-900">14 tools, one clean interface</p>
+							<p className="text-sm font-semibold text-slate-900">17 tools, one clean interface</p>
 							<p className="text-xs text-slate-500 mt-1 leading-relaxed">
-								Compress, convert, resize, rotate, strip EXIF, encode Base64 — everything you need for images, in one place with zero clutter.
+								Compress, convert, resize, rotate, add watermarks, apply filters, strip EXIF, encode Base64 — everything you need for images, in one place with zero clutter.
 							</p>
 						</div>
 					</div>
