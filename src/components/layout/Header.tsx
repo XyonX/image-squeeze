@@ -47,6 +47,9 @@ export function Header() {
 						<Link href="/" className="text-sm font-medium text-slate-600 hover:text-primary transition-colors">
 							Tools
 						</Link>
+						<Link href="/blog" className="text-sm font-medium text-slate-600 hover:text-primary transition-colors">
+							Blog
+						</Link>
 						<Link href="/about" className="text-sm font-medium text-slate-600 hover:text-primary transition-colors">
 							About
 						</Link>
@@ -87,6 +90,7 @@ export function Header() {
 							</Link>
 						))}
 						<div className="border-t border-slate-200 pt-2 mt-2 space-y-1">
+							<Link href="/blog" className="block px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg" onClick={() => setMobileOpen(false)}>Blog</Link>
 							<Link href="/about" className="block px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg" onClick={() => setMobileOpen(false)}>About</Link>
 							<Link href="/privacy" className="block px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg" onClick={() => setMobileOpen(false)}>Privacy</Link>
 							<Link href="/terms" className="block px-3 py-2.5 text-sm font-medium text-slate-600 hover:bg-slate-50 rounded-lg" onClick={() => setMobileOpen(false)}>Terms</Link>
