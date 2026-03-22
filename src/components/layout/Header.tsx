@@ -7,8 +7,22 @@ import { tools } from "@/lib/tools";
 
 function LogoIcon() {
 	return (
-		<svg className="w-8 h-8" fill="none" viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
-			<path d="M4 4H17.3334V17.3334H30.6666V30.6666H44V44H4V4Z" fill="currentColor" />
+		<svg className="w-8 h-8" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
+			<defs>
+				<linearGradient y2="0%" x2="100%" y1="100%" x1="0%" id="gd">
+					<stop stopColor="#60a5fa" offset="0%"></stop>
+					<stop stopColor="#1e3a8a" offset="100%"></stop>
+				</linearGradient>
+			</defs>
+			<rect fill="#0f172a" rx="36" height="200" width="200"></rect>
+			<g transform="rotate(-6 100 100)">
+				<rect fill="url(#gd)" rx="26" height="124" width="124" y="38" x="38"></rect>
+				<rect fillOpacity="0.26" fill="white" rx="14" height="40" width="40" y="56" x="56"></rect>
+			</g>
+			<path strokeLinejoin="round" strokeLinecap="round" strokeWidth="18" stroke="white" d="M 35 35 L 70 70 M 70 70 L 55 55"></path>
+			<path strokeLinejoin="round" strokeLinecap="round" strokeWidth="18" stroke="white" d="M 165 35 L 130 70 M 130 70 L 145 55"></path>
+			<path strokeLinejoin="round" strokeLinecap="round" strokeWidth="18" stroke="white" d="M 35 165 L 70 130 M 70 130 L 55 145"></path>
+			<path strokeLinejoin="round" strokeLinecap="round" strokeWidth="18" stroke="white" d="M 165 165 L 130 130 M 130 130 L 145 145"></path>
 		</svg>
 	);
 }
