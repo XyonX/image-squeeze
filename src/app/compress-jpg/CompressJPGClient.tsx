@@ -9,6 +9,9 @@ import { UploadZone, type UploadedFile } from "@/components/ui/UploadZone";
 import { TrustBadges } from "@/components/ui/TrustBadges";
 import { RelatedTools } from "@/components/ui/RelatedTools";
 import { FAQ } from "@/components/ui/FAQ";
+import { ImagePreview } from "@/components/ui/ImagePreview";
+import { BeforeAfterSlider } from "@/components/ui/BeforeAfterSlider";
+import { UploadPreviewLayout } from "@/components/ui/TwoColumnLayout";
 import { formatFileSize } from "@/lib/tools";
 
 interface CompressedResult {
@@ -19,6 +22,9 @@ interface CompressedResult {
 	compressedBlob: Blob;
 	preview: string;
 	saved: number;
+	originalBlob?: Blob;
+	originalDimensions?: { width: number; height: number };
+	compressedDimensions?: { width: number; height: number };
 }
 
 const qualityPresets = [
@@ -96,12 +102,29 @@ export function CompressJPGClient() {
 				const preview = URL.createObjectURL(compressedFile);
 				const saved = ((files[i].file.size - compressedFile.size) / files[i].file.size) * 100;
 
+				// Get image dimensions
+				const getImageDimensions = (blob: Blob): Promise<{ width: number; height: number }> => {
+					return new Promise((resolve) => {
+						const img = new Image();
+						img.onload = () => {
+							resolve({ width: img.naturalWidth, height: img.naturalHeight });
+						};
+						img.src = URL.createObjectURL(blob);
+					});
+				};
+
+				const originalDimensions = await getImageDimensions(files[i].file);
+				const compressedDimensions = await getImageDimensions(compressedFile);
+
 				compressed.push({
 					id: files[i].id,
 					originalName: files[i].file.name,
 					originalSize: files[i].file.size,
 					compressedSize: compressedFile.size,
 					compressedBlob: compressedFile,
+					originalBlob: files[i].file,
+					originalDimensions,
+					compressedDimensions,
 					preview,
 					saved: Math.max(0, saved),
 				});
@@ -137,6 +160,248 @@ export function CompressJPGClient() {
 
 	const totalSaved = results.reduce((acc, r) => acc + (r.originalSize - r.compressedSize), 0);
 
+	// Controls section
+	const controlsSection = (
+		<div className="space-y-6">
+			{/* Quality slider */}
+			<div>
+				<div className="flex items-center justify-between mb-2">
+					<label className="text-sm font-semibold text-slate-900">Quality</label>
+					<span className="text-sm text-slate-500">
+						{Math.round(quality * 100)}% — {qualityLabel}
+					</span>
+				</div>
+				<input
+					type="range"
+					min="10"
+					max="100"
+					value={quality * 100}
+					onChange={(e) => setQuality(Number(e.target.value) / 100)}
+					className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-primary"
+				/>
+				{/* Presets */}
+				<div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-2 mt-4">
+					{qualityPresets.map((p) => (
+						<button
+							key={p.label}
+							onClick={() => setQuality(p.value)}
+							className={`px-3 sm:px-4 py-2 rounded-xl text-[11px] sm:text-sm font-medium text-center truncate border transition-all ${
+								quality === p.value
+									? "border-primary bg-primary/10 text-primary"
+									: "border-slate-200 hover:border-primary/30"
+							}`}
+							title={p.label}
+						>
+							{p.label}
+						</button>
+					))}
+				</div>
+			</div>
+
+			{/* Max Width */}
+			<div>
+				<label className="text-sm font-semibold block mb-2">Max Width (optional)</label>
+				<div className="flex flex-wrap gap-2">
+					{[null, 1920, 1280, 800, 640].map((w) => (
+						<button
+							key={w ?? "none"}
+							onClick={() => setMaxWidth(w)}
+							className={`px-3 sm:px-4 py-2 rounded-xl text-[11px] sm:text-sm font-medium text-center truncate border transition-all ${
+								maxWidth === w
+									? "border-primary bg-primary/10 text-primary"
+									: "border-slate-200 hover:border-primary/30"
+							}`}
+							title={w ? `${w}px` : "No resize"}
+						>
+							{w ? `${w}px` : "No resize"}
+						</button>
+					))}
+				</div>
+			</div>
+
+			{/* Strip metadata */}
+			<label className="flex items-center gap-3 cursor-pointer">
+				<input
+					type="checkbox"
+					checked={stripMetadata}
+					onChange={(e) => setStripMetadata(e.target.checked)}
+					className="w-4 h-4 accent-primary rounded"
+				/>
+				<div>
+					<span className="text-sm font-medium text-slate-900">Strip EXIF metadata</span>
+					<p className="text-xs text-slate-500">Remove camera info, GPS location, timestamps</p>
+				</div>
+			</label>
+
+			{/* Compress button */}
+			<button
+				onClick={handleCompress}
+				className="w-full py-3.5 bg-primary hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors text-lg"
+			>
+				Compress {files.length} Image{files.length !== 1 ? "s" : ""}
+			</button>
+		</div>
+	);
+
+	// Preview section
+	const previewSection = files.length > 0 && (
+		<div className="space-y-4">
+			{files.map((file) => (
+				<div key={file.id} className="text-center">
+					<ImagePreview
+						src={file.file}
+						fileName={file.file.name}
+						fileSize={file.file.size}
+						dimensions={{ width: file.width, height: file.height }}
+						size="lg"
+						zoomable={true}
+						downloadable={false}
+					/>
+					<p className="text-sm text-slate-500 mt-2">
+						{file.width}×{file.height}px • {formatFileSize(file.file.size)}
+					</p>
+				</div>
+			))}
+		</div>
+	);
+
+	// Results section
+	const resultsSection = results.length > 0 && (
+		<div className="space-y-8">
+			{/* Summary */}
+			<div className="p-6 bg-emerald-50 border border-emerald-200 rounded-2xl text-center">
+				<Check className="w-10 h-10 text-emerald-600 mx-auto mb-2" />
+				<p className="font-bold text-xl">
+					Saved {formatFileSize(totalSaved)} across {results.length} image{results.length !== 1 ? "s" : ""}
+				</p>
+				<p className="text-sm text-slate-500 mt-1">
+					Average reduction: {Math.round(results.reduce((a, r) => a + r.saved, 0) / results.length)}%
+				</p>
+			</div>
+
+			{/* Individual results with Before/After comparison */}
+			<div className="space-y-8">
+				{results.map((result) => (
+					<div key={result.id} className="space-y-4">
+						<div className="flex items-center justify-between">
+							<h3 className="text-lg font-semibold text-slate-900">{result.originalName}</h3>
+							<div className="flex items-center gap-4">
+								<span className="text-sm font-bold text-emerald-600">-{Math.round(result.saved)}%</span>
+								<button
+									onClick={() => downloadSingle(result)}
+									className="flex items-center gap-1.5 px-4 py-2 bg-primary hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"
+								>
+									<Download className="w-4 h-4" />
+									Download
+								</button>
+							</div>
+						</div>
+
+						{/* Before/After comparison */}
+						{result.originalBlob && (
+							<BeforeAfterSlider
+								beforeSrc={result.originalBlob}
+								afterSrc={result.compressedBlob}
+								beforeLabel="Original"
+								afterLabel="Compressed"
+								beforeSize={result.originalSize}
+								afterSize={result.compressedSize}
+								beforeDimensions={result.originalDimensions}
+								afterDimensions={result.compressedDimensions}
+								mode="slider"
+								className="mt-4"
+							/>
+						)}
+
+						{/* Stats */}
+						<div className="grid grid-cols-2 gap-4 text-sm">
+							<div className="p-3 bg-slate-50 rounded-lg">
+								<p className="font-medium text-slate-900">Original</p>
+								<p className="text-slate-600">{formatFileSize(result.originalSize)}</p>
+								{result.originalDimensions && (
+									<p className="text-slate-500 text-xs">
+										{result.originalDimensions.width}×{result.originalDimensions.height}px
+									</p>
+								)}
+							</div>
+							<div className="p-3 bg-slate-50 rounded-lg">
+								<p className="font-medium text-slate-900">Compressed</p>
+								<p className="text-slate-600">{formatFileSize(result.compressedSize)}</p>
+								{result.compressedDimensions && (
+									<p className="text-slate-500 text-xs">
+										{result.compressedDimensions.width}×{result.compressedDimensions.height}px
+									</p>
+								)}
+							</div>
+						</div>
+					</div>
+				))}
+			</div>
+
+			{/* Download all and reset buttons */}
+			<div className="space-y-3">
+				{results.length > 1 && (
+					<button
+						onClick={downloadAll}
+						className="w-full py-3.5 bg-slate-800 hover:bg-slate-900 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 text-lg"
+					>
+						<Package className="w-5 h-5" />
+						Download All as ZIP
+					</button>
+				)}
+				<button
+					onClick={() => {
+						setFiles([]);
+						setResults([]);
+						setError(null);
+					}}
+					className="w-full py-3 border border-slate-200 hover:bg-slate-50 text-sm font-medium rounded-xl transition-colors text-slate-700"
+				>
+					Compress more images
+				</button>
+			</div>
+		</div>
+	);
+
+	// Processing section
+	const processingSection = isProcessing && (
+		<div className="mt-8 p-8 bg-white border border-slate-200 rounded-2xl text-center space-y-4">
+			<Loader2 className="w-10 h-10 text-primary animate-spin mx-auto" />
+			<div>
+				<p className="font-semibold text-lg">
+					Processing {progress.current} of {progress.total}...
+				</p>
+				<div className="w-full bg-slate-100 rounded-full h-3 mt-3 overflow-hidden">
+					<div
+						className="h-full bg-primary rounded-full transition-all duration-300 relative progress-bar-shine"
+						style={{ width: `${(progress.current / progress.total) * 100}%` }}
+					/>
+				</div>
+			</div>
+		</div>
+	);
+
+	// Error section
+	const errorSection = error && (
+		<div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3">
+			<AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
+			<p className="text-sm text-red-500">{error}</p>
+		</div>
+	);
+
+	// Upload section
+	const uploadSection = (
+		<UploadZone
+			accept=".jpg,.jpeg,image/jpeg"
+			files={files}
+			onFilesChange={(f) => {
+				setFiles(f);
+				setResults([]);
+				setError(null);
+			}}
+		/>
+	);
+
 	return (
 		<div>
 			{/* Header */}
@@ -152,188 +417,18 @@ export function CompressJPGClient() {
 				</div>
 			</div>
 
-			{/* Upload */}
-			<UploadZone
-				accept=".jpg,.jpeg,image/jpeg"
-				files={files}
-				onFilesChange={(f) => {
-					setFiles(f);
-					setResults([]);
-					setError(null);
-				}}
+			{/* Main layout using UploadPreviewLayout */}
+			<UploadPreviewLayout
+				uploadSection={uploadSection}
+				previewSection={previewSection}
+				controlsSection={controlsSection}
+				resultsSection={resultsSection}
+				showPreview={files.length > 0}
 			/>
 
-			{/* Controls */}
-			{files.length > 0 && !isProcessing && results.length === 0 && (
-				<div className="mt-8 p-6 bg-white border border-slate-200 rounded-2xl space-y-6">
-					{/* Quality slider */}
-					<div>
-						<div className="flex items-center justify-between mb-2">
-							<label className="text-sm font-semibold text-slate-900">Quality</label>
-							<span className="text-sm text-slate-500">
-								{Math.round(quality * 100)}% — {qualityLabel}
-							</span>
-						</div>
-						<input
-							type="range"
-							min="10"
-							max="100"
-							value={quality * 100}
-							onChange={(e) => setQuality(Number(e.target.value) / 100)}
-							className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-primary"
-						/>
-						{/* Presets */}
-						<div className="grid grid-cols-2 sm:grid-cols-4 gap-2 mt-4">
-							{qualityPresets.map((p) => (
-								<button
-									key={p.label}
-									onClick={() => setQuality(p.value)}
-									className={`px-3 py-2 rounded-xl text-sm font-medium border transition-all ${
-										quality === p.value
-											? "border-primary bg-primary/10 text-primary"
-											: "border-slate-200 hover:border-primary/30"
-									}`}
-								>
-									{p.label}
-								</button>
-							))}
-						</div>
-					</div>
-
-					{/* Max Width */}
-					<div>
-						<label className="text-sm font-semibold block mb-2">Max Width (optional)</label>
-						<div className="flex flex-wrap gap-2">
-							{[null, 1920, 1280, 800, 640].map((w) => (
-								<button
-									key={w ?? "none"}
-									onClick={() => setMaxWidth(w)}
-									className={`px-3 py-2 rounded-xl text-sm font-medium border transition-all ${
-										maxWidth === w
-											? "border-primary bg-primary/10 text-primary"
-											: "border-slate-200 hover:border-primary/30"
-									}`}
-								>
-									{w ? `${w}px` : "No resize"}
-								</button>
-							))}
-						</div>
-					</div>
-
-					{/* Strip metadata */}
-					<label className="flex items-center gap-3 cursor-pointer">
-						<input
-							type="checkbox"
-							checked={stripMetadata}
-							onChange={(e) => setStripMetadata(e.target.checked)}
-							className="w-4 h-4 accent-primary rounded"
-						/>
-						<div>
-							<span className="text-sm font-medium text-slate-900">Strip EXIF metadata</span>
-							<p className="text-xs text-slate-500">Remove camera info, GPS location, timestamps</p>
-						</div>
-					</label>
-
-					{/* Compress button */}
-					<button
-						onClick={handleCompress}
-						className="w-full py-3.5 bg-primary hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors text-lg"
-					>
-						Compress {files.length} Image{files.length !== 1 ? "s" : ""}
-					</button>
-				</div>
-			)}
-
-			{/* Processing */}
-			{isProcessing && (
-				<div className="mt-8 p-8 bg-white border border-slate-200 rounded-2xl text-center space-y-4">
-					<Loader2 className="w-10 h-10 text-primary animate-spin mx-auto" />
-					<div>
-						<p className="font-semibold text-lg">
-							Processing {progress.current} of {progress.total}...
-						</p>
-						<div className="w-full bg-slate-100 rounded-full h-3 mt-3 overflow-hidden">
-							<div
-								className="h-full bg-primary rounded-full transition-all duration-300 relative progress-bar-shine"
-								style={{ width: `${(progress.current / progress.total) * 100}%` }}
-							/>
-						</div>
-					</div>
-				</div>
-			)}
-
-			{/* Error */}
-			{error && (
-				<div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3">
-					<AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-					<p className="text-sm text-red-500">{error}</p>
-				</div>
-			)}
-
-			{/* Results */}
-			{results.length > 0 && (
-				<div className="mt-8 space-y-4">
-					{/* Summary */}
-					<div className="p-6 bg-emerald-50 border border-emerald-200 rounded-2xl text-center">
-						<Check className="w-10 h-10 text-emerald-600 mx-auto mb-2" />
-						<p className="font-bold text-xl">
-							Saved {formatFileSize(totalSaved)} across {results.length} image{results.length !== 1 ? "s" : ""}
-						</p>
-						<p className="text-sm text-slate-500 mt-1">
-							Average reduction: {Math.round(results.reduce((a, r) => a + r.saved, 0) / results.length)}%
-						</p>
-					</div>
-
-					{/* Individual results */}
-					<div className="space-y-3">
-						{results.map((r) => (
-							<div key={r.id} className="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-xl">
-								{/* eslint-disable-next-line @next/next/no-img-element */}
-								<img src={r.preview} alt={r.originalName} className="w-14 h-14 object-cover rounded-lg" />
-								<div className="flex-1 min-w-0">
-									<p className="text-sm font-medium truncate text-slate-900">{r.originalName}</p>
-									<p className="text-xs text-slate-500">
-										{formatFileSize(r.originalSize)} → {formatFileSize(r.compressedSize)}
-									</p>
-								</div>
-								<div className="text-right flex-shrink-0">
-									<span className="text-sm font-bold text-emerald-600">-{Math.round(r.saved)}%</span>
-								</div>
-								<button
-									onClick={() => downloadSingle(r)}
-									className="flex items-center gap-1.5 px-4 py-2 bg-primary hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors flex-shrink-0"
-								>
-									<Download className="w-4 h-4" />
-									Download
-								</button>
-							</div>
-						))}
-					</div>
-
-					{/* Download all */}
-					{results.length > 1 && (
-						<button
-							onClick={downloadAll}
-							className="w-full py-3.5 bg-slate-800 hover:bg-slate-900 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 text-lg"
-						>
-							<Package className="w-5 h-5" />
-							Download All as ZIP
-						</button>
-					)}
-
-					{/* Process more */}
-					<button
-						onClick={() => {
-							setFiles([]);
-							setResults([]);
-							setError(null);
-						}}
-						className="w-full py-3 border border-slate-200 hover:bg-slate-50 text-sm font-medium rounded-xl transition-colors text-slate-700"
-					>
-						Compress more images
-					</button>
-				</div>
-			)}
+			{/* Processing and error sections */}
+			{processingSection}
+			{errorSection}
 
 			{/* FAQ */}
 			<section className="mt-16">
@@ -346,3 +441,4 @@ export function CompressJPGClient() {
 		</div>
 	);
 }
+			

@@ -142,7 +142,7 @@ export function ResizeImageClient() {
 							<input type="range" min="5" max="200" value={percentage} onChange={(e) => setPercentage(Number(e.target.value))} className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-primary" />
 							<div className="flex gap-2 mt-3">
 								{presetPercentages.map((p) => (
-									<button key={p} onClick={() => setPercentage(p)} className={`px-3 py-1.5 rounded-lg text-sm font-medium border transition-all ${percentage === p ? "border-primary bg-primary/10 text-primary" : "border-slate-200"}`}>{p}%</button>
+									<button key={p} onClick={() => setPercentage(p)} className={`px-3 sm:px-4 py-2 rounded-lg text-xs sm:text-sm font-medium text-center truncate border transition-all ${percentage === p ? "border-primary bg-primary/10 text-primary" : "border-slate-200"}`} title={`${p}%`}>{p}%</button>
 								))}
 							</div>
 						</div>
@@ -167,7 +167,7 @@ export function ResizeImageClient() {
 								<p className="text-xs font-semibold text-slate-500 mb-2">Presets</p>
 								<div className="flex flex-wrap gap-2">
 									{presetDimensions.map((d) => (
-										<button key={d.label} onClick={() => { setWidth(d.w); setHeight(d.h); setLockAspect(false); }} className="px-3 py-1.5 rounded-lg text-xs font-medium border border-slate-200 hover:border-primary/30 transition-all text-slate-700">{d.label}</button>
+										<button key={d.label} onClick={() => { setWidth(d.w); setHeight(d.h); setLockAspect(false); }} className="px-3 sm:px-4 py-2 rounded-lg text-xs font-medium text-center truncate border border-slate-200 hover:border-primary/30 transition-all text-slate-700" title={d.label}>{d.label}</button>
 									))}
 								</div>
 							</div>

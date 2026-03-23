@@ -203,11 +203,12 @@ export function ReduceImageSizeClient() {
 								<button
 									key={p.value}
 									onClick={() => { setTargetKB(p.value); setCustomTarget(""); }}
-									className={`px-3 py-2 rounded-xl text-sm font-medium border transition-all ${
+									className={`px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-center truncate border transition-all ${
 										!customTarget && targetKB === p.value
 											? "border-primary bg-primary/10 text-primary"
 											: "border-slate-200 hover:border-primary/30"
 									}`}
+									title={p.label}
 								>
 									{p.label}
 								</button>
