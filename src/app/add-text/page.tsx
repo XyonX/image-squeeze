@@ -1,21 +1,38 @@
-import { AddTextToImagesClient } from "./AddTextToImagesClient";
-import { Metadata } from "next";
+import type { Metadata } from "next";
+import { AddTextClient } from "./AddTextClient";
+import { ToolPageContent } from "@/components/ui/ToolPageContent";
+import { tools } from "@/lib/tools";
 
 export const metadata: Metadata = {
-	title: "Add Text to Images Online — Free & Private | GetImgTools",
-	description: "Add custom text to images online. Multiple fonts, colors, sizes, and positioning. 100% private — files never leave your browser.",
-	keywords: ["add text to photo online", "text on image", "photo caption", "meme maker", "image text editor"],
+	title: "Add Text to Images Online — Free & Private | Text on Photos",
+	description:
+		"Free online text adder tool. Add custom text to images with multiple fonts, colors, and positioning options. 100% private browser-based processing. No signup required.",
+	keywords: [
+		"add text to image",
+		"text on photos",
+		"image text editor",
+		"photo caption",
+		"meme maker",
+		"text overlay",
+		"custom text on images",
+		"free image tools"
+	],
 	openGraph: {
-		title: "Add Text to Images Online — Free & Private",
-		description: "Add custom text to images. Multiple fonts, colors, sizes, and positioning. 100% private — files never leave your browser.",
-	},
-	twitter: {
-		card: "summary_large_image",
-		title: "Add Text to Images Online — Free & Private",
-		description: "Add custom text to images. Multiple fonts, colors, sizes, and positioning. 100% private — files never leave your browser.",
+		title: "Add Text to Images Online — Free & Private Text Tool",
+		description: "Add custom text to images with multiple fonts, colors, and positioning options. 100% private browser-based processing.",
 	},
 };
 
 export default function AddTextPage() {
-	return <AddTextToImagesClient />;
+	const tool = tools.find(t => t.id === "add-text");
+	
+	if (!tool) {
+		return <AddTextClient />;
+	}
+
+	return (
+		<ToolPageContent tool={tool}>
+			<AddTextClient />
+		</ToolPageContent>
+	);
 }

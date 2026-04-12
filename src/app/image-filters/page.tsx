@@ -1,21 +1,38 @@
+import type { Metadata } from "next";
 import { ImageFiltersClient } from "./ImageFiltersClient";
-import { Metadata } from "next";
+import { ToolPageContent } from "@/components/ui/ToolPageContent";
+import { tools } from "@/lib/tools";
 
 export const metadata: Metadata = {
-	title: "Image Filters & Effects Online — Free & Private | GetImgTools",
-	description: "Apply filters, adjust brightness, contrast, and add effects to images online. 100% private — files never leave your browser.",
-	keywords: ["photo filter online", "image effects", "photo editor", "brightness contrast", "image filters"],
+	title: "Image Filters Online — Free & Private | Photo Effects Tool",
+	description:
+		"Free online image filters tool. Apply filters, adjust brightness, contrast, and add effects to images. 100% private browser-based processing. No signup required.",
+	keywords: [
+		"image filters",
+		"photo filters",
+		"image effects",
+		"photo editor",
+		"brightness contrast",
+		"image adjustments",
+		"photo enhancement",
+		"free image tools"
+	],
 	openGraph: {
-		title: "Image Filters & Effects Online — Free & Private",
-		description: "Apply filters, adjust brightness, contrast, and add effects to images. 100% private — files never leave your browser.",
-	},
-	twitter: {
-		card: "summary_large_image",
-		title: "Image Filters & Effects Online — Free & Private",
-		description: "Apply filters, adjust brightness, contrast, and add effects to images. 100% private — files never leave your browser.",
+		title: "Image Filters Online — Free & Private Photo Effects Tool",
+		description: "Apply filters, adjust brightness, contrast, and add effects to images. 100% private browser-based processing.",
 	},
 };
 
 export default function ImageFiltersPage() {
-	return <ImageFiltersClient />;
+	const tool = tools.find(t => t.id === "image-filters");
+	
+	if (!tool) {
+		return <ImageFiltersClient />;
+	}
+
+	return (
+		<ToolPageContent tool={tool}>
+			<ImageFiltersClient />
+		</ToolPageContent>
+	);
 }

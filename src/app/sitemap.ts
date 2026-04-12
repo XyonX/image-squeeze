@@ -42,6 +42,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			title: "SVG to PNG Conversion: Best Practices & Tools",
 			date: "2025-03-10",
 		},
+		{
+			slug: "image-optimization-for-social-media-complete-guide",
+			title: "Image Optimization for Social Media: Complete 2025 Guide",
+			date: "2025-03-25",
+		},
 	];
 
 	const blogPages = blogPosts.map((post) => ({
