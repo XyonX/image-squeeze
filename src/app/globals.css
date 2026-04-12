@@ -1,22 +1,22 @@
 @import "tailwindcss";
 
 :root {
-	--background: #ffffff;
-	--foreground: #0f172a;
-	--primary: #0f766e;
-	--primary-hover: #115e59;
-	--primary-light: #f0fdfa;
-	--secondary: #f1f5f9;
-	--accent: #0891b2;
-	--accent-hover: #0e7490;
-	--border: #e2e8f0;
-	--muted: #64748b;
+	--background: #fafafa;
+	--foreground: #1a1a1a;
+	--primary: #1a1a1a;
+	--primary-hover: #333333;
+	--primary-light: #f5f5f5;
+	--secondary: #f0f0f0;
+	--accent: #ef4444;
+	--accent-hover: #dc2626;
+	--border: #d4d4d4;
+	--muted: #737373;
 	--card: #ffffff;
-	--card-hover: #f8fafc;
-	--danger: #dc2626;
+	--card-hover: #f5f5f5;
+	--danger: #ef4444;
 	--warning: #f59e0b;
-	--success: #16a34a;
-	--surface: #f8fafc;
+	--success: #22c55e;
+	--surface: #f5f5f5;
 	
 	/* New gradient colors */
 	--gradient-primary: linear-gradient(135deg, #135bec 0%, #0f4fd4 100%);
@@ -58,8 +58,8 @@
 }
 
 body {
-	background: #f6f6f8;
-	color: #0f172a;
+	background: #f5f5f5;
+	color: #1a1a1a;
 	font-family: var(--font-sans);
 }
 
