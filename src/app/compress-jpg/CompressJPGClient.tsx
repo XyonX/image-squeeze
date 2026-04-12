@@ -162,12 +162,12 @@ export function CompressJPGClient() {
 
 	// Controls section
 	const controlsSection = (
-		<div className="space-y-6">
+		<div className="text-xs sm:text-sm space-y-6">
 			{/* Quality slider */}
 			<div>
 				<div className="flex items-center justify-between mb-2">
-					<label className="text-sm font-semibold text-slate-900">Quality</label>
-					<span className="text-sm text-slate-500">
+					<label className="font-semibold text-slate-900">Quality</label>
+					<span className="text-slate-500">
 						{Math.round(quality * 100)}% — {qualityLabel}
 					</span>
 				</div>
@@ -185,7 +185,7 @@ export function CompressJPGClient() {
 						<button
 							key={p.label}
 							onClick={() => setQuality(p.value)}
-							className={`px-3 sm:px-4 py-2 rounded-xl text-[11px] sm:text-sm font-medium text-center truncate border transition-all ${
+							className={`px-3 sm:px-4 py-2 rounded-xl font-medium text-center truncate border transition-all ${
 								quality === p.value
 									? "border-primary bg-primary/10 text-primary"
 									: "border-slate-200 hover:border-primary/30"
@@ -200,13 +200,13 @@ export function CompressJPGClient() {
 
 			{/* Max Width */}
 			<div>
-				<label className="text-sm font-semibold block mb-2">Max Width (optional)</label>
+				<label className="font-semibold block mb-2">Max Width (optional)</label>
 				<div className="flex flex-wrap gap-2">
 					{[null, 1920, 1280, 800, 640].map((w) => (
 						<button
 							key={w ?? "none"}
 							onClick={() => setMaxWidth(w)}
-							className={`px-3 sm:px-4 py-2 rounded-xl text-[11px] sm:text-sm font-medium text-center truncate border transition-all ${
+							className={`px-3 sm:px-4 py-2 rounded-xl font-medium text-center truncate border transition-all ${
 								maxWidth === w
 									? "border-primary bg-primary/10 text-primary"
 									: "border-slate-200 hover:border-primary/30"
@@ -228,8 +228,8 @@ export function CompressJPGClient() {
 					className="w-4 h-4 accent-primary rounded"
 				/>
 				<div>
-					<span className="text-sm font-medium text-slate-900">Strip EXIF metadata</span>
-					<p className="text-xs text-slate-500">Remove camera info, GPS location, timestamps</p>
+					<span className="font-medium text-slate-900">Strip EXIF metadata</span>
+					<p className="text-slate-500">Remove camera info, GPS location, timestamps</p>
 				</div>
 			</label>
 
