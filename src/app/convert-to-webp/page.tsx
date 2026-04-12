@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ConvertToWebpClient } from "./ConvertToWebpClient";
+import { ConvertToWebPClient } from "./ConvertToWebPClient";
 import { ToolPageContent } from "@/components/ui/ToolPageContent";
 import { tools } from "@/lib/tools";
 
@@ -27,12 +27,12 @@ export default function ConvertToWebpPage() {
 	const tool = tools.find(t => t.id === "convert-to-webp");
 	
 	if (!tool) {
-		return <ConvertToWebpClient />;
+		return <ConvertToWebPClient />;
 	}
 
 	return (
 		<ToolPageContent tool={tool}>
-			<ConvertToWebpClient />
+			<ConvertToWebPClient />
 		</ToolPageContent>
 	);
 }

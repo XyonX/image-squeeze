@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { AddTextClient } from "./AddTextClient";
+import { AddTextToImagesClient } from "./AddTextToImagesClient";
 import { ToolPageContent } from "@/components/ui/ToolPageContent";
 import { tools } from "@/lib/tools";
 
@@ -27,12 +27,12 @@ export default function AddTextPage() {
 	const tool = tools.find(t => t.id === "add-text");
 	
 	if (!tool) {
-		return <AddTextClient />;
+		return <AddTextToImagesClient />;
 	}
 
 	return (
 		<ToolPageContent tool={tool}>
-			<AddTextClient />
+			<AddTextToImagesClient />
 		</ToolPageContent>
 	);
 }

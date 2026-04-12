@@ -204,16 +204,31 @@ export function ToolPageContent({ tool, children }: ToolPageContentProps) {
 
   return (
     <div className="space-y-8">
-      {/* Tool Introduction */}
-      <section className="bg-gradient-to-r from-slate-50 to-white border border-slate-200 rounded-2xl p-6">
-        <h1 className="text-3xl font-bold text-slate-900 mb-4">
+      {/* Minimal Header */}
+      <header className="text-center">
+        <h1 className="text-3xl font-bold text-slate-900 mb-3">
           {tool.name} - Free Online Tool
         </h1>
-        <p className="text-lg text-slate-600 mb-4">
-          {tool.description} This {tool.category} tool helps you {tool.name.toLowerCase()} quickly and efficiently, with all processing happening securely in your browser.
+        <p className="text-lg text-slate-600 max-w-2xl mx-auto">
+          {tool.description} Process images 100% privately in your browser.
         </p>
+      </header>
+
+      {/* Main Tool Component - NOW AT THE TOP */}
+      <section className="bg-white border border-slate-200 rounded-2xl p-6">
+        <h2 className="text-2xl font-bold text-slate-900 mb-6">
+          {tool.name} Tool
+        </h2>
+        {children}
+      </section>
+
+      {/* Key Features */}
+      <section className="bg-gradient-to-r from-slate-50 to-white border border-slate-200 rounded-2xl p-6">
+        <h2 className="text-2xl font-bold text-slate-900 mb-6">
+          Why Use Our {tool.name} Tool?
+        </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mt-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex items-start gap-3">
             <Shield className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
             <div>
@@ -275,14 +290,6 @@ export function ToolPageContent({ tool, children }: ToolPageContentProps) {
             </p>
           </div>
         </div>
-      </section>
-
-      {/* Main Tool Component */}
-      <section className="bg-white border border-slate-200 rounded-2xl p-6">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
-          {tool.name} Tool
-        </h2>
-        {children}
       </section>
 
       {/* Common Use Cases */}

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ConvertToJpgClient } from "./ConvertToJpgClient";
+import { ConvertToJPGClient } from "./ConvertToJPGClient";
 import { ToolPageContent } from "@/components/ui/ToolPageContent";
 import { tools } from "@/lib/tools";
 
@@ -27,12 +27,12 @@ export default function ConvertToJpgPage() {
 	const tool = tools.find(t => t.id === "convert-to-jpg");
 	
 	if (!tool) {
-		return <ConvertToJpgClient />;
+		return <ConvertToJPGClient />;
 	}
 
 	return (
 		<ToolPageContent tool={tool}>
-			<ConvertToJpgClient />
+			<ConvertToJPGClient />
 		</ToolPageContent>
 	);
 }

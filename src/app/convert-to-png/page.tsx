@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { ConvertToPngClient } from "./ConvertToPngClient";
+import { ConvertToPNGClient } from "./ConvertToPNGClient";
 import { ToolPageContent } from "@/components/ui/ToolPageContent";
 import { tools } from "@/lib/tools";
 
@@ -27,12 +27,12 @@ export default function ConvertToPngPage() {
 	const tool = tools.find(t => t.id === "convert-to-png");
 	
 	if (!tool) {
-		return <ConvertToPngClient />;
+		return <ConvertToPNGClient />;
 	}
 
 	return (
 		<ToolPageContent tool={tool}>
-			<ConvertToPngClient />
+			<ConvertToPNGClient />
 		</ToolPageContent>
 	);
 }

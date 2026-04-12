@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { AddWatermarkClient } from "./AddWatermarkClient";
+import { WatermarkImagesClient } from "./WatermarkImagesClient";
 import { ToolPageContent } from "@/components/ui/ToolPageContent";
 import { tools } from "@/lib/tools";
 
@@ -27,12 +27,12 @@ export default function AddWatermarkPage() {
 	const tool = tools.find(t => t.id === "add-watermark");
 	
 	if (!tool) {
-		return <AddWatermarkClient />;
+		return <WatermarkImagesClient />;
 	}
 
 	return (
 		<ToolPageContent tool={tool}>
-			<AddWatermarkClient />
+			<WatermarkImagesClient />
 		</ToolPageContent>
 	);
 }
