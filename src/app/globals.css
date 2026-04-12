@@ -3,19 +3,19 @@
 :root {
 	--background: #ffffff;
 	--foreground: #0f172a;
-	--primary: #135bec;
-	--primary-hover: #0f4fd4;
-	--primary-light: #eff4fe;
-	--secondary: #f8fafc;
-	--accent: #10b981;
-	--accent-hover: #059669;
+	--primary: #0f766e;
+	--primary-hover: #115e59;
+	--primary-light: #f0fdfa;
+	--secondary: #f1f5f9;
+	--accent: #0891b2;
+	--accent-hover: #0e7490;
 	--border: #e2e8f0;
 	--muted: #64748b;
 	--card: #ffffff;
 	--card-hover: #f8fafc;
-	--danger: #ef4444;
+	--danger: #dc2626;
 	--warning: #f59e0b;
-	--success: #10b981;
+	--success: #16a34a;
 	--surface: #f8fafc;
 	
 	/* New gradient colors */

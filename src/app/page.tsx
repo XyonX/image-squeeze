@@ -1,91 +1,125 @@
 import { tools } from "@/lib/tools";
 import { ToolCard } from "@/components/ui/ToolCard";
+import { ArrowRight, Zap, Lock, Sparkles } from "lucide-react";
 
 export default function HomePage() {
 	const compressTools = tools.filter((t) => t.category === "compress");
 	const convertTools = tools.filter((t) => t.category === "convert");
 	const editTools = tools.filter((t) => t.category === "edit" || t.category === "utility");
+	const featuredTools = [compressTools[0], convertTools[0], editTools[0], compressTools[1]].filter(Boolean);
 
 	return (
-		<div>
-			{/* Hero */}
-			<div className="relative text-center mb-16">
-				{/* Background gradient */}
-				<div className="absolute inset-0 -top-8 -left-8 -right-8 h-64 bg-gradient-to-br from-primary/5 via-purple-500/5 to-emerald-500/5 rounded-3xl blur-3xl opacity-70"></div>
-				
-				<div className="relative">
-					<h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-4">
-						Free Online <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">Image Tools</span>
-					</h1>
-					<p className="text-slate-600 text-lg sm:text-xl max-w-2xl mx-auto mb-8">
-						Compress, resize, convert & edit — all in your browser. 
-						<span className="text-slate-800 font-semibold"> 100% private</span>, no signup needed.
-					</p>
-					
-					{/* Stats */}
-					<div className="flex flex-wrap justify-center gap-6 mb-10">
-						<div className="flex flex-col items-center">
-							<div className="text-2xl font-bold text-slate-900">20+</div>
-							<div className="text-sm text-slate-500">Tools</div>
+		<div className="space-y-16">
+			{/* Hero Section */}
+			<section className="relative">
+				<div className="grid lg:grid-cols-2 gap-12 items-center py-12">
+					{/* Left Column */}
+					<div className="space-y-6">
+						<div className="space-y-3">
+							<h1 className="text-5xl lg:text-6xl font-bold tracking-tight text-slate-900">
+								Image tools 
+								<span className="block text-transparent bg-clip-text bg-gradient-to-r from-emerald-600 to-blue-600">
+									without the BS.
+								</span>
+							</h1>
+							<p className="text-lg text-slate-600 max-w-lg leading-relaxed">
+								Compress, resize, convert & edit images instantly in your browser. No signup, no watermarks, no limits. 100% private.
+							</p>
 						</div>
-						<div className="flex flex-col items-center">
-							<div className="text-2xl font-bold text-slate-900">100%</div>
-							<div className="text-sm text-slate-500">Private</div>
+
+						{/* Quick Actions */}
+						<div className="flex flex-wrap gap-3 pt-4">
+							<a href="/compress-jpg" className="inline-flex items-center gap-2 px-6 py-3 bg-slate-900 text-white rounded-xl font-semibold hover:bg-slate-800 transition-colors">
+								Get Started
+								<ArrowRight className="w-4 h-4" />
+							</a>
+							<a href="#tools" className="inline-flex items-center gap-2 px-6 py-3 border border-slate-300 text-slate-900 rounded-xl font-semibold hover:bg-slate-50 transition-colors">
+								Explore Tools
+							</a>
 						</div>
-						<div className="flex flex-col items-center">
-							<div className="text-2xl font-bold text-slate-900">0</div>
-							<div className="text-sm text-slate-500">Signup</div>
-						</div>
-						<div className="flex flex-col items-center">
-							<div className="text-2xl font-bold text-slate-900">∞</div>
-							<div className="text-sm text-slate-500">Free</div>
+
+						{/* Trust Indicators */}
+						<div className="space-y-3 pt-2">
+							<div className="flex items-center gap-3 text-sm text-slate-700">
+								<Lock className="w-4 h-4 text-emerald-600 flex-shrink-0" />
+								<span>Your files never leave your device</span>
+							</div>
+							<div className="flex items-center gap-3 text-sm text-slate-700">
+								<Zap className="w-4 h-4 text-blue-600 flex-shrink-0" />
+								<span>Lightning-fast browser processing</span>
+							</div>
+							<div className="flex items-center gap-3 text-sm text-slate-700">
+								<Sparkles className="w-4 h-4 text-purple-600 flex-shrink-0" />
+								<span>20+ free tools in one place</span>
+							</div>
 						</div>
 					</div>
-					
-					{/* Popular tools quick links */}
-					<div className="flex flex-wrap justify-center gap-3 max-w-2xl mx-auto">
-						<a href="/compress-jpg" className="px-4 py-2 bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-full text-sm font-medium text-primary hover:bg-primary/15 transition-colors duration-200">
-							Compress JPG
-						</a>
-						<a href="/resize-image" className="px-4 py-2 bg-gradient-to-r from-purple-600/10 to-purple-600/5 border border-purple-600/20 rounded-full text-sm font-medium text-purple-600 hover:bg-purple-600/15 transition-colors duration-200">
-							Resize Image
-						</a>
-						<a href="/convert-to-webp" className="px-4 py-2 bg-gradient-to-r from-emerald-600/10 to-emerald-600/5 border border-emerald-600/20 rounded-full text-sm font-medium text-emerald-600 hover:bg-emerald-600/15 transition-colors duration-200">
-							Convert to WebP
-						</a>
-						<a href="/bulk-compress" className="px-4 py-2 bg-gradient-to-r from-amber-600/10 to-amber-600/5 border border-amber-600/20 rounded-full text-sm font-medium text-amber-600 hover:bg-amber-600/15 transition-colors duration-200">
-							Bulk Compress
-						</a>
+
+					{/* Right Column — Stats Grid */}
+					<div className="grid grid-cols-2 gap-4">
+						<div className="group p-6 bg-white border border-slate-200 rounded-2xl hover:shadow-lg hover:border-slate-300 transition-all">
+							<div className="text-4xl font-bold text-slate-900 mb-2">20+</div>
+							<p className="text-sm text-slate-600 font-medium">Free Tools</p>
+						</div>
+						<div className="group p-6 bg-white border border-slate-200 rounded-2xl hover:shadow-lg hover:border-slate-300 transition-all">
+							<div className="text-4xl font-bold text-slate-900 mb-2">100%</div>
+							<p className="text-sm text-slate-600 font-medium">Private</p>
+						</div>
+						<div className="group p-6 bg-white border border-slate-200 rounded-2xl hover:shadow-lg hover:border-slate-300 transition-all">
+							<div className="text-4xl font-bold text-slate-900 mb-2">0</div>
+							<p className="text-sm text-slate-600 font-medium">Signup Required</p>
+						</div>
+						<div className="group p-6 bg-white border border-slate-200 rounded-2xl hover:shadow-lg hover:border-slate-300 transition-all">
+							<div className="text-4xl font-bold text-slate-900 mb-2">∞</div>
+							<p className="text-sm text-slate-600 font-medium">Forever Free</p>
+						</div>
 					</div>
 				</div>
-			</div>
+			</section>
+
+			{/* Ad Space 1 - Top Banner */}
+			<section className="bg-slate-100 rounded-2xl p-8 text-center border-2 border-dashed border-slate-300">
+				<p className="text-sm text-slate-600 font-medium">Advertisement</p>
+			</section>
+
+			{/* Featured Tools Section */}
+			<section id="tools" className="space-y-6">
+				<div>
+					<h2 className="text-3xl font-bold text-slate-900 mb-2">Popular Tools</h2>
+					<p className="text-slate-600">Start with the most-used image processing tools</p>
+				</div>
+				<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+					{featuredTools.map((tool) => (
+						<ToolCard key={tool.id} tool={tool} />
+					))}
+				</div>
+			</section>
 
 			{/* Compress Section */}
-			<section className="mb-10">
-				<div className="mb-4">
-					<h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-						<span className="w-8 h-8 bg-red-50 rounded-lg flex items-center justify-center text-base">🗜️</span>
-						<span className="text-red-500">Compress</span> Images
-					</h2>
-					<p className="text-xs text-slate-400 mt-1 ml-10">Reduce file size without losing quality</p>
+			<section className="space-y-4">
+				<div>
+					<h2 className="text-2xl font-bold text-slate-900 mb-1">Compress Images</h2>
+					<p className="text-sm text-slate-600">Reduce file size without losing quality</p>
 				</div>
-				<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+				<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
 					{compressTools.map((tool) => (
 						<ToolCard key={tool.id} tool={tool} />
 					))}
 				</div>
 			</section>
 
+			{/* Ad Space 2 - Mid Content */}
+			<section className="bg-slate-100 rounded-2xl p-8 text-center border-2 border-dashed border-slate-300">
+				<p className="text-sm text-slate-600 font-medium">Advertisement</p>
+			</section>
+
 			{/* Convert Section */}
-			<section className="mb-10">
-				<div className="mb-4">
-					<h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-						<span className="w-8 h-8 bg-blue-50 rounded-lg flex items-center justify-center text-base">🔄</span>
-						<span className="text-blue-500">Convert</span> Formats
-					</h2>
-					<p className="text-xs text-slate-400 mt-1 ml-10">Switch between JPG, PNG, WebP &amp; more</p>
+			<section className="space-y-4">
+				<div>
+					<h2 className="text-2xl font-bold text-slate-900 mb-1">Convert Formats</h2>
+					<p className="text-sm text-slate-600">Switch between JPG, PNG, WebP &amp; more</p>
 				</div>
-				<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+				<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
 					{convertTools.map((tool) => (
 						<ToolCard key={tool.id} tool={tool} />
 					))}
@@ -93,133 +127,130 @@ export default function HomePage() {
 			</section>
 
 			{/* Edit & Utilities Section */}
-			<section className="mb-10">
-				<div className="mb-4">
-					<h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
-						<span className="w-8 h-8 bg-amber-50 rounded-lg flex items-center justify-center text-base">✂️</span>
-						<span className="text-amber-500">Edit</span> &amp; Utilities
-					</h2>
-					<p className="text-xs text-slate-400 mt-1 ml-10">Resize, rotate, crop &amp; extract metadata</p>
+			<section className="space-y-4">
+				<div>
+					<h2 className="text-2xl font-bold text-slate-900 mb-1">Edit &amp; Utilities</h2>
+					<p className="text-sm text-slate-600">Resize, rotate, crop &amp; extract metadata</p>
 				</div>
-				<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-3">
+				<div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
 					{editTools.map((tool) => (
 						<ToolCard key={tool.id} tool={tool} />
 					))}
 				</div>
 			</section>
 
-			{/* How It Works */}
-			<section className="mb-10">
-				<h2 className="text-lg font-bold text-slate-900 mb-6 text-center">How It Works</h2>
-				<div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-0">
-					<div className="flex-1 text-center px-4">
-						<div className="w-10 h-10 rounded-full bg-primary/10 text-primary font-bold text-sm flex items-center justify-center mx-auto mb-3">1</div>
-						<p className="text-sm font-semibold text-slate-900">Drop your image</p>
-						<p className="text-xs text-slate-400 mt-1">Drag & drop, paste, or browse</p>
+			{/* How It Works Section */}
+			<section className="space-y-8">
+				<div className="text-center space-y-2">
+					<h2 className="text-3xl font-bold text-slate-900">How it works</h2>
+					<p className="text-slate-600">Three simple steps to process your images</p>
+				</div>
+
+				<div className="grid md:grid-cols-3 gap-8">
+					{/* Step 1 */}
+					<div className="text-center">
+						<div className="w-16 h-16 mx-auto mb-4 rounded-full bg-emerald-100 flex items-center justify-center text-2xl font-bold text-emerald-600">
+							1
+						</div>
+						<h3 className="text-lg font-semibold text-slate-900 mb-2">Upload Image</h3>
+						<p className="text-sm text-slate-600">Drag &amp; drop, paste, or browse your image file</p>
 					</div>
-					<div className="hidden sm:block w-12 h-px bg-slate-200" />
-					<div className="flex-1 text-center px-4">
-						<div className="w-10 h-10 rounded-full bg-primary/10 text-primary font-bold text-sm flex items-center justify-center mx-auto mb-3">2</div>
-						<p className="text-sm font-semibold text-slate-900">Tweak settings</p>
-						<p className="text-xs text-slate-400 mt-1">Quality, size, format — your call</p>
+
+					{/* Step 2 */}
+					<div className="text-center">
+						<div className="w-16 h-16 mx-auto mb-4 rounded-full bg-blue-100 flex items-center justify-center text-2xl font-bold text-blue-600">
+							2
+						</div>
+						<h3 className="text-lg font-semibold text-slate-900 mb-2">Adjust Settings</h3>
+						<p className="text-sm text-slate-600">Customize quality, size, format, and more</p>
 					</div>
-					<div className="hidden sm:block w-12 h-px bg-slate-200" />
-					<div className="flex-1 text-center px-4">
-						<div className="w-10 h-10 rounded-full bg-emerald-100 text-emerald-600 font-bold text-sm flex items-center justify-center mx-auto mb-3">✓</div>
-						<p className="text-sm font-semibold text-slate-900">Download instantly</p>
-						<p className="text-xs text-slate-400 mt-1">Done in seconds, no waiting</p>
+
+					{/* Step 3 */}
+					<div className="text-center">
+						<div className="w-16 h-16 mx-auto mb-4 rounded-full bg-purple-100 flex items-center justify-center text-2xl font-bold text-purple-600">
+							3
+						</div>
+						<h3 className="text-lg font-semibold text-slate-900 mb-2">Download</h3>
+						<p className="text-sm text-slate-600">Get your processed image instantly</p>
 					</div>
 				</div>
 			</section>
 
-			{/* Live Statistics */}
-			<section className="mb-10">
-				<h2 className="text-lg font-bold text-slate-900 mb-6 text-center">Live Statistics</h2>
-				<div className="max-w-2xl mx-auto">
-					<div className="bg-gradient-to-br from-white to-slate-50 border border-white/30 rounded-2xl p-5">
-						<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-							<div className="text-center">
-								<div className="text-3xl font-bold text-slate-900 mb-1">20+</div>
-								<div className="text-sm text-slate-500">Free Tools</div>
-							</div>
-							<div className="text-center">
-								<div className="text-3xl font-bold text-slate-900 mb-1">100%</div>
-								<div className="text-sm text-slate-500">Browser-Based</div>
-							</div>
-							<div className="text-center">
-								<div className="text-3xl font-bold text-slate-900 mb-1">0</div>
-								<div className="text-sm text-slate-500">Uploads</div>
-							</div>
-							<div className="text-center">
-								<div className="text-3xl font-bold text-slate-900 mb-1">{"<1s"}</div>
-								<div className="text-sm text-slate-500">Processing Time</div>
-							</div>
-						</div>
-						<div className="mt-4 pt-4 border-t border-slate-200/50 text-center">
-							<p className="text-xs text-slate-500">
-								All image processing happens directly in your browser • No files are uploaded to servers
-							</p>
-						</div>
-					</div>
-				</div>
+			{/* Ad Space 3 - Bottom Content */}
+			<section className="bg-slate-100 rounded-2xl p-8 text-center border-2 border-dashed border-slate-300">
+				<p className="text-sm text-slate-600 font-medium">Advertisement</p>
 			</section>
 
-			{/* Why GetImgTools — Detailed */}
-			<section className="space-y-3">
-				<h2 className="text-lg font-bold text-slate-900 text-center mb-4">Why <span className="text-primary">GetImgTools</span>?</h2>
+			{/* Features Section */}
+			<section className="space-y-6">
+				<div className="text-center space-y-2">
+					<h2 className="text-3xl font-bold text-slate-900">Why choose GetImgTools?</h2>
+					<p className="text-slate-600">Everything you need, nothing you don&apos;t</p>
+				</div>
 
-				<div className="grid sm:grid-cols-2 gap-3">
+				<div className="grid md:grid-cols-2 gap-6">
 					{/* Privacy */}
-					<div className="flex items-start gap-4 p-5 bg-white border border-slate-200 rounded-xl">
-						<div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center flex-shrink-0">
-							<span className="text-lg">🔒</span>
+					<div className="p-6 bg-white border border-slate-200 rounded-2xl hover:shadow-lg transition-shadow">
+						<div className="w-12 h-12 rounded-xl bg-emerald-100 flex items-center justify-center mb-4 text-2xl">
+							🔒
 						</div>
-						<div>
-							<p className="text-sm font-semibold text-slate-900">Your files stay on your device</p>
-							<p className="text-xs text-slate-500 mt-1 leading-relaxed">
-								Zero uploads. All processing happens in-browser using the Canvas API and Web Workers. We literally <em>can't</em> see your images.
-							</p>
-						</div>
+						<h3 className="text-lg font-semibold text-slate-900 mb-2">100% Private</h3>
+						<p className="text-sm text-slate-600 leading-relaxed">
+							All processing happens in-browser using Canvas API and Web Workers. Your files never touch our servers.
+						</p>
 					</div>
 
 					{/* Speed */}
-					<div className="flex items-start gap-4 p-5 bg-white border border-slate-200 rounded-xl">
-						<div className="w-10 h-10 rounded-xl bg-blue-50 flex items-center justify-center flex-shrink-0">
-							<span className="text-lg">⚡</span>
+					<div className="p-6 bg-white border border-slate-200 rounded-2xl hover:shadow-lg transition-shadow">
+						<div className="w-12 h-12 rounded-xl bg-blue-100 flex items-center justify-center mb-4 text-2xl">
+							⚡
 						</div>
-						<div>
-							<p className="text-sm font-semibold text-slate-900">No upload wait — instant processing</p>
-							<p className="text-xs text-slate-500 mt-1 leading-relaxed">
-								Other tools upload your file, process on a server, then send it back. We skip all that — your CPU does the work in milliseconds.
-							</p>
-						</div>
+						<h3 className="text-lg font-semibold text-slate-900 mb-2">Lightning Fast</h3>
+						<p className="text-sm text-slate-600 leading-relaxed">
+							No server uploads or downloads. Processing happens instantly on your device in milliseconds.
+						</p>
 					</div>
 
-					{/* No signup */}
-					<div className="flex items-start gap-4 p-5 bg-white border border-slate-200 rounded-xl">
-						<div className="w-10 h-10 rounded-xl bg-amber-50 flex items-center justify-center flex-shrink-0">
-							<span className="text-lg">🚫</span>
+					{/* No Signup */}
+					<div className="p-6 bg-white border border-slate-200 rounded-2xl hover:shadow-lg transition-shadow">
+						<div className="w-12 h-12 rounded-xl bg-amber-100 flex items-center justify-center mb-4 text-2xl">
+							✨
 						</div>
-						<div>
-							<p className="text-sm font-semibold text-slate-900">No account, no email, no BS</p>
-							<p className="text-xs text-slate-500 mt-1 leading-relaxed">
-								Just open the tool and use it. No "sign up to download" walls, no watermarks on your output, no daily limits.
-							</p>
-						</div>
+						<h3 className="text-lg font-semibold text-slate-900 mb-2">Zero Friction</h3>
+						<p className="text-sm text-slate-600 leading-relaxed">
+							No signup walls, no email required, no daily limits. Just open and use—completely free.
+						</p>
 					</div>
 
-					{/* Quality */}
-					<div className="flex items-start gap-4 p-5 bg-white border border-slate-200 rounded-xl">
-						<div className="w-10 h-10 rounded-xl bg-violet-50 flex items-center justify-center flex-shrink-0">
-							<span className="text-lg">🎯</span>
+					{/* Comprehensive */}
+					<div className="p-6 bg-white border border-slate-200 rounded-2xl hover:shadow-lg transition-shadow">
+						<div className="w-12 h-12 rounded-xl bg-purple-100 flex items-center justify-center mb-4 text-2xl">
+							🎨
 						</div>
-						<div>
-							<p className="text-sm font-semibold text-slate-900">20+ tools, one clean interface</p>
-							<p className="text-xs text-slate-500 mt-1 leading-relaxed">
-								Compress, convert, resize, rotate, add watermarks, apply filters, strip EXIF, encode Base64 — everything you need for images, in one place with zero clutter.
-							</p>
-						</div>
+						<h3 className="text-lg font-semibold text-slate-900 mb-2">All-in-One Toolkit</h3>
+						<p className="text-sm text-slate-600 leading-relaxed">
+							Compress, convert, resize, rotate, crop, add watermarks, filters, and more in a single clean interface.
+						</p>
 					</div>
+				</div>
+			</section>
+
+			{/* Ad Space 4 - Final Banner */}
+			<section className="bg-gradient-to-r from-slate-50 to-slate-100 rounded-2xl p-8 text-center border border-slate-200">
+				<p className="text-sm text-slate-600 font-medium">Advertisement</p>
+			</section>
+
+			{/* CTA Section */}
+			<section className="text-center py-12">
+				<div className="space-y-4">
+					<h2 className="text-3xl font-bold text-slate-900">Ready to process images?</h2>
+					<p className="text-lg text-slate-600 max-w-2xl mx-auto">
+						Choose any tool above and get started in seconds.
+					</p>
+					<a href="/compress-jpg" className="inline-flex items-center gap-2 px-8 py-4 bg-slate-900 text-white rounded-xl font-semibold hover:bg-slate-800 transition-colors">
+						Start for Free
+						<ArrowRight className="w-5 h-5" />
+					</a>
 				</div>
 			</section>
 		</div>
