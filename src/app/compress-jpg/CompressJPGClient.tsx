@@ -185,12 +185,12 @@ export function CompressJPGClient() {
 						<button
 							key={p.label}
 							onClick={() => setQuality(p.value)}
-							className={`px-3 sm:px-4 py-2 rounded-xl font-medium text-center truncate border transition-all ${
+							className={`preset-button px-3 sm:px-4 py-2 rounded-xl font-medium text-center border transition-all ${
 								quality === p.value
 									? "border-primary bg-primary/10 text-primary"
 									: "border-slate-200 hover:border-primary/30"
 							}`}
-							title={p.label}
+							title={p.description}
 						>
 							{p.label}
 						</button>

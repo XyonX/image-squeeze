@@ -25,7 +25,7 @@ export default function HomePage() {
 					{/* Stats */}
 					<div className="flex flex-wrap justify-center gap-6 mb-10">
 						<div className="flex flex-col items-center">
-							<div className="text-2xl font-bold text-slate-900">17+</div>
+							<div className="text-2xl font-bold text-slate-900">20+</div>
 							<div className="text-sm text-slate-500">Tools</div>
 						</div>
 						<div className="flex flex-col items-center">
@@ -132,6 +132,38 @@ export default function HomePage() {
 				</div>
 			</section>
 
+			{/* Live Statistics */}
+			<section className="mb-10">
+				<h2 className="text-lg font-bold text-slate-900 mb-6 text-center">Live Statistics</h2>
+				<div className="max-w-2xl mx-auto">
+					<div className="bg-gradient-to-br from-white to-slate-50 border border-white/30 rounded-2xl p-5">
+						<div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+							<div className="text-center">
+								<div className="text-3xl font-bold text-slate-900 mb-1">20+</div>
+								<div className="text-sm text-slate-500">Free Tools</div>
+							</div>
+							<div className="text-center">
+								<div className="text-3xl font-bold text-slate-900 mb-1">100%</div>
+								<div className="text-sm text-slate-500">Browser-Based</div>
+							</div>
+							<div className="text-center">
+								<div className="text-3xl font-bold text-slate-900 mb-1">0</div>
+								<div className="text-sm text-slate-500">Uploads</div>
+							</div>
+							<div className="text-center">
+								<div className="text-3xl font-bold text-slate-900 mb-1">{"<1s"}</div>
+								<div className="text-sm text-slate-500">Processing Time</div>
+							</div>
+						</div>
+						<div className="mt-4 pt-4 border-t border-slate-200/50 text-center">
+							<p className="text-xs text-slate-500">
+								All image processing happens directly in your browser • No files are uploaded to servers
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
 			{/* Why GetImgTools — Detailed */}
 			<section className="space-y-3">
 				<h2 className="text-lg font-bold text-slate-900 text-center mb-4">Why <span className="text-primary">GetImgTools</span>?</h2>
@@ -182,7 +214,7 @@ export default function HomePage() {
 							<span className="text-lg">🎯</span>
 						</div>
 						<div>
-							<p className="text-sm font-semibold text-slate-900">17 tools, one clean interface</p>
+							<p className="text-sm font-semibold text-slate-900">20+ tools, one clean interface</p>
 							<p className="text-xs text-slate-500 mt-1 leading-relaxed">
 								Compress, convert, resize, rotate, add watermarks, apply filters, strip EXIF, encode Base64 — everything you need for images, in one place with zero clutter.
 							</p>

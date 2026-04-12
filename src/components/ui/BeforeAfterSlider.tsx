@@ -192,7 +192,7 @@ export function BeforeAfterSlider({
 			{/* Comparison area */}
 			<div
 				ref={containerRef}
-				className={`relative rounded-xl overflow-hidden border border-slate-200 bg-slate-100 ${
+				className={`no-select comparison-container relative rounded-xl overflow-hidden border border-slate-200 bg-slate-100 ${
 					viewMode === "slider" ? "cursor-col-resize" : ""
 				}`}
 				style={{ minHeight: "300px" }}
@@ -218,7 +218,7 @@ export function BeforeAfterSlider({
 								src={beforeImageSrc}
 								alt="Before"
 								onLoad={() => setBeforeLoaded(true)}
-								className="w-full h-full object-contain"
+								className="no-select w-full h-full object-contain"
 							/>
 						</div>
 
@@ -231,7 +231,7 @@ export function BeforeAfterSlider({
 								src={afterImageSrc}
 								alt="After"
 								onLoad={() => setAfterLoaded(true)}
-								className="w-full h-full object-contain"
+								className="no-select w-full h-full object-contain"
 							/>
 						</div>
 
@@ -265,7 +265,7 @@ export function BeforeAfterSlider({
 								src={beforeImageSrc}
 								alt="Before"
 								onLoad={() => setBeforeLoaded(true)}
-								className="w-full h-full object-contain"
+								className="no-select w-full h-full object-contain"
 							/>
 							<div className="absolute top-4 left-4 px-3 py-1.5 bg-black/70 text-white text-sm font-medium rounded-lg backdrop-blur-sm">
 								{beforeLabel}
@@ -276,7 +276,7 @@ export function BeforeAfterSlider({
 								src={afterImageSrc}
 								alt="After"
 								onLoad={() => setAfterLoaded(true)}
-								className="w-full h-full object-contain"
+								className="no-select w-full h-full object-contain"
 							/>
 							<div className="absolute top-4 right-4 px-3 py-1.5 bg-black/70 text-white text-sm font-medium rounded-lg backdrop-blur-sm">
 								{afterLabel}
@@ -293,7 +293,7 @@ export function BeforeAfterSlider({
 							src={beforeImageSrc}
 							alt="Before"
 							onLoad={() => setBeforeLoaded(true)}
-							className={`w-full h-full object-contain transition-opacity duration-300 ${
+							className={`no-select w-full h-full object-contain transition-opacity duration-300 ${
 								showBefore ? "opacity-100" : "opacity-0 absolute inset-0"
 							}`}
 						/>
@@ -302,7 +302,7 @@ export function BeforeAfterSlider({
 							src={afterImageSrc}
 							alt="After"
 							onLoad={() => setAfterLoaded(true)}
-							className={`w-full h-full object-contain transition-opacity duration-300 ${
+							className={`no-select w-full h-full object-contain transition-opacity duration-300 ${
 								!showBefore ? "opacity-100" : "opacity-0 absolute inset-0"
 							}`}
 						/>
