@@ -119,17 +119,23 @@ export function ImagePreview({
 			<div className={`relative group ${className}`}>
 				{/* Preview container */}
 				<div className={`relative ${sizeClasses[size]} rounded-lg overflow-hidden border border-slate-200 bg-slate-50`}>
-					{/* Image */}
-					<img
-						ref={imgRef}
-						src={imageSrc}
-						alt={alt}
-						onLoad={handleImageLoad}
-						className="w-full h-full object-contain"
-					/>
+					{/* Image - only render when imageSrc is available */}
+					{imageSrc ? (
+						<img
+							ref={imgRef}
+							src={imageSrc}
+							alt={alt}
+							onLoad={handleImageLoad}
+							className="w-full h-full object-contain"
+						/>
+					) : (
+						<div className="absolute inset-0 flex items-center justify-center bg-slate-100">
+							<div className="w-6 h-6 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+						</div>
+					)}
 
-					{/* Loading overlay */}
-					{!imageLoaded && (
+					{/* Loading overlay - only show when image is loading */}
+					{imageSrc && !imageLoaded && (
 						<div className="absolute inset-0 flex items-center justify-center bg-slate-100">
 							<div className="w-6 h-6 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
 						</div>
@@ -247,12 +253,18 @@ export function ImagePreview({
 							className="w-full h-full flex items-center justify-center p-8 overflow-auto"
 							style={{ cursor: zoomLevel > 1 ? "grab" : "default" }}
 						>
-							<img
-								src={imageSrc}
-								alt={alt}
-								className="max-w-full max-h-full object-contain transition-transform duration-200"
-								style={{ transform: `scale(${zoomLevel})` }}
-							/>
+							{imageSrc ? (
+								<img
+									src={imageSrc}
+									alt={alt}
+									className="max-w-full max-h-full object-contain transition-transform duration-200"
+									style={{ transform: `scale(${zoomLevel})` }}
+								/>
+							) : (
+								<div className="flex items-center justify-center">
+									<div className="w-12 h-12 border-4 border-primary/30 border-t-primary rounded-full animate-spin" />
+								</div>
+							)}
 						</div>
 
 						{/* Info footer */}

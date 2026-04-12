@@ -214,12 +214,18 @@ export function BeforeAfterSlider({
 					<>
 						{/* Before image (full) */}
 						<div className="absolute inset-0">
-							<img
-								src={beforeImageSrc}
-								alt="Before"
-								onLoad={() => setBeforeLoaded(true)}
-								className="no-select w-full h-full object-contain"
-							/>
+							{beforeImageSrc ? (
+								<img
+									src={beforeImageSrc}
+									alt="Before"
+									onLoad={() => setBeforeLoaded(true)}
+									className="no-select w-full h-full object-contain"
+								/>
+							) : (
+								<div className="w-full h-full flex items-center justify-center bg-slate-100">
+									<div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+								</div>
+							)}
 						</div>
 
 						{/* After image (clipped) */}
@@ -227,12 +233,18 @@ export function BeforeAfterSlider({
 							className="absolute inset-0 overflow-hidden"
 							style={{ clipPath: `inset(0 0 0 ${sliderPosition}%)` }}
 						>
-							<img
-								src={afterImageSrc}
-								alt="After"
-								onLoad={() => setAfterLoaded(true)}
-								className="no-select w-full h-full object-contain"
-							/>
+							{afterImageSrc ? (
+								<img
+									src={afterImageSrc}
+									alt="After"
+									onLoad={() => setAfterLoaded(true)}
+									className="no-select w-full h-full object-contain"
+								/>
+							) : (
+								<div className="w-full h-full flex items-center justify-center bg-slate-100">
+									<div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+								</div>
+							)}
 						</div>
 
 						{/* Slider handle */}
@@ -261,23 +273,35 @@ export function BeforeAfterSlider({
 				{viewMode === "side-by-side" && (
 					<div className="flex h-full">
 						<div className="flex-1 border-r border-slate-200 relative">
-							<img
-								src={beforeImageSrc}
-								alt="Before"
-								onLoad={() => setBeforeLoaded(true)}
-								className="no-select w-full h-full object-contain"
-							/>
+							{beforeImageSrc ? (
+								<img
+									src={beforeImageSrc}
+									alt="Before"
+									onLoad={() => setBeforeLoaded(true)}
+									className="no-select w-full h-full object-contain"
+								/>
+							) : (
+								<div className="w-full h-full flex items-center justify-center bg-slate-100">
+									<div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+								</div>
+							)}
 							<div className="absolute top-4 left-4 px-3 py-1.5 bg-black/70 text-white text-sm font-medium rounded-lg backdrop-blur-sm">
 								{beforeLabel}
 							</div>
 						</div>
 						<div className="flex-1 relative">
-							<img
-								src={afterImageSrc}
-								alt="After"
-								onLoad={() => setAfterLoaded(true)}
-								className="no-select w-full h-full object-contain"
-							/>
+							{afterImageSrc ? (
+								<img
+									src={afterImageSrc}
+									alt="After"
+									onLoad={() => setAfterLoaded(true)}
+									className="no-select w-full h-full object-contain"
+								/>
+							) : (
+								<div className="w-full h-full flex items-center justify-center bg-slate-100">
+									<div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+								</div>
+							)}
 							<div className="absolute top-4 right-4 px-3 py-1.5 bg-black/70 text-white text-sm font-medium rounded-lg backdrop-blur-sm">
 								{afterLabel}
 							</div>
@@ -289,23 +313,39 @@ export function BeforeAfterSlider({
 				{viewMode === "toggle" && (
 					<div className="relative w-full h-full">
 						{/* Before image */}
-						<img
-							src={beforeImageSrc}
-							alt="Before"
-							onLoad={() => setBeforeLoaded(true)}
-							className={`no-select w-full h-full object-contain transition-opacity duration-300 ${
+						{beforeImageSrc ? (
+							<img
+								src={beforeImageSrc}
+								alt="Before"
+								onLoad={() => setBeforeLoaded(true)}
+								className={`no-select w-full h-full object-contain transition-opacity duration-300 ${
+									showBefore ? "opacity-100" : "opacity-0 absolute inset-0"
+								}`}
+							/>
+						) : (
+							<div className={`w-full h-full flex items-center justify-center bg-slate-100 transition-opacity duration-300 ${
 								showBefore ? "opacity-100" : "opacity-0 absolute inset-0"
-							}`}
-						/>
+							}`}>
+								<div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+							</div>
+						)}
 						{/* After image */}
-						<img
-							src={afterImageSrc}
-							alt="After"
-							onLoad={() => setAfterLoaded(true)}
-							className={`no-select w-full h-full object-contain transition-opacity duration-300 ${
+						{afterImageSrc ? (
+							<img
+								src={afterImageSrc}
+								alt="After"
+								onLoad={() => setAfterLoaded(true)}
+								className={`no-select w-full h-full object-contain transition-opacity duration-300 ${
+									!showBefore ? "opacity-100" : "opacity-0 absolute inset-0"
+								}`}
+							/>
+						) : (
+							<div className={`w-full h-full flex items-center justify-center bg-slate-100 transition-opacity duration-300 ${
 								!showBefore ? "opacity-100" : "opacity-0 absolute inset-0"
-							}`}
-						/>
+							}`}>
+								<div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin" />
+							</div>
+						)}
 						{/* Toggle button */}
 						<button
 							onClick={() => setShowBefore(!showBefore)}
