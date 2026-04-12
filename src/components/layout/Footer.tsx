@@ -24,35 +24,78 @@ function LogoIcon() {
 
 export function Footer() {
 	return (
-		<footer className="bg-white border-t border-slate-200">
-			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-				<div className="flex flex-col md:flex-row items-center justify-between gap-4">
+		<footer className="bg-gradient-to-b from-white to-slate-50 border-t border-white/30">
+			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+				<div className="flex flex-col md:flex-row items-center justify-between gap-6">
 					{/* Logo + Copyright */}
-					<div className="flex items-center gap-2">
-						<div className="text-primary">
-							<LogoIcon />
+					<div className="flex items-center gap-3">
+						<div className="relative">
+							<div className="absolute inset-0 bg-gradient-to-br from-primary/10 to-purple-600/10 rounded-lg blur opacity-60"></div>
+							<div className="relative text-primary">
+								<LogoIcon />
+							</div>
 						</div>
-						<span className="text-sm text-slate-500">
-							© {new Date().getFullYear()} getimgtools.com — All rights reserved.
-						</span>
+						<div className="flex flex-col">
+							<span className="text-sm font-medium text-slate-900">getimgtools.com</span>
+							<span className="text-xs text-slate-500">
+								© {new Date().getFullYear()} — Free Online Image Tools
+							</span>
+						</div>
 					</div>
 
 					{/* Links */}
 					<nav className="flex items-center gap-6">
-						<Link href="/privacy" className="text-sm text-slate-500 hover:text-slate-900 transition-colors">
+						<Link 
+							href="/privacy" 
+							className="text-sm text-slate-600 hover:text-primary transition-colors duration-200 relative group"
+						>
 							Privacy Policy
+							<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-purple-600 group-hover:w-full transition-all duration-300"></span>
 						</Link>
-						<Link href="/terms" className="text-sm text-slate-500 hover:text-slate-900 transition-colors">
+						<Link 
+							href="/terms" 
+							className="text-sm text-slate-600 hover:text-primary transition-colors duration-200 relative group"
+						>
 							Terms of Service
+							<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-purple-600 group-hover:w-full transition-all duration-300"></span>
 						</Link>
-						<Link href="/about" className="text-sm text-slate-500 hover:text-slate-900 transition-colors">
+						<Link 
+							href="/about" 
+							className="text-sm text-slate-600 hover:text-primary transition-colors duration-200 relative group"
+						>
 							About
+							<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-purple-600 group-hover:w-full transition-all duration-300"></span>
 						</Link>
 					</nav>
 
 					{/* Badge */}
 					<div className="flex items-center gap-2">
-						<span className="text-xs text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full font-medium">🔒 100% Browser-Based</span>
+						<div className="relative group">
+							<div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-emerald-600/20 rounded-full blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+							<span className="relative text-xs text-emerald-700 bg-gradient-to-r from-emerald-50 to-emerald-100 border border-emerald-200 px-3 py-1.5 rounded-full font-medium flex items-center gap-1.5">
+								<svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+									<path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+								</svg>
+								100% Browser-Based
+							</span>
+						</div>
+					</div>
+				</div>
+				
+				{/* Additional info */}
+				<div className="mt-6 pt-6 border-t border-slate-200/50 text-center">
+					<p className="text-xs text-slate-500 max-w-2xl mx-auto">
+						All image processing happens directly in your browser using Web Workers and Canvas API. 
+						No files are uploaded to any server — your privacy is guaranteed.
+					</p>
+					<div className="mt-4 flex flex-wrap justify-center gap-4">
+						<span className="text-xs text-slate-400">No signup required</span>
+						<span className="text-xs text-slate-400">•</span>
+						<span className="text-xs text-slate-400">No watermarks</span>
+						<span className="text-xs text-slate-400">•</span>
+						<span className="text-xs text-slate-400">No file size limits</span>
+						<span className="text-xs text-slate-400">•</span>
+						<span className="text-xs text-slate-400">No daily quotas</span>
 					</div>
 				</div>
 			</div>

@@ -17,6 +17,24 @@
 	--warning: #f59e0b;
 	--success: #10b981;
 	--surface: #f8fafc;
+	
+	/* New gradient colors */
+	--gradient-primary: linear-gradient(135deg, #135bec 0%, #0f4fd4 100%);
+	--gradient-accent: linear-gradient(135deg, #10b981 0%, #059669 100%);
+	--gradient-purple: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+	--gradient-card: linear-gradient(135deg, rgba(255, 255, 255, 0.9) 0%, rgba(255, 255, 255, 0.7) 100%);
+	--gradient-header: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+	--gradient-footer: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+	
+	/* Glassmorphism effects */
+	--glass-bg: rgba(255, 255, 255, 0.1);
+	--glass-border: rgba(255, 255, 255, 0.2);
+	--glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+	
+	/* Animation speeds */
+	--transition-fast: 150ms;
+	--transition-normal: 300ms;
+	--transition-slow: 500ms;
 }
 
 @theme inline {

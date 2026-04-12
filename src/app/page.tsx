@@ -9,13 +9,55 @@ export default function HomePage() {
 	return (
 		<div>
 			{/* Hero */}
-			<div className="text-center mb-12">
-				<h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mb-3">
-					Free Online <span className="text-primary">Image Tools</span>
-				</h1>
-				<p className="text-slate-500 text-base sm:text-lg max-w-xl mx-auto">
-					Compress, resize, convert &amp; edit — all in your browser. <span className="text-slate-700 font-medium">100% private</span>, no signup needed.
-				</p>
+			<div className="relative text-center mb-16">
+				{/* Background gradient */}
+				<div className="absolute inset-0 -top-8 -left-8 -right-8 h-64 bg-gradient-to-br from-primary/5 via-purple-500/5 to-emerald-500/5 rounded-3xl blur-3xl opacity-70"></div>
+				
+				<div className="relative">
+					<h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-4">
+						Free Online <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">Image Tools</span>
+					</h1>
+					<p className="text-slate-600 text-lg sm:text-xl max-w-2xl mx-auto mb-8">
+						Compress, resize, convert & edit — all in your browser. 
+						<span className="text-slate-800 font-semibold"> 100% private</span>, no signup needed.
+					</p>
+					
+					{/* Stats */}
+					<div className="flex flex-wrap justify-center gap-6 mb-10">
+						<div className="flex flex-col items-center">
+							<div className="text-2xl font-bold text-slate-900">17+</div>
+							<div className="text-sm text-slate-500">Tools</div>
+						</div>
+						<div className="flex flex-col items-center">
+							<div className="text-2xl font-bold text-slate-900">100%</div>
+							<div className="text-sm text-slate-500">Private</div>
+						</div>
+						<div className="flex flex-col items-center">
+							<div className="text-2xl font-bold text-slate-900">0</div>
+							<div className="text-sm text-slate-500">Signup</div>
+						</div>
+						<div className="flex flex-col items-center">
+							<div className="text-2xl font-bold text-slate-900">∞</div>
+							<div className="text-sm text-slate-500">Free</div>
+						</div>
+					</div>
+					
+					{/* Popular tools quick links */}
+					<div className="flex flex-wrap justify-center gap-3 max-w-2xl mx-auto">
+						<a href="/compress-jpg" className="px-4 py-2 bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-full text-sm font-medium text-primary hover:bg-primary/15 transition-colors duration-200">
+							Compress JPG
+						</a>
+						<a href="/resize-image" className="px-4 py-2 bg-gradient-to-r from-purple-600/10 to-purple-600/5 border border-purple-600/20 rounded-full text-sm font-medium text-purple-600 hover:bg-purple-600/15 transition-colors duration-200">
+							Resize Image
+						</a>
+						<a href="/convert-to-webp" className="px-4 py-2 bg-gradient-to-r from-emerald-600/10 to-emerald-600/5 border border-emerald-600/20 rounded-full text-sm font-medium text-emerald-600 hover:bg-emerald-600/15 transition-colors duration-200">
+							Convert to WebP
+						</a>
+						<a href="/bulk-compress" className="px-4 py-2 bg-gradient-to-r from-amber-600/10 to-amber-600/5 border border-amber-600/20 rounded-full text-sm font-medium text-amber-600 hover:bg-amber-600/15 transition-colors duration-200">
+							Bulk Compress
+						</a>
+					</div>
+				</div>
 			</div>
 
 			{/* Compress Section */}

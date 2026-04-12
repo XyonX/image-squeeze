@@ -31,44 +31,88 @@ export function Header() {
 	const [mobileOpen, setMobileOpen] = useState(false);
 
 	return (
-		<header className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-slate-200">
+		<header className="sticky top-0 z-50 bg-gradient-to-r from-white/95 to-white/85 backdrop-blur-xl border-b border-white/20 shadow-sm">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex items-center justify-between h-16">
 					{/* Logo */}
-					<Link href="/" className="flex items-center gap-2">
-						<div className="text-primary">
-							<LogoIcon />
+					<Link href="/" className="flex items-center gap-3 group">
+						<div className="relative">
+							<div className="absolute inset-0 bg-gradient-to-br from-primary to-purple-600 rounded-xl blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+							<div className="relative text-primary">
+								<LogoIcon />
+							</div>
 						</div>
-						<span className="text-xl font-bold tracking-tight text-slate-900">getimgtools.com</span>
+						<div className="flex flex-col">
+							<span className="text-xl font-bold tracking-tight text-slate-900">getimgtools.com</span>
+							<span className="text-[10px] text-slate-500 font-medium tracking-wide">Free Online Image Tools</span>
+						</div>
 					</Link>
 
 					{/* Desktop Nav */}
-					<nav className="hidden md:flex items-center gap-8">
-						<Link href="/" className="text-sm font-medium text-slate-600 hover:text-primary transition-colors">
+					<nav className="hidden md:flex items-center gap-6">
+						<Link 
+							href="/" 
+							className="text-sm font-medium text-slate-700 hover:text-primary transition-colors duration-200 relative group"
+						>
 							Tools
+							<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-purple-600 group-hover:w-full transition-all duration-300"></span>
 						</Link>
-						<Link href="/blog" className="text-sm font-medium text-slate-600 hover:text-primary transition-colors">
+						<Link 
+							href="/blog" 
+							className="text-sm font-medium text-slate-700 hover:text-primary transition-colors duration-200 relative group"
+						>
 							Blog
+							<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-purple-600 group-hover:w-full transition-all duration-300"></span>
 						</Link>
-						<Link href="/about" className="text-sm font-medium text-slate-600 hover:text-primary transition-colors">
+						<Link 
+							href="/about" 
+							className="text-sm font-medium text-slate-700 hover:text-primary transition-colors duration-200 relative group"
+						>
 							About
+							<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-purple-600 group-hover:w-full transition-all duration-300"></span>
 						</Link>
-						<Link href="/privacy" className="text-sm font-medium text-slate-600 hover:text-primary transition-colors">
+						<Link 
+							href="/privacy" 
+							className="text-sm font-medium text-slate-700 hover:text-primary transition-colors duration-200 relative group"
+						>
 							Privacy
+							<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-purple-600 group-hover:w-full transition-all duration-300"></span>
 						</Link>
-						<Link href="/terms" className="text-sm font-medium text-slate-600 hover:text-primary transition-colors">
+						<Link 
+							href="/terms" 
+							className="text-sm font-medium text-slate-700 hover:text-primary transition-colors duration-200 relative group"
+						>
 							Terms
+							<span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-gradient-to-r from-primary to-purple-600 group-hover:w-full transition-all duration-300"></span>
 						</Link>
 					</nav>
 
 					{/* Desktop right side */}
 					<div className="hidden md:flex items-center gap-3">
-						<span className="text-xs text-slate-500 bg-slate-100 px-3 py-1.5 rounded-full font-medium">🔒 100% Private</span>
+						<div className="relative group">
+							<div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
+							<span className="relative text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-full font-medium flex items-center gap-1.5">
+								<svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+									<path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
+								</svg>
+								100% Private
+							</span>
+						</div>
 					</div>
 
 					{/* Mobile toggle */}
-					<button className="md:hidden p-2 rounded-lg hover:bg-slate-100 transition-colors" onClick={() => setMobileOpen(!mobileOpen)}>
-						{mobileOpen ? <X className="w-5 h-5 text-slate-700" /> : <Menu className="w-5 h-5 text-slate-700" />}
+					<button 
+						className="md:hidden p-2 rounded-lg hover:bg-slate-100/50 transition-colors duration-200 group"
+						onClick={() => setMobileOpen(!mobileOpen)}
+					>
+						<div className="relative">
+							<div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-purple-600/10 rounded-lg blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+							{mobileOpen ? (
+								<X className="relative w-5 h-5 text-slate-700" />
+							) : (
+								<Menu className="relative w-5 h-5 text-slate-700" />
+							)}
+						</div>
 					</button>
 				</div>
 			</div>

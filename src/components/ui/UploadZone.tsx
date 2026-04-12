@@ -106,10 +106,10 @@ export function UploadZone({ accept, maxFiles = 20, files, onFilesChange }: Uplo
 		<div className="space-y-4">
 			{/* Drop zone */}
 			<div
-				className={`relative border-2 border-dashed rounded-xl p-8 text-center cursor-pointer transition-all duration-200 ${
+				className={`relative border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all duration-300 ${
 					isDragging
-						? "border-primary bg-primary/5"
-						: "border-slate-300 hover:border-primary hover:bg-primary/5"
+						? "border-primary bg-gradient-to-br from-primary/10 to-primary/5 dropzone-active"
+						: "border-slate-300/50 hover:border-primary/50 hover:bg-gradient-to-br from-primary/5 to-primary/2"
 				}`}
 				onDragOver={(e) => {
 					e.preventDefault();
@@ -119,6 +119,14 @@ export function UploadZone({ accept, maxFiles = 20, files, onFilesChange }: Uplo
 				onDrop={handleDrop}
 				onClick={() => inputRef.current?.click()}
 			>
+				{/* Animated background on drag */}
+				{isDragging && (
+					<div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-purple-500/5 to-transparent rounded-2xl animate-pulse"></div>
+				)}
+				
+				{/* Glow effect */}
+				<div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-purple-500/5 to-transparent rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
+				
 				<input
 					ref={inputRef}
 					type="file"
