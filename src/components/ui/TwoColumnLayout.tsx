@@ -185,8 +185,8 @@ export function UploadPreviewLayout({
 			{/* Upload section */}
 			{uploadSection}
 
-			{/* Two-column area for controls and preview */}
-			{(previewSection || controlsSection) && (
+			{/* Two-column area for controls and preview - only show when preview exists */}
+			{showPreview && previewSection && (
 				<CardTwoColumnLayout
 					left={
 						<div className="space-y-4">
@@ -194,15 +194,9 @@ export function UploadPreviewLayout({
 						</div>
 					}
 					right={
-						showPreview && previewSection ? (
-							<div className="space-y-4">
-								{previewSection}
-							</div>
-						) : (
-							<div className="h-full flex items-center justify-center text-slate-500 py-8">
-								<p className="text-sm">Preview will appear here</p>
-							</div>
-						)
+						<div className="space-y-4">
+							{previewSection}
+						</div>
 					}
 					leftTitle="Settings"
 					rightTitle="Preview"

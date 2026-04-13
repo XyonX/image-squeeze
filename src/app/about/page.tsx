@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "About GetImgTools",
-	description: "Learn about GetImgTools - free, fast, and private online image editing tools.",
+	title: "About GetImgTools - Free Online Image Tools | Privacy First",
+	description: "Discover GetImgTools: free, fast, and completely private online image tools. No uploads, no tracking, 100% browser-based processing. Compress, convert, resize, and edit images safely.",
 };
 
 export default function AboutPage() {
@@ -55,13 +55,51 @@ export default function AboutPage() {
 					</div>
 				</section>
 
-				{/* Technology */}
-				<section className="space-y-3 border-t border-slate-200 pt-6">
-					<h2 className="text-2xl font-bold text-slate-900">Technology</h2>
-					<p className="text-sm text-slate-700 leading-relaxed">
-						GetImgTools is built with modern web technologies: Next.js for fast server-side rendering, React for interactive UI, and Tailwind CSS for beautiful design. Image processing uses HTML5 Canvas, Web Workers, and specialized JavaScript libraries to deliver high-quality results at maximum speed. The site is deployed globally for fast access from anywhere in the world.
-					</p>
-				</section>
+			{/* Use Cases */}
+			<section className="space-y-4 border-t border-slate-200 pt-6">
+				<h2 className="text-2xl font-bold text-slate-900">Who Uses GetImgTools?</h2>
+				<div className="grid md:grid-cols-2 gap-4">
+					<div className="border border-slate-300 p-4">
+						<h3 className="font-bold text-slate-900 mb-2 text-sm">Web Developers</h3>
+						<p className="text-xs text-slate-600">Optimize images for websites, improve page load speeds, and reduce bandwidth costs without complex workflows.</p>
+					</div>
+					<div className="border border-slate-300 p-4">
+						<h3 className="font-bold text-slate-900 mb-2 text-sm">Content Creators</h3>
+						<p className="text-xs text-slate-600">Prepare images for social media, blogs, and online platforms with batch processing capabilities.</p>
+					</div>
+					<div className="border border-slate-300 p-4">
+						<h3 className="font-bold text-slate-900 mb-2 text-sm">Privacy-Conscious Users</h3>
+						<p className="text-xs text-slate-600">Process sensitive images locally without sharing data with third-party services or cloud providers.</p>
+					</div>
+					<div className="border border-slate-300 p-4">
+						<h3 className="font-bold text-slate-900 mb-2 text-sm">Students & Professionals</h3>
+						<p className="text-xs text-slate-600">Edit and convert images for projects, presentations, and professional documents instantly.</p>
+					</div>
+				</div>
+			</section>
+
+			{/* Technology */}
+			<section className="space-y-3 border-t border-slate-200 pt-6">
+				<h2 className="text-2xl font-bold text-slate-900">Technology Stack</h2>
+				<div className="grid md:grid-cols-2 gap-4">
+					<div className="border border-slate-300 p-4">
+						<h3 className="font-bold text-slate-900 mb-2 text-sm">Frontend</h3>
+						<p className="text-xs text-slate-600">Built with Next.js 16, React 19, and Tailwind CSS for a modern, responsive interface that works seamlessly across all devices.</p>
+					</div>
+					<div className="border border-slate-300 p-4">
+						<h3 className="font-bold text-slate-900 mb-2 text-sm">Image Processing</h3>
+						<p className="text-xs text-slate-600">HTML5 Canvas API, Web Workers for parallel processing, and optimized JavaScript libraries for fast, high-quality results.</p>
+					</div>
+					<div className="border border-slate-300 p-4">
+						<h3 className="font-bold text-slate-900 mb-2 text-sm">Privacy & Security</h3>
+						<p className="text-xs text-slate-600">100% client-side processing ensures your files never leave your device. No server uploads, no tracking, no data collection.</p>
+					</div>
+					<div className="border border-slate-300 p-4">
+						<h3 className="font-bold text-slate-900 mb-2 text-sm">Infrastructure</h3>
+						<p className="text-xs text-slate-600">Deployed globally using Vercel's edge network for fast, reliable access from anywhere in the world.</p>
+					</div>
+				</div>
+			</section>
 
 				{/* Get in Touch */}
 				<section className="space-y-3 border-t border-slate-200 pt-6">

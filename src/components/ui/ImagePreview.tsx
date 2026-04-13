@@ -116,16 +116,16 @@ export function ImagePreview({
 
 	return (
 		<>
-			<div className={`relative group ${className}`}>
-				{/* Preview container */}
-				<div className={`relative ${sizeClasses[size]} overflow-hidden border border-slate-300 bg-white`}>
+			<div className={`relative group flex flex-col items-center ${className}`}>
+				{/* Preview container - centered and responsive */}
+				<div className={`relative ${sizeClasses[size]} overflow-hidden border border-slate-300 bg-white flex items-center justify-center`}>
 					{/* Image */}
 					<img
 						ref={imgRef}
 						src={imageSrc}
 						alt={alt}
 						onLoad={handleImageLoad}
-						className="w-full h-full object-contain"
+						className="max-w-full max-h-full object-contain"
 					/>
 
 					{/* Loading overlay */}
@@ -162,27 +162,27 @@ export function ImagePreview({
 					)}
 				</div>
 
-				{/* Info below image */}
+				{/* Info below image - consolidated single line */}
 				{showInfo && (
-					<div className="mt-2 space-y-1">
+					<div className="mt-3 w-full text-center">
 						{displayFileName && (
 							<p className="text-xs font-bold text-slate-900 truncate" title={displayFileName}>
 								{displayFileName}
 							</p>
 						)}
-						<div className="flex items-center gap-2 text-xs text-slate-600">
+						<p className="text-xs text-slate-600 mt-1">
 							{displayDimensions && (
 								<span>
 									{displayDimensions.width}×{displayDimensions.height}
 								</span>
 							)}
-							{displayFileSize && (
-								<>
-									{displayDimensions && <span>•</span>}
-									<span>{formatFileSize(displayFileSize)}</span>
-								</>
+							{displayFileSize && displayDimensions && (
+								<span> • {formatFileSize(displayFileSize)}</span>
 							)}
-						</div>
+							{displayFileSize && !displayDimensions && (
+								<span>{formatFileSize(displayFileSize)}</span>
+							)}
+						</p>
 					</div>
 				)}
 			</div>

@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "Terms of Service - GetImgTools",
-	description: "Terms of service for GetImgTools — free online image tools.",
+	title: "Terms of Service - GetImgTools | Free Image Tools Agreement",
+	description: "Read GetImgTools Terms of Service. Learn about our commitment to free, private image processing tools and your rights when using our platform.",
 };
 
 export default function TermsPage() {
@@ -14,10 +14,17 @@ export default function TermsPage() {
 			</header>
 
 			<div className="space-y-6">
+				<div className="bg-slate-50 border border-slate-300 p-6">
+					<h2 className="text-lg font-bold text-slate-900 mb-2">Our Commitment to You</h2>
+					<p className="text-sm text-slate-700">
+						GetImgTools is committed to being the most transparent, user-friendly, and privacy-respecting image tool available. These terms reflect our values: your data is your own, our service is completely free, and you have full control over your files.
+					</p>
+				</div>
+
 				<section className="space-y-3">
 					<h2 className="text-lg font-bold text-slate-900">1. Acceptance of Terms</h2>
 					<p className="text-sm text-slate-700">
-						By accessing and using GetImgTools, you agree to these Terms of Service. If you do not agree, please do not use the website.
+						By accessing and using GetImgTools (getimgtools.com), you agree to these Terms of Service. If you do not agree with any part of these terms, please do not use our website or services.
 					</p>
 				</section>
 

@@ -232,7 +232,7 @@ export default function HomePage() {
 			</section>
 
 			{/* Learning & Insights Section */}
-			<section className="space-y-4 bg-slate-50 border-t border-b border-slate-200 py-8 px-0 mb-8">
+			<section className="space-y-4 bg-slate-50 border border-slate-300 py-8 px-6 mb-8">
 				<div className="flex items-center justify-between">
 					<div>
 						<h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">

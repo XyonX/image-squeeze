@@ -1,8 +1,8 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "Privacy Policy - GetImgTools",
-	description: "Privacy policy for GetImgTools — we never upload, store, or access your images.",
+	title: "Privacy Policy - GetImgTools | Your Data is Your Own",
+	description: "Read GetImgTools Privacy Policy. We never upload, store, or access your images. 100% client-side processing means your files never leave your device. Complete transparency about data handling.",
 };
 
 export default function PrivacyPage() {
@@ -14,10 +14,17 @@ export default function PrivacyPage() {
 			</header>
 
 			<div className="space-y-6">
+				<div className="bg-slate-50 border border-slate-300 p-6">
+					<h2 className="text-lg font-bold text-slate-900 mb-2">Privacy is Our Priority</h2>
+					<p className="text-sm text-slate-700">
+						At GetImgTools, we are committed to protecting your privacy. We believe that image processing tools should never require you to sacrifice your personal data or privacy. This privacy policy explains exactly how we handle your information and, more importantly, how we don't.
+					</p>
+				</div>
+
 				<section className="space-y-3">
 					<h2 className="text-lg font-bold text-slate-900">1. Overview</h2>
 					<p className="text-sm text-slate-700">
-						GetImgTools ("we", "us", "our") operates the website getimgtools.com. This privacy policy explains how we handle information when you use our services.
+						GetImgTools ("we", "us", "our") operates the website getimgtools.com. This privacy policy explains how we handle information when you use our services. We are fully transparent about all data practices.
 					</p>
 				</section>
 

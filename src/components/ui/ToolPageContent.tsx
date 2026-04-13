@@ -291,30 +291,30 @@ export function ToolPageContent({ tool, children }: ToolPageContentProps) {
       </section>
 
       {/* How It Works */}
-      <section className="bg-slate-50 border-t border-b border-slate-200 py-6 px-0">
-        <h2 className="text-lg font-bold text-slate-900 mb-4 flex items-center gap-2">
+      <section className="border-t border-b border-slate-300 py-6">
+        <h2 className="text-lg font-bold text-slate-900 mb-4">
           How {tool.name} Works
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          <div className="text-center">
-            <div className="w-12 h-12 rounded-full bg-primary/10 text-primary font-bold text-lg flex items-center justify-center mx-auto mb-3">1</div>
-            <h3 className="font-bold text-slate-900 mb-2">Upload Your Image</h3>
-            <p className="text-sm text-slate-500">
+          <div className="text-center p-4 border border-slate-300">
+            <div className="w-10 h-10 bg-slate-200 text-slate-700 font-bold text-sm flex items-center justify-center mx-auto mb-3">1</div>
+            <h3 className="font-bold text-slate-900 mb-2 text-sm">Upload Your Image</h3>
+            <p className="text-xs text-slate-600">
               Drag & drop, paste from clipboard, or browse to select your {tool.acceptedFormats.map(f => f.replace('.', '').toUpperCase()).join(', ')} image{tool.acceptedFormats.length > 1 ? 's' : ''}.
             </p>
           </div>
-          <div className="text-center">
-            <div className="w-12 h-12 rounded-full bg-primary/10 text-primary font-bold text-lg flex items-center justify-center mx-auto mb-3">2</div>
-            <h3 className="font-bold text-slate-900 mb-2">Adjust Settings</h3>
-            <p className="text-sm text-slate-500">
+          <div className="text-center p-4 border border-slate-300">
+            <div className="w-10 h-10 bg-slate-200 text-slate-700 font-bold text-sm flex items-center justify-center mx-auto mb-3">2</div>
+            <h3 className="font-bold text-slate-900 mb-2 text-sm">Adjust Settings</h3>
+            <p className="text-xs text-slate-600">
               Use our intuitive controls to customize the {tool.name.toLowerCase()} process according to your specific needs.
             </p>
           </div>
-          <div className="text-center">
-            <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 font-bold text-lg flex items-center justify-center mx-auto mb-3">✓</div>
-            <h3 className="font-bold text-slate-900 mb-2">Download Result</h3>
-            <p className="text-sm text-slate-500">
+          <div className="text-center p-4 border border-slate-300">
+            <div className="w-10 h-10 bg-slate-200 text-slate-700 font-bold text-sm flex items-center justify-center mx-auto mb-3">✓</div>
+            <h3 className="font-bold text-slate-900 mb-2 text-sm">Download Result</h3>
+            <p className="text-xs text-slate-600">
               Get your processed image instantly. For multiple images, download all as a ZIP file.
             </p>
           </div>
@@ -338,53 +338,52 @@ export function ToolPageContent({ tool, children }: ToolPageContentProps) {
       </section>
 
       {/* Best Practices */}
-      <section className="bg-white border border-slate-200 rounded-2xl p-6">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-          <AlertCircle className="w-6 h-6 text-blue-500" />
+      <section className="border border-slate-300 p-6">
+        <h2 className="text-lg font-bold text-slate-900 mb-4">
           Best Practices & Tips
         </h2>
         
-        <div className="space-y-4">
+        <div className="space-y-3">
           {getBestPractices(tool.id).map((practice, index) => (
-            <div key={index} className="flex items-start gap-3">
-              <div className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 font-bold text-sm flex items-center justify-center flex-shrink-0 mt-0.5">
+            <div key={index} className="flex items-start gap-3 p-3 border border-slate-300">
+              <div className="w-5 h-5 bg-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">
                 {index + 1}
               </div>
-              <p className="text-slate-700">{practice}</p>
+              <p className="text-xs text-slate-700">{practice}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-          <p className="text-amber-800 text-sm">
+        <div className="mt-4 p-4 bg-slate-50 border border-slate-300">
+          <p className="text-slate-700 text-xs">
             <strong>Pro Tip:</strong> Always keep original files as backups. While our tools are designed to be safe and reliable, 
-            having originals ensures you can reprocess if needed or if requirements change.
+            having originals ensures you can reprocess if needed.
           </p>
         </div>
       </section>
 
       {/* Technical Details */}
-      <section className="bg-white border border-slate-200 rounded-2xl p-6">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
+      <section className="border border-slate-300 p-6">
+        <h2 className="text-lg font-bold text-slate-900 mb-4">
           Technical Details
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <h3 className="font-bold text-slate-900 mb-3">Supported Formats</h3>
+          <div className="border border-slate-300 p-4">
+            <h3 className="font-bold text-slate-900 mb-3 text-sm">Supported Formats</h3>
             <div className="space-y-2">
               {tool.acceptedFormats.map((format, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-primary"></div>
+                <div key={index} className="flex items-start gap-2 text-xs">
+                  <div className="w-1.5 h-1.5 rounded-full bg-slate-700 mt-1.5 flex-shrink-0"></div>
                   <span className="text-slate-700">
-                    <code className="bg-slate-100 px-2 py-1 rounded text-sm">{format}</code>
-                    <span className="text-slate-500 text-sm ml-2">
-                      {format === '.jpg' || format === '.jpeg' ? 'Photographs & complex images' :
-                       format === '.png' ? 'Graphics with transparency' :
-                       format === '.webp' ? 'Modern web-optimized format' :
-                       format === '.svg' ? 'Vector graphics' :
-                       format === '.gif' ? 'Animated images' :
-                       format === '.bmp' ? 'Uncompressed bitmaps' : 'Image format'}
+                    <code className="bg-slate-100 px-1.5 py-0.5 rounded text-xs">{format}</code>
+                    <span className="text-slate-600 text-xs ml-2">
+                      {format === '.jpg' || format === '.jpeg' ? 'Photographs' :
+                       format === '.png' ? 'With transparency' :
+                       format === '.webp' ? 'Web-optimized' :
+                       format === '.svg' ? 'Vector' :
+                       format === '.gif' ? 'Animated' :
+                       format === '.bmp' ? 'Bitmap' : 'Format'}
                     </span>
                   </span>
                 </div>
@@ -392,24 +391,24 @@ export function ToolPageContent({ tool, children }: ToolPageContentProps) {
             </div>
           </div>
           
-          <div>
-            <h3 className="font-bold text-slate-900 mb-3">Processing Technology</h3>
-            <ul className="space-y-2 text-slate-700">
+          <div className="border border-slate-300 p-4">
+            <h3 className="font-bold text-slate-900 mb-3 text-sm">Processing Technology</h3>
+            <ul className="space-y-2 text-xs text-slate-700">
               <li className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-                <span>100% client-side processing</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-slate-700"></div>
+                <span>100% client-side</span>
               </li>
               <li className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-                <span>Web Workers for parallel processing</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-slate-700"></div>
+                <span>Web Workers</span>
               </li>
               <li className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-                <span>Canvas API for image manipulation</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-slate-700"></div>
+                <span>Canvas API</span>
               </li>
               <li className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-                <span>Modern JavaScript & WebAssembly</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-slate-700"></div>
+                <span>Modern JavaScript</span>
               </li>
             </ul>
           </div>
@@ -418,7 +417,7 @@ export function ToolPageContent({ tool, children }: ToolPageContentProps) {
 
       {/* Related Tools */}
       {relatedTools.length > 0 && (
-        <section className="bg-slate-50 border-t border-b border-slate-200 py-6 px-0">
+        <section className="border border-slate-300 p-6">
           <div className="flex items-center justify-between mb-4">
             <h2 className="text-lg font-bold text-slate-900">
               Related Tools
@@ -436,12 +435,11 @@ export function ToolPageContent({ tool, children }: ToolPageContentProps) {
               >
                 <div className="flex flex-col items-center text-center">
                   <div
-                    className="w-10 h-10 flex items-center justify-center mb-2"
-                    style={{ backgroundColor: `${relatedTool.color}15` }}
+                    className="w-8 h-8 flex items-center justify-center mb-2 bg-slate-100"
                   >
-                    <relatedTool.icon className="w-5 h-5" style={{ color: relatedTool.color }} />
+                    <relatedTool.icon className="w-4 h-4 text-slate-700" />
                   </div>
-                  <span className="text-xs font-bold text-slate-900">{relatedTool.name}</span>
+                  <span className="text-xs font-bold text-slate-900 truncate">{relatedTool.name}</span>
                 </div>
               </Link>
             ))}
