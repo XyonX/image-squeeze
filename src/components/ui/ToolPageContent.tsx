@@ -1,5 +1,6 @@
-import { Tool } from "@/lib/tools";
-import { CheckCircle, Info, Lightbulb, AlertCircle, Download, Shield, Zap, Clock } from "lucide-react";
+import { Tool, tools } from "@/lib/tools";
+import { CheckCircle, Info, Lightbulb, AlertCircle, Download, Shield, Zap, Clock, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 interface ToolPageContentProps {
   tool: Tool;
@@ -7,6 +8,10 @@ interface ToolPageContentProps {
 }
 
 export function ToolPageContent({ tool, children }: ToolPageContentProps) {
+  // Get related tools from same category
+  const relatedTools = tools
+    .filter((t) => t.category === tool.category && t.id !== tool.id)
+    .slice(0, 3);
   const getToolCategoryDescription = (category: string) => {
     switch (category) {
       case "compress":
@@ -204,88 +209,112 @@ export function ToolPageContent({ tool, children }: ToolPageContentProps) {
 
   return (
     <div className="space-y-8">
-      {/* Minimal Header */}
-      <header className="text-center">
-        <h1 className="text-3xl font-bold text-slate-900 mb-3">
-          {tool.name} - Free Online Tool
-        </h1>
-        <p className="text-lg text-slate-600 max-w-2xl mx-auto">
-          {tool.description} Process images 100% privately in your browser.
-        </p>
+      {/* Hero Header with Tool Feature */}
+      <header className="space-y-4">
+        <div className="flex items-start justify-between gap-6">
+          <div>
+            <h1 className="text-3xl font-bold text-slate-900 mb-3">
+              {tool.name}
+            </h1>
+            <p className="text-base text-slate-600 max-w-2xl">
+              {tool.description} All processing happens 100% privately in your browser.
+            </p>
+          </div>
+          <div className="hidden md:flex items-center justify-center">
+            <div
+              className="w-20 h-20 flex items-center justify-center"
+              style={{ backgroundColor: `${tool.color}15` }}
+            >
+              <tool.icon className="w-10 h-10" style={{ color: tool.color }} />
+            </div>
+          </div>
+        </div>
       </header>
 
-      {/* Main Tool Component - NOW AT THE TOP */}
-      <section className="bg-white border border-slate-200 rounded-2xl p-6">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
-          {tool.name} Tool
-        </h2>
+      {/* Main Tool Component - Featured Card */}
+      <section className="bg-white border border-slate-300 p-6">
+        <div className="mb-4">
+          <span className="inline-block bg-slate-900 text-white text-xs font-bold px-3 py-1 mb-3">
+            POPULAR TOOL
+          </span>
+          <h2 className="text-xl font-bold text-slate-900">
+            {tool.name} Tool
+          </h2>
+        </div>
         {children}
       </section>
 
-      {/* Key Features */}
-      <section className="bg-gradient-to-r from-slate-50 to-white border border-slate-200 rounded-2xl p-6">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
+      {/* Key Features - Highlighted Cards */}
+      <section className="space-y-3">
+        <h2 className="text-lg font-bold text-slate-900 mb-4">
           Why Use Our {tool.name} Tool?
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div className="flex items-start gap-3">
-            <Shield className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
-            <div>
-              <p className="font-medium text-slate-900">100% Private Processing</p>
-              <p className="text-sm text-slate-500">Your images never leave your device. All processing happens locally in your browser.</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+          <div className="border border-slate-300 p-4 hover:shadow-md hover:border-slate-400 transition-all">
+            <div className="flex items-start gap-3">
+              <Shield className="w-5 h-5 text-slate-700 mt-0.5 flex-shrink-0" />
+              <div>
+                <p className="font-bold text-slate-900 text-sm">100% Private</p>
+                <p className="text-xs text-slate-600 mt-1">Images never leave your device. All processing in browser.</p>
+              </div>
             </div>
           </div>
-          <div className="flex items-start gap-3">
-            <Zap className="w-5 h-5 text-amber-500 mt-0.5 flex-shrink-0" />
-            <div>
-              <p className="font-medium text-slate-900">Instant Results</p>
-              <p className="text-sm text-slate-500">No uploads, no waiting. Process images in milliseconds with immediate download.</p>
+          <div className="border border-slate-300 p-4 hover:shadow-md hover:border-slate-400 transition-all">
+            <div className="flex items-start gap-3">
+              <Zap className="w-5 h-5 text-slate-700 mt-0.5 flex-shrink-0" />
+              <div>
+                <p className="font-bold text-slate-900 text-sm">Lightning Fast</p>
+                <p className="text-xs text-slate-600 mt-1">Process in milliseconds. No uploads or waiting.</p>
+              </div>
             </div>
           </div>
-          <div className="flex items-start gap-3">
-            <Download className="w-5 h-5 text-blue-500 mt-0.5 flex-shrink-0" />
-            <div>
-              <p className="font-medium text-slate-900">No Signup Required</p>
-              <p className="text-sm text-slate-500">Use all features immediately without creating an account or providing email.</p>
+          <div className="border border-slate-300 p-4 hover:shadow-md hover:border-slate-400 transition-all">
+            <div className="flex items-start gap-3">
+              <Download className="w-5 h-5 text-slate-700 mt-0.5 flex-shrink-0" />
+              <div>
+                <p className="font-bold text-slate-900 text-sm">No Signup</p>
+                <p className="text-xs text-slate-600 mt-1">Use immediately. No account or email needed.</p>
+              </div>
             </div>
           </div>
-          <div className="flex items-start gap-3">
-            <Clock className="w-5 h-5 text-violet-500 mt-0.5 flex-shrink-0" />
-            <div>
-              <p className="font-medium text-slate-900">Batch Processing</p>
-              <p className="text-sm text-slate-500">Process multiple images at once with our efficient batch processing system.</p>
+          <div className="border border-slate-300 p-4 hover:shadow-md hover:border-slate-400 transition-all">
+            <div className="flex items-start gap-3">
+              <Clock className="w-5 h-5 text-slate-700 mt-0.5 flex-shrink-0" />
+              <div>
+                <p className="font-bold text-slate-900 text-sm">Batch Ready</p>
+                <p className="text-xs text-slate-600 mt-1">Process multiple images at once.</p>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       {/* How It Works */}
-      <section className="bg-white border border-slate-200 rounded-2xl p-6">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-          <Info className="w-6 h-6 text-primary" />
+      <section className="border-t border-b border-slate-300 py-6">
+        <h2 className="text-lg font-bold text-slate-900 mb-4">
           How {tool.name} Works
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-          <div className="text-center">
-            <div className="w-12 h-12 rounded-full bg-primary/10 text-primary font-bold text-lg flex items-center justify-center mx-auto mb-3">1</div>
-            <h3 className="font-bold text-slate-900 mb-2">Upload Your Image</h3>
-            <p className="text-sm text-slate-500">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div className="text-center p-4 border border-slate-300">
+            <div className="w-10 h-10 bg-slate-200 text-slate-700 font-bold text-sm flex items-center justify-center mx-auto mb-3">1</div>
+            <h3 className="font-bold text-slate-900 mb-2 text-sm">Upload Your Image</h3>
+            <p className="text-xs text-slate-600">
               Drag & drop, paste from clipboard, or browse to select your {tool.acceptedFormats.map(f => f.replace('.', '').toUpperCase()).join(', ')} image{tool.acceptedFormats.length > 1 ? 's' : ''}.
             </p>
           </div>
-          <div className="text-center">
-            <div className="w-12 h-12 rounded-full bg-primary/10 text-primary font-bold text-lg flex items-center justify-center mx-auto mb-3">2</div>
-            <h3 className="font-bold text-slate-900 mb-2">Adjust Settings</h3>
-            <p className="text-sm text-slate-500">
+          <div className="text-center p-4 border border-slate-300">
+            <div className="w-10 h-10 bg-slate-200 text-slate-700 font-bold text-sm flex items-center justify-center mx-auto mb-3">2</div>
+            <h3 className="font-bold text-slate-900 mb-2 text-sm">Adjust Settings</h3>
+            <p className="text-xs text-slate-600">
               Use our intuitive controls to customize the {tool.name.toLowerCase()} process according to your specific needs.
             </p>
           </div>
-          <div className="text-center">
-            <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 font-bold text-lg flex items-center justify-center mx-auto mb-3">✓</div>
-            <h3 className="font-bold text-slate-900 mb-2">Download Result</h3>
-            <p className="text-sm text-slate-500">
+          <div className="text-center p-4 border border-slate-300">
+            <div className="w-10 h-10 bg-slate-200 text-slate-700 font-bold text-sm flex items-center justify-center mx-auto mb-3">✓</div>
+            <h3 className="font-bold text-slate-900 mb-2 text-sm">Download Result</h3>
+            <p className="text-xs text-slate-600">
               Get your processed image instantly. For multiple images, download all as a ZIP file.
             </p>
           </div>
@@ -293,70 +322,68 @@ export function ToolPageContent({ tool, children }: ToolPageContentProps) {
       </section>
 
       {/* Common Use Cases */}
-      <section className="bg-white border border-slate-200 rounded-2xl p-6">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-          <Lightbulb className="w-6 h-6 text-amber-500" />
-          Common Use Cases for {tool.name}
+      <section className="space-y-3">
+        <h2 className="text-lg font-bold text-slate-900 mb-4">
+          Common Use Cases
         </h2>
         
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {getCommonUseCases(tool.id).map((useCase, index) => (
-            <div key={index} className="flex items-start gap-3 p-3 bg-slate-50 rounded-lg">
-              <CheckCircle className="w-5 h-5 text-emerald-500 mt-0.5 flex-shrink-0" />
-              <span className="text-slate-700">{useCase}</span>
+            <div key={index} className="flex items-start gap-3 p-3 border border-slate-300 hover:shadow-sm transition-all">
+              <CheckCircle className="w-4 h-4 text-slate-700 mt-0.5 flex-shrink-0" />
+              <span className="text-sm text-slate-700">{useCase}</span>
             </div>
           ))}
         </div>
       </section>
 
       {/* Best Practices */}
-      <section className="bg-white border border-slate-200 rounded-2xl p-6">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
-          <AlertCircle className="w-6 h-6 text-blue-500" />
+      <section className="border border-slate-300 p-6">
+        <h2 className="text-lg font-bold text-slate-900 mb-4">
           Best Practices & Tips
         </h2>
         
-        <div className="space-y-4">
+        <div className="space-y-3">
           {getBestPractices(tool.id).map((practice, index) => (
-            <div key={index} className="flex items-start gap-3">
-              <div className="w-6 h-6 rounded-full bg-blue-100 text-blue-600 font-bold text-sm flex items-center justify-center flex-shrink-0 mt-0.5">
+            <div key={index} className="flex items-start gap-3 p-3 border border-slate-300">
+              <div className="w-5 h-5 bg-slate-200 text-slate-700 font-bold text-xs flex items-center justify-center flex-shrink-0 mt-0.5">
                 {index + 1}
               </div>
-              <p className="text-slate-700">{practice}</p>
+              <p className="text-xs text-slate-700">{practice}</p>
             </div>
           ))}
         </div>
 
-        <div className="mt-6 p-4 bg-amber-50 border border-amber-200 rounded-lg">
-          <p className="text-amber-800 text-sm">
+        <div className="mt-4 p-4 bg-slate-50 border border-slate-300">
+          <p className="text-slate-700 text-xs">
             <strong>Pro Tip:</strong> Always keep original files as backups. While our tools are designed to be safe and reliable, 
-            having originals ensures you can reprocess if needed or if requirements change.
+            having originals ensures you can reprocess if needed.
           </p>
         </div>
       </section>
 
       {/* Technical Details */}
-      <section className="bg-white border border-slate-200 rounded-2xl p-6">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
+      <section className="border border-slate-300 p-6">
+        <h2 className="text-lg font-bold text-slate-900 mb-4">
           Technical Details
         </h2>
         
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <h3 className="font-bold text-slate-900 mb-3">Supported Formats</h3>
+          <div className="border border-slate-300 p-4">
+            <h3 className="font-bold text-slate-900 mb-3 text-sm">Supported Formats</h3>
             <div className="space-y-2">
               {tool.acceptedFormats.map((format, index) => (
-                <div key={index} className="flex items-center gap-2">
-                  <div className="w-2 h-2 rounded-full bg-primary"></div>
+                <div key={index} className="flex items-start gap-2 text-xs">
+                  <div className="w-1.5 h-1.5 rounded-full bg-slate-700 mt-1.5 flex-shrink-0"></div>
                   <span className="text-slate-700">
-                    <code className="bg-slate-100 px-2 py-1 rounded text-sm">{format}</code>
-                    <span className="text-slate-500 text-sm ml-2">
-                      {format === '.jpg' || format === '.jpeg' ? 'Photographs & complex images' :
-                       format === '.png' ? 'Graphics with transparency' :
-                       format === '.webp' ? 'Modern web-optimized format' :
-                       format === '.svg' ? 'Vector graphics' :
-                       format === '.gif' ? 'Animated images' :
-                       format === '.bmp' ? 'Uncompressed bitmaps' : 'Image format'}
+                    <code className="bg-slate-100 px-1.5 py-0.5 rounded text-xs">{format}</code>
+                    <span className="text-slate-600 text-xs ml-2">
+                      {format === '.jpg' || format === '.jpeg' ? 'Photographs' :
+                       format === '.png' ? 'With transparency' :
+                       format === '.webp' ? 'Web-optimized' :
+                       format === '.svg' ? 'Vector' :
+                       format === '.gif' ? 'Animated' :
+                       format === '.bmp' ? 'Bitmap' : 'Format'}
                     </span>
                   </span>
                 </div>
@@ -364,55 +391,99 @@ export function ToolPageContent({ tool, children }: ToolPageContentProps) {
             </div>
           </div>
           
-          <div>
-            <h3 className="font-bold text-slate-900 mb-3">Processing Technology</h3>
-            <ul className="space-y-2 text-slate-700">
+          <div className="border border-slate-300 p-4">
+            <h3 className="font-bold text-slate-900 mb-3 text-sm">Processing Technology</h3>
+            <ul className="space-y-2 text-xs text-slate-700">
               <li className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-                <span>100% client-side processing</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-slate-700"></div>
+                <span>100% client-side</span>
               </li>
               <li className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-                <span>Web Workers for parallel processing</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-slate-700"></div>
+                <span>Web Workers</span>
               </li>
               <li className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-                <span>Canvas API for image manipulation</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-slate-700"></div>
+                <span>Canvas API</span>
               </li>
               <li className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-emerald-500"></div>
-                <span>Modern JavaScript & WebAssembly</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-slate-700"></div>
+                <span>Modern JavaScript</span>
               </li>
             </ul>
           </div>
         </div>
       </section>
 
+      {/* Related Tools */}
+      {relatedTools.length > 0 && (
+        <section className="border border-slate-300 p-6">
+          <div className="flex items-center justify-between mb-4">
+            <h2 className="text-lg font-bold text-slate-900">
+              Related Tools
+            </h2>
+            <Link href="/" className="text-xs font-bold text-slate-600 hover:text-slate-900">
+              View All →
+            </Link>
+          </div>
+          <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
+            {relatedTools.map((relatedTool) => (
+              <Link 
+                key={relatedTool.id} 
+                href={relatedTool.route} 
+                className="border border-slate-300 p-4 hover:shadow-md hover:border-slate-400 transition-all"
+              >
+                <div className="flex flex-col items-center text-center">
+                  <div
+                    className="w-8 h-8 flex items-center justify-center mb-2 bg-slate-100"
+                  >
+                    <relatedTool.icon className="w-4 h-4 text-slate-700" />
+                  </div>
+                  <span className="text-xs font-bold text-slate-900 truncate">{relatedTool.name}</span>
+                </div>
+              </Link>
+            ))}
+          </div>
+        </section>
+      )}
+
       {/* FAQ Preview */}
-      <section className="bg-white border border-slate-200 rounded-2xl p-6">
-        <h2 className="text-2xl font-bold text-slate-900 mb-6">
-          Frequently Asked Questions
+      <section className="space-y-3">
+        <h2 className="text-lg font-bold text-slate-900 mb-4">
+          Quick FAQ
         </h2>
-        <p className="text-slate-600 mb-4">
-          Have questions about {tool.name}? Check our comprehensive FAQ section for detailed answers about how the tool works, privacy concerns, and best practices.
-        </p>
         <div className="space-y-3">
-          <div className="p-4 bg-slate-50 rounded-lg">
-            <p className="font-medium text-slate-900">Is my data safe when using this tool?</p>
-            <p className="text-sm text-slate-600 mt-1">Yes! All processing happens 100% in your browser. Your images never leave your device, and we don't store or access any of your files.</p>
-          </div>
-          <div className="p-4 bg-slate-50 rounded-lg">
-            <p className="font-medium text-slate-900">What's the maximum file size I can process?</p>
-            <p className="text-sm text-slate-600 mt-1">You can process images up to 50MB each. For best performance with very large images, consider resizing them first.</p>
-          </div>
-          <div className="p-4 bg-slate-50 rounded-lg">
-            <p className="font-medium text-slate-900">Do I need to create an account?</p>
-            <p className="text-sm text-slate-600 mt-1">No account required! All tools are completely free to use without any signup or registration.</p>
-          </div>
+          <a href="#" className="flex gap-4 p-3 border border-slate-300 hover:shadow-md hover:border-slate-400 transition-all group">
+            <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-slate-100 group-hover:bg-slate-200 transition-colors">
+              <span className="text-xs font-bold text-slate-600">?</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="font-bold text-slate-900 text-sm group-hover:text-slate-700">Is my data safe?</p>
+              <p className="text-xs text-slate-600 mt-0.5">100% processing in your browser. Images never uploaded.</p>
+            </div>
+            <span className="text-slate-400 group-hover:text-slate-600">→</span>
+          </a>
+          <a href="#" className="flex gap-4 p-3 border border-slate-300 hover:shadow-md hover:border-slate-400 transition-all group">
+            <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-slate-100 group-hover:bg-slate-200 transition-colors">
+              <span className="text-xs font-bold text-slate-600">?</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="font-bold text-slate-900 text-sm group-hover:text-slate-700">File size limits?</p>
+              <p className="text-xs text-slate-600 mt-0.5">Process up to 50MB per image. No daily limits.</p>
+            </div>
+            <span className="text-slate-400 group-hover:text-slate-600">→</span>
+          </a>
+          <a href="#" className="flex gap-4 p-3 border border-slate-300 hover:shadow-md hover:border-slate-400 transition-all group">
+            <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-slate-100 group-hover:bg-slate-200 transition-colors">
+              <span className="text-xs font-bold text-slate-600">?</span>
+            </div>
+            <div className="flex-1 min-w-0">
+              <p className="font-bold text-slate-900 text-sm group-hover:text-slate-700">Need an account?</p>
+              <p className="text-xs text-slate-600 mt-0.5">No signup required. Use for free immediately.</p>
+            </div>
+            <span className="text-slate-400 group-hover:text-slate-600">→</span>
+          </a>
         </div>
-        <p className="text-sm text-slate-500 mt-4">
-          For more detailed questions, visit our complete FAQ page or contact our support team.
-        </p>
       </section>
     </div>
   );

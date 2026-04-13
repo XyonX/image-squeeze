@@ -106,10 +106,10 @@ export function UploadZone({ accept, maxFiles = 20, files, onFilesChange }: Uplo
 		<div className="space-y-4">
 			{/* Drop zone */}
 			<div
-				className={`relative border-2 border-dashed rounded-2xl p-8 text-center cursor-pointer transition-all duration-300 ${
+				className={`relative border-2 p-8 text-center cursor-pointer transition-all duration-300 ${
 					isDragging
-						? "border-primary bg-gradient-to-br from-primary/10 to-primary/5 dropzone-active"
-						: "border-slate-300/50 hover:border-primary/50 hover:bg-gradient-to-br from-primary/5 to-primary/2"
+						? "border-slate-400 bg-slate-50"
+						: "border-dashed border-slate-300 hover:border-slate-400 hover:bg-slate-50"
 				}`}
 				onDragOver={(e) => {
 					e.preventDefault();
@@ -119,14 +119,6 @@ export function UploadZone({ accept, maxFiles = 20, files, onFilesChange }: Uplo
 				onDrop={handleDrop}
 				onClick={() => inputRef.current?.click()}
 			>
-				{/* Animated background on drag */}
-				{isDragging && (
-					<div className="absolute inset-0 bg-gradient-to-br from-primary/10 via-purple-500/5 to-transparent rounded-2xl animate-pulse"></div>
-				)}
-				
-				{/* Glow effect */}
-				<div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-purple-500/5 to-transparent rounded-2xl opacity-0 hover:opacity-100 transition-opacity duration-500"></div>
-				
 				<input
 					ref={inputRef}
 					type="file"
@@ -139,18 +131,18 @@ export function UploadZone({ accept, maxFiles = 20, files, onFilesChange }: Uplo
 					}}
 				/>
 				<div className="flex flex-col items-center gap-3">
-					<div className="w-14 h-14 bg-primary/10 rounded-2xl flex items-center justify-center">
-						<Upload className="w-7 h-7 text-primary" />
+					<div className="w-12 h-12 bg-slate-200 flex items-center justify-center">
+						<Upload className="w-6 h-6 text-slate-700" />
 					</div>
 					<div>
-						<p className="font-semibold text-lg">
-							{isDragging ? "Drop your images here!" : "Drag & drop images here"}
+						<p className="font-bold text-base text-slate-900">
+							{isDragging ? "Drop your images here" : "Drag & drop images here"}
 						</p>
-						<p className="text-sm text-slate-500 mt-1">
-							or click to browse • paste from clipboard (Ctrl+V) • up to {maxFiles} files
+						<p className="text-xs text-slate-600 mt-1">
+							or click to browse • paste (Ctrl+V) • up to {maxFiles} files
 						</p>
 					</div>
-					<p className="text-xs text-slate-400">Accepts: {accept}</p>
+					<p className="text-xs text-slate-500">Accepts: {accept}</p>
 				</div>
 			</div>
 
@@ -158,10 +150,10 @@ export function UploadZone({ accept, maxFiles = 20, files, onFilesChange }: Uplo
 			{files.length > 0 && (
 				<div className="space-y-3">
 					<div className="flex items-center justify-between">
-						<p className="text-sm font-medium text-slate-700">
+						<p className="text-sm font-bold text-slate-900">
 							{files.length} file{files.length !== 1 ? "s" : ""} selected
 						</p>
-						<button onClick={clearAll} className="text-sm text-red-500 hover:underline">
+						<button onClick={clearAll} className="text-xs text-slate-600 hover:text-slate-900 font-semibold">
 							Clear all
 						</button>
 					</div>
@@ -169,17 +161,17 @@ export function UploadZone({ accept, maxFiles = 20, files, onFilesChange }: Uplo
 						{files.map((f) => (
 							<div
 								key={f.id}
-								className="flex items-center gap-3 p-3 bg-slate-50 rounded-xl border border-slate-200"
+								className="flex items-center gap-3 p-3 bg-white border border-slate-300 hover:shadow-sm transition-all"
 							>
 								{/* eslint-disable-next-line @next/next/no-img-element */}
 								<img
 									src={f.preview}
 									alt={f.file.name}
-									className="w-12 h-12 object-cover rounded-lg flex-shrink-0"
+									className="w-10 h-10 object-cover flex-shrink-0"
 								/>
 								<div className="flex-1 min-w-0">
-									<p className="text-sm font-medium text-slate-900 truncate">{f.file.name}</p>
-									<p className="text-xs text-slate-500">
+									<p className="text-xs font-bold text-slate-900 truncate">{f.file.name}</p>
+									<p className="text-xs text-slate-600">
 										{f.width}×{f.height} • {formatFileSize(f.file.size)}
 									</p>
 								</div>
@@ -188,7 +180,7 @@ export function UploadZone({ accept, maxFiles = 20, files, onFilesChange }: Uplo
 										e.stopPropagation();
 										removeFile(f.id);
 									}}
-									className="p-1.5 rounded-lg hover:bg-red-50 text-slate-400 hover:text-red-500 transition-colors"
+									className="p-1 hover:bg-slate-100 text-slate-400 hover:text-slate-600 transition-colors"
 								>
 									<X className="w-4 h-4" />
 								</button>

@@ -197,16 +197,16 @@ export function ReduceImageSizeClient() {
 			{files.length > 0 && !isProcessing && results.length === 0 && (
 				<div className="mt-8 p-6 bg-white border border-slate-200 rounded-2xl space-y-6">
 					<div>
-						<label className="text-sm font-semibold text-slate-900 block mb-3">Target File Size</label>
+						<label className="font-bold text-slate-900 block mb-3 text-sm">Target File Size</label>
 						<div className="grid grid-cols-3 sm:grid-cols-6 gap-2 mb-4">
 							{targetPresets.map((p) => (
 								<button
 									key={p.value}
 									onClick={() => { setTargetKB(p.value); setCustomTarget(""); }}
-									className={`preset-button px-3 sm:px-4 py-2 rounded-xl text-xs sm:text-sm font-medium text-center border transition-all ${
+									className={`preset-button px-3 py-2 text-xs font-bold text-center border transition-all min-w-fit ${
 										!customTarget && targetKB === p.value
-											? "border-primary bg-primary/10 text-primary"
-											: "border-slate-200 hover:border-primary/30"
+											? "border-slate-900 bg-slate-900 text-white"
+											: "border-slate-300 hover:border-slate-400 text-slate-900"
 									}`}
 									title={p.label}
 								>
@@ -215,68 +215,69 @@ export function ReduceImageSizeClient() {
 							))}
 						</div>
 						<div className="flex items-center gap-2">
-							<span className="text-sm text-slate-500">Custom:</span>
+							<span className="text-xs font-bold text-slate-900">Custom:</span>
 							<input
 								type="number"
 								placeholder="e.g. 150"
 								value={customTarget}
 								onChange={(e) => setCustomTarget(e.target.value)}
-								className="w-24 px-3 py-2 border border-slate-200 rounded-xl text-sm focus:outline-none focus:border-primary"
+								className="w-24 px-3 py-2 border border-slate-300 text-sm focus:outline-none focus:border-slate-400"
 							/>
-							<span className="text-sm text-slate-500">KB</span>
+							<span className="text-xs font-bold text-slate-900">KB</span>
 						</div>
 					</div>
-					<button onClick={handleReduce} className="w-full py-3.5 bg-primary hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors text-lg">
-						Reduce to {activeTarget >= 1024 ? `${activeTarget / 1024} MB` : `${activeTarget} KB`}
+					<button onClick={handleReduce} disabled={files.length === 0 || isProcessing} className="w-full py-3 bg-slate-900 hover:bg-slate-800 disabled:bg-slate-400 text-white font-bold transition-colors text-sm">
+						{isProcessing ? "Optimizing..." : `Reduce to ${activeTarget >= 1024 ? `${activeTarget / 1024} MB` : `${activeTarget} KB`}`}
 					</button>
 				</div>
 			)}
 
 			{isProcessing && (
-				<div className="mt-8 p-8 bg-white border border-slate-200 rounded-2xl text-center space-y-4">
-					<Loader2 className="w-10 h-10 text-primary animate-spin mx-auto" />
-					<p className="font-semibold text-slate-900">Optimizing {progress.current} of {progress.total}...</p>
-					<div className="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
-						<div className="h-full bg-primary rounded-full transition-all duration-300 progress-bar-shine" style={{ width: `${(progress.current / progress.total) * 100}%` }} />
+				<div className="mt-6 p-6 bg-white border border-slate-300 text-center space-y-3">
+					<Loader2 className="w-8 h-8 text-slate-700 animate-spin mx-auto" />
+					<p className="font-bold text-slate-900 text-base">Optimizing {progress.current} of {progress.total}...</p>
+					<div className="w-full bg-slate-200 h-2 overflow-hidden">
+						<div className="h-full bg-slate-900 transition-all duration-300" style={{ width: `${(progress.current / progress.total) * 100}%` }} />
 					</div>
 				</div>
 			)}
 
 			{error && (
-				<div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3">
-					<AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0" /><p className="text-sm text-red-500">{error}</p>
+				<div className="mt-4 p-4 bg-slate-50 border border-slate-300 flex items-start gap-3">
+					<AlertCircle className="w-4 h-4 text-slate-700 flex-shrink-0" /><p className="text-xs text-slate-700">{error}</p>
 				</div>
 			)}
 
 			{results.length > 0 && (
-				<div className="mt-8 space-y-4">
-					<div className="p-6 bg-emerald-50 border border-emerald-200 rounded-2xl text-center">
-						<Check className="w-10 h-10 text-emerald-600 mx-auto mb-2" />
-						<p className="font-bold text-xl text-slate-900">Saved {formatFileSize(totalSaved)} across {results.length} image{results.length !== 1 ? "s" : ""}</p>
+				<div className="mt-6 space-y-3">
+					<div className="p-6 bg-slate-50 border border-slate-300 text-center">
+						<Check className="w-8 h-8 text-slate-700 mx-auto mb-2" />
+						<p className="font-bold text-lg text-slate-900">Saved {formatFileSize(totalSaved)} across {results.length} image{results.length !== 1 ? "s" : ""}</p>
+						<p className="text-xs text-slate-600 mt-1">Average reduction: {Math.round(results.reduce((a, r) => a + r.saved, 0) / results.length)}%</p>
 					</div>
 					{results.map((r) => (
-						<div key={r.id} className="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-xl">
+						<div key={r.id} className="flex items-center gap-3 p-3 bg-white border border-slate-300">
 							{/* eslint-disable-next-line @next/next/no-img-element */}
-							<img src={r.preview} alt={r.originalName} className="w-14 h-14 object-cover rounded-lg" />
+							<img src={r.preview} alt={r.originalName} className="w-12 h-12 object-cover flex-shrink-0" />
 							<div className="flex-1 min-w-0">
-								<p className="text-sm font-medium truncate text-slate-900">{r.originalName}</p>
-								<p className="text-xs text-slate-500">
+								<p className="text-xs font-bold truncate text-slate-900">{r.originalName}</p>
+								<p className="text-xs text-slate-600 mt-0.5">
 									{formatFileSize(r.originalSize)} → {formatFileSize(r.reducedSize)}
 									{r.saved === 0 && " (already under target)"}
 								</p>
 							</div>
-							<span className="text-sm font-bold text-emerald-600">{r.saved > 0 ? `-${Math.round(r.saved)}%` : "✓"}</span>
-							<button onClick={() => downloadSingle(r)} className="flex items-center gap-1.5 px-4 py-2 bg-primary hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors">
+							<span className="text-xs font-bold text-slate-700 whitespace-nowrap flex-shrink-0">{r.saved > 0 ? `-${Math.round(r.saved)}%` : "✓"}</span>
+							<button onClick={() => downloadSingle(r)} className="flex items-center gap-1.5 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-colors flex-shrink-0">
 								<Download className="w-4 h-4" />Download
 							</button>
 						</div>
 					))}
 					{results.length > 1 && (
-						<button onClick={downloadAll} className="w-full py-3.5 bg-slate-800 hover:bg-slate-900 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 text-lg">
-							<Package className="w-5 h-5" />Download All as ZIP
+						<button onClick={downloadAll} className="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold transition-colors flex items-center justify-center gap-2 text-sm">
+							<Package className="w-4 h-4" />Download All as ZIP
 						</button>
 					)}
-					<button onClick={() => { setFiles([]); setResults([]); setError(null); }} className="w-full py-3 border border-slate-200 hover:bg-slate-50 text-sm font-medium rounded-xl transition-colors text-slate-700">
+					<button onClick={() => { setFiles([]); setResults([]); setError(null); }} className="w-full py-3 border border-slate-300 hover:bg-slate-50 text-xs font-bold transition-colors text-slate-900">
 						Reduce more images
 					</button>
 				</div>
