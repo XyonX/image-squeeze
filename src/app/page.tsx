@@ -89,15 +89,18 @@ export default function HomePage() {
 	return (
 		<div className="space-y-0">
 			{/* Header with Filter */}
-			<section className="flex items-center justify-between gap-4 bg-slate-50 border-b border-slate-200 px-0 py-4 mb-8">
-				<div>
-					<h1 className="text-3xl font-bold text-slate-900">Image Tools</h1>
-					<p className="text-sm text-slate-600 mt-1">{tools.length} total tools available</p>
-				</div>
-				<div className="flex gap-2">
-					<div className="px-4 py-2 bg-white border border-slate-300 text-sm font-semibold text-slate-700">
-						All Tools
+			<section className="border border-slate-300 p-6 mb-8">
+				<div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+					<div>
+						<h1 className="text-2xl font-bold text-slate-900">Image Tools</h1>
+						<p className="text-xs text-slate-600 mt-2">{tools.length} total tools available</p>
 					</div>
+					<Link
+						href="#featured-tools"
+						className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-colors whitespace-nowrap"
+					>
+						View All Tools →
+					</Link>
 				</div>
 			</section>
 

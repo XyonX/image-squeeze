@@ -1,16 +1,12 @@
+"use client";
+
 import { Metadata } from "next";
 import Link from "next/link";
 import { Calendar, Clock, ArrowRight } from "lucide-react";
+import { useState } from "react";
 
-export const metadata: Metadata = {
-	title: "Image Optimization Blog — Tips, Guides & Tutorials | GetImgTools",
-	description: "Learn how to optimize images for web performance. Free guides on compression, formats, SEO, and best practices for developers and designers. Expert tutorials for better websites.",
-	keywords: ["image optimization blog", "web performance", "image compression guide", "image format comparison", "web development", "SEO optimization"],
-	openGraph: {
-		title: "Image Optimization Blog — Tips, Guides & Tutorials",
-		description: "Learn how to optimize images for web performance. Free guides on compression, formats, SEO, and best practices.",
-	},
-};
+// Note: metadata is commented out because this is a client component
+// export const metadata: Metadata = { ... }
 
 const blogPosts = [
 	{
@@ -80,6 +76,12 @@ const categories = [
 ];
 
 export default function BlogPage() {
+	const [selectedCategory, setSelectedCategory] = useState("All");
+
+	const filteredPosts = selectedCategory === "All" 
+		? blogPosts 
+		: blogPosts.filter(post => post.category === selectedCategory);
+
 	return (
 		<div className="max-w-4xl mx-auto">
 			{/* Hero */}
@@ -149,10 +151,11 @@ export default function BlogPage() {
 					{categories.map((cat) => (
 						<button
 							key={cat.name}
+							onClick={() => setSelectedCategory(cat.name)}
 							className={`px-3 py-2 border text-xs font-bold transition-colors ${
-								cat.name === "All"
+								selectedCategory === cat.name
 									? "border-slate-900 bg-slate-900 text-white"
-									: "bg-slate-100 text-slate-700 hover:bg-slate-200"
+									: "border-slate-300 bg-white text-slate-900 hover:border-slate-400"
 							}`}
 						>
 							{cat.name} {cat.count > 0 && <span className="opacity-70">({cat.count})</span>}
@@ -162,7 +165,7 @@ export default function BlogPage() {
 
 				{/* Posts Grid */}
 				<div className="space-y-3">
-					{blogPosts.map((post) => (
+					{filteredPosts.map((post) => (
 						<article
 							key={post.slug}
 							className="flex flex-col sm:flex-row items-start gap-3 p-4 bg-white border border-slate-300 hover:shadow-md transition-shadow"
