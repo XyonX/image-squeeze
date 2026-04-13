@@ -1,67 +1,77 @@
 import type { Metadata } from "next";
 
 export const metadata: Metadata = {
-	title: "Privacy Policy",
+	title: "Privacy Policy - GetImgTools",
 	description: "Privacy policy for GetImgTools — we never upload, store, or access your images.",
 };
 
 export default function PrivacyPage() {
 	return (
-		<div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20">
-			<h1 className="text-3xl sm:text-4xl font-extrabold mb-2">Privacy Policy</h1>
-			<p className="text-sm text-slate-500 mb-8">Last updated: March 7, 2026</p>
+		<div className="max-w-4xl mx-auto py-12">
+			<header className="mb-8 pb-6 border-b border-slate-200">
+				<h1 className="text-4xl font-bold text-slate-900 mb-2">Privacy Policy</h1>
+				<p className="text-xs text-slate-500">Last updated: April 13, 2026</p>
+			</header>
 
-			<div className="prose prose-sm sm:prose-base max-w-none space-y-6 text-slate-500">
-				<h2 className="text-xl font-bold text-slate-900">1. Overview</h2>
-				<p>
-					GetImgTools ("we", "us", "our") operates the website getimgtools.com. This privacy policy explains
-					how we handle information when you use our services.
-				</p>
+			<div className="space-y-6">
+				<section className="space-y-3">
+					<h2 className="text-lg font-bold text-slate-900">1. Overview</h2>
+					<p className="text-sm text-slate-700">
+						GetImgTools ("we", "us", "our") operates the website getimgtools.com. This privacy policy explains how we handle information when you use our services.
+					</p>
+				</section>
 
-				<h2 className="text-xl font-bold text-slate-900">2. Image Processing — 100% Client-Side</h2>
-				<p>
-					<strong>We never upload, store, process, or access your images on our servers.</strong> All image
-					processing (compression, resizing, conversion, etc.) happens entirely in your web browser using
-					JavaScript and WebAssembly. Your files never leave your device.
-				</p>
-				<p>
-					When you close the browser tab, all temporary data created during processing is removed from memory.
-				</p>
+				<section className="space-y-3 border-t border-slate-200 pt-6">
+					<h2 className="text-lg font-bold text-slate-900">2. Image Processing — 100% Client-Side</h2>
+					<p className="text-sm text-slate-700">
+						<strong>We never upload, store, process, or access your images on our servers.</strong> All image processing (compression, resizing, conversion, etc.) happens entirely in your web browser using JavaScript. Your files never leave your device.
+					</p>
+					<p className="text-sm text-slate-700">
+						When you close the browser tab, all temporary data is removed from memory.
+					</p>
+				</section>
 
-				<h2 className="text-xl font-bold text-slate-900">3. Data We Collect</h2>
-				<p>We collect minimal, anonymous data to improve the website:</p>
-				<ul className="list-disc pl-6 space-y-1">
-					<li>Page views and traffic data (via privacy-friendly analytics)</li>
-					<li>Browser type, device type, and approximate location (country-level)</li>
-					<li>Referral source (how you found us)</li>
-				</ul>
-				<p>We do <strong>not</strong> collect names, emails, or personal information unless you voluntarily contact us.</p>
+				<section className="space-y-3 border-t border-slate-200 pt-6">
+					<h2 className="text-lg font-bold text-slate-900">3. Data We Collect</h2>
+					<p className="text-sm text-slate-700">We collect minimal, anonymous data:</p>
+					<ul className="list-disc pl-5 space-y-1 text-sm text-slate-700">
+						<li>Page views and traffic data (privacy-friendly analytics)</li>
+						<li>Browser and device type (country-level location)</li>
+						<li>Referral source</li>
+					</ul>
+					<p className="text-sm text-slate-700">We do <strong>not</strong> collect names, emails, or personal info unless you contact us.</p>
+				</section>
 
-				<h2 className="text-xl font-bold text-slate-900">4. Cookies</h2>
-				<p>
-					We use cookies only for essential functionality (e.g., dark mode preference stored in localStorage).
-					Third-party advertising partners (e.g., Google AdSense) may use cookies to serve relevant ads.
-				</p>
+				<section className="space-y-3 border-t border-slate-200 pt-6">
+					<h2 className="text-lg font-bold text-slate-900">4. Cookies</h2>
+					<p className="text-sm text-slate-700">
+						We use cookies only for essential functionality. Third-party partners may use cookies to serve ads.
+					</p>
+				</section>
 
-				<h2 className="text-xl font-bold text-slate-900">5. Third-Party Services</h2>
-				<p>We may use the following third-party services:</p>
-				<ul className="list-disc pl-6 space-y-1">
-					<li><strong>Google AdSense</strong> — for displaying advertisements</li>
-					<li><strong>Cloudflare</strong> — for hosting and CDN</li>
-				</ul>
-				<p>These services have their own privacy policies.</p>
+				<section className="space-y-3 border-t border-slate-200 pt-6">
+					<h2 className="text-lg font-bold text-slate-900">5. Third-Party Services</h2>
+					<p className="text-sm text-slate-700 mb-2">We use the following third-party services:</p>
+					<ul className="list-disc pl-5 space-y-1 text-sm text-slate-700">
+						<li><strong>Google AdSense</strong> — advertisements</li>
+						<li><strong>Cloudflare</strong> — hosting and CDN</li>
+					</ul>
+				</section>
 
-				<h2 className="text-xl font-bold text-slate-900">6. Children's Privacy</h2>
-				<p>Our services are not directed to children under 13. We do not knowingly collect information from children.</p>
+				<section className="space-y-3 border-t border-slate-200 pt-6">
+					<h2 className="text-lg font-bold text-slate-900">6. Children's Privacy</h2>
+					<p className="text-sm text-slate-700">Our services are not directed to children under 13.</p>
+				</section>
 
-				<h2 className="text-xl font-bold text-slate-900">7. Changes to This Policy</h2>
-				<p>We may update this policy from time to time. Changes will be reflected on this page with an updated date.</p>
-
-				<h2 className="text-xl font-bold text-slate-900">8. Contact</h2>
-				<p>
-					If you have questions about this privacy policy, contact us at{" "}
-					<a href="mailto:hello@getimgtools.com" className="text-primary hover:underline">hello@getimgtools.com</a>
-				</p>
+				<section className="space-y-3 border-t border-slate-200 pt-6">
+					<h2 className="text-lg font-bold text-slate-900">7. Contact</h2>
+					<p className="text-sm text-slate-700">
+						Questions? Email us at{" "}
+						<a href="mailto:support@getimgtools.com" className="font-bold text-slate-900 hover:text-slate-700">
+							support@getimgtools.com
+						</a>
+					</p>
+				</section>
 			</div>
 		</div>
 	);

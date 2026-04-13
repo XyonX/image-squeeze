@@ -31,18 +31,36 @@ export function Header() {
 					</Link>
 
 					{/* Desktop Nav */}
-					<nav className="hidden md:flex items-center gap-8">
+					<nav className="hidden md:flex items-center gap-6">
 						<Link 
 							href="/" 
-							className="text-sm font-medium text-slate-700 hover:text-slate-900"
+							className="text-xs font-bold text-slate-700 hover:text-slate-900"
 						>
 							Tools
 						</Link>
 						<Link 
 							href="/blog" 
-							className="text-sm font-medium text-slate-700 hover:text-slate-900"
+							className="text-xs font-bold text-slate-700 hover:text-slate-900"
 						>
 							Blog
+						</Link>
+						<Link 
+							href="/about" 
+							className="text-xs font-bold text-slate-700 hover:text-slate-900"
+						>
+							About
+						</Link>
+						<Link 
+							href="/privacy" 
+							className="text-xs font-bold text-slate-700 hover:text-slate-900"
+						>
+							Privacy
+						</Link>
+						<Link 
+							href="/terms" 
+							className="text-xs font-bold text-slate-700 hover:text-slate-900"
+						>
+							Terms
 						</Link>
 					</nav>
 
@@ -84,8 +102,10 @@ export function Header() {
 							</Link>
 						))}
 						<div className="border-t border-slate-300 pt-2 mt-2 space-y-1">
-							<Link href="/blog" className="block px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50" onClick={() => setMobileOpen(false)}>Blog</Link>
-							<Link href="/privacy" className="block px-3 py-2 text-sm font-medium text-slate-600 hover:bg-slate-50" onClick={() => setMobileOpen(false)}>Privacy</Link>
+							<Link href="/blog" className="block px-3 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50" onClick={() => setMobileOpen(false)}>Blog</Link>
+							<Link href="/about" className="block px-3 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50" onClick={() => setMobileOpen(false)}>About</Link>
+							<Link href="/privacy" className="block px-3 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50" onClick={() => setMobileOpen(false)}>Privacy</Link>
+							<Link href="/terms" className="block px-3 py-2 text-xs font-bold text-slate-700 hover:bg-slate-50" onClick={() => setMobileOpen(false)}>Terms</Link>
 						</div>
 					</div>
 				</div>

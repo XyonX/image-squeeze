@@ -185,10 +185,10 @@ export function CompressJPGClient() {
 						<button
 							key={p.label}
 							onClick={() => setQuality(p.value)}
-							className={`preset-button px-3 sm:px-4 py-2 rounded-xl font-medium text-center border transition-all ${
+							className={`preset-button px-3 py-2 font-bold text-center border transition-all text-xs ${
 								quality === p.value
-									? "border-primary bg-primary/10 text-primary"
-									: "border-slate-200 hover:border-primary/30"
+									? "border-slate-900 bg-slate-900 text-white"
+									: "border-slate-300 hover:border-slate-400"
 							}`}
 							title={p.description}
 						>
@@ -200,16 +200,16 @@ export function CompressJPGClient() {
 
 			{/* Max Width */}
 			<div>
-				<label className="font-semibold block mb-2">Max Width (optional)</label>
+				<label className="font-bold block mb-2 text-slate-900">Max Width (optional)</label>
 				<div className="flex flex-wrap gap-2">
 					{[null, 1920, 1280, 800, 640].map((w) => (
 						<button
 							key={w ?? "none"}
 							onClick={() => setMaxWidth(w)}
-							className={`px-3 sm:px-4 py-2 rounded-xl font-medium text-center truncate border transition-all ${
+							className={`px-3 py-2 font-bold text-center border transition-all text-xs min-w-fit ${
 								maxWidth === w
-									? "border-primary bg-primary/10 text-primary"
-									: "border-slate-200 hover:border-primary/30"
+									? "border-slate-900 bg-slate-900 text-white"
+									: "border-slate-300 hover:border-slate-400 text-slate-900"
 							}`}
 							title={w ? `${w}px` : "No resize"}
 						>
@@ -236,18 +236,19 @@ export function CompressJPGClient() {
 			{/* Compress button */}
 			<button
 				onClick={handleCompress}
-				className="w-full py-3.5 bg-primary hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors text-lg"
+				disabled={files.length === 0 || isProcessing}
+				className="w-full py-3 bg-slate-900 hover:bg-slate-800 disabled:bg-slate-400 text-white font-bold transition-colors text-sm"
 			>
-				Compress {files.length} Image{files.length !== 1 ? "s" : ""}
+				{isProcessing ? "Compressing..." : `Compress ${files.length} Image${files.length !== 1 ? "s" : ""}`}
 			</button>
 		</div>
 	);
 
 	// Preview section
 	const previewSection = files.length > 0 && (
-		<div className="space-y-4">
+		<div className="space-y-3">
 			{files.map((file) => (
-				<div key={file.id} className="text-center">
+				<div key={file.id}>
 					<ImagePreview
 						src={file.file}
 						fileName={file.file.name}
@@ -257,9 +258,6 @@ export function CompressJPGClient() {
 						zoomable={true}
 						downloadable={false}
 					/>
-					<p className="text-sm text-slate-500 mt-2">
-						{file.width}×{file.height}px • {formatFileSize(file.file.size)}
-					</p>
 				</div>
 			))}
 		</div>
@@ -269,12 +267,12 @@ export function CompressJPGClient() {
 	const resultsSection = results.length > 0 && (
 		<div className="space-y-8">
 			{/* Summary */}
-			<div className="p-6 bg-emerald-50 border border-emerald-200 rounded-2xl text-center">
-				<Check className="w-10 h-10 text-emerald-600 mx-auto mb-2" />
-				<p className="font-bold text-xl">
+			<div className="p-6 bg-slate-50 border border-slate-300 text-center">
+				<Check className="w-8 h-8 text-slate-700 mx-auto mb-2" />
+				<p className="font-bold text-lg text-slate-900">
 					Saved {formatFileSize(totalSaved)} across {results.length} image{results.length !== 1 ? "s" : ""}
 				</p>
-				<p className="text-sm text-slate-500 mt-1">
+				<p className="text-xs text-slate-600 mt-1">
 					Average reduction: {Math.round(results.reduce((a, r) => a + r.saved, 0) / results.length)}%
 				</p>
 			</div>
@@ -283,13 +281,13 @@ export function CompressJPGClient() {
 			<div className="space-y-8">
 				{results.map((result) => (
 					<div key={result.id} className="space-y-4">
-						<div className="flex items-center justify-between">
-							<h3 className="text-lg font-semibold text-slate-900">{result.originalName}</h3>
-							<div className="flex items-center gap-4">
-								<span className="text-sm font-bold text-emerald-600">-{Math.round(result.saved)}%</span>
+						<div className="flex items-center justify-between gap-2">
+							<h3 className="text-sm font-bold text-slate-900 truncate">{result.originalName}</h3>
+							<div className="flex items-center gap-3 flex-shrink-0">
+								<span className="text-xs font-bold text-slate-700 whitespace-nowrap">-{Math.round(result.saved)}%</span>
 								<button
 									onClick={() => downloadSingle(result)}
-									className="flex items-center gap-1.5 px-4 py-2 bg-primary hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors"
+									className="flex items-center gap-1.5 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-colors"
 								>
 									<Download className="w-4 h-4" />
 									Download
@@ -314,21 +312,21 @@ export function CompressJPGClient() {
 						)}
 
 						{/* Stats */}
-						<div className="grid grid-cols-2 gap-4 text-sm">
-							<div className="p-3 bg-slate-50 rounded-lg">
-								<p className="font-medium text-slate-900">Original</p>
+						<div className="grid grid-cols-2 gap-3 text-xs">
+							<div className="p-3 bg-white border border-slate-300">
+								<p className="font-bold text-slate-900 mb-1">Original</p>
 								<p className="text-slate-600">{formatFileSize(result.originalSize)}</p>
 								{result.originalDimensions && (
-									<p className="text-slate-500 text-xs">
+									<p className="text-slate-600 mt-0.5">
 										{result.originalDimensions.width}×{result.originalDimensions.height}px
 									</p>
 								)}
 							</div>
-							<div className="p-3 bg-slate-50 rounded-lg">
-								<p className="font-medium text-slate-900">Compressed</p>
+							<div className="p-3 bg-white border border-slate-300">
+								<p className="font-bold text-slate-900 mb-1">Compressed</p>
 								<p className="text-slate-600">{formatFileSize(result.compressedSize)}</p>
 								{result.compressedDimensions && (
-									<p className="text-slate-500 text-xs">
+									<p className="text-slate-600 mt-0.5">
 										{result.compressedDimensions.width}×{result.compressedDimensions.height}px
 									</p>
 								)}
@@ -339,13 +337,13 @@ export function CompressJPGClient() {
 			</div>
 
 			{/* Download all and reset buttons */}
-			<div className="space-y-3">
+			<div className="space-y-2">
 				{results.length > 1 && (
 					<button
 						onClick={downloadAll}
-						className="w-full py-3.5 bg-slate-800 hover:bg-slate-900 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 text-lg"
+						className="w-full py-3 bg-slate-900 hover:bg-slate-800 text-white font-bold transition-colors flex items-center justify-center gap-2 text-sm"
 					>
-						<Package className="w-5 h-5" />
+						<Package className="w-4 h-4" />
 						Download All as ZIP
 					</button>
 				)}
@@ -355,7 +353,7 @@ export function CompressJPGClient() {
 						setResults([]);
 						setError(null);
 					}}
-					className="w-full py-3 border border-slate-200 hover:bg-slate-50 text-sm font-medium rounded-xl transition-colors text-slate-700"
+					className="w-full py-3 border border-slate-300 hover:bg-slate-50 text-xs font-bold transition-colors text-slate-900"
 				>
 					Compress more images
 				</button>
@@ -365,15 +363,15 @@ export function CompressJPGClient() {
 
 	// Processing section
 	const processingSection = isProcessing && (
-		<div className="mt-8 p-8 bg-white border border-slate-200 rounded-2xl text-center space-y-4">
-			<Loader2 className="w-10 h-10 text-primary animate-spin mx-auto" />
+		<div className="mt-6 p-6 bg-white border border-slate-300 text-center space-y-3">
+			<Loader2 className="w-8 h-8 text-slate-700 animate-spin mx-auto" />
 			<div>
-				<p className="font-semibold text-lg">
+				<p className="font-bold text-base text-slate-900">
 					Processing {progress.current} of {progress.total}...
 				</p>
-				<div className="w-full bg-slate-100 rounded-full h-3 mt-3 overflow-hidden">
+				<div className="w-full bg-slate-200 h-2 mt-3 overflow-hidden">
 					<div
-						className="h-full bg-primary rounded-full transition-all duration-300 relative progress-bar-shine"
+						className="h-full bg-slate-900 transition-all duration-300"
 						style={{ width: `${(progress.current / progress.total) * 100}%` }}
 					/>
 				</div>
@@ -383,9 +381,9 @@ export function CompressJPGClient() {
 
 	// Error section
 	const errorSection = error && (
-		<div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3">
-			<AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0 mt-0.5" />
-			<p className="text-sm text-red-500">{error}</p>
+		<div className="mt-4 p-4 bg-slate-50 border border-slate-300 flex items-start gap-3">
+			<AlertCircle className="w-4 h-4 text-slate-700 flex-shrink-0 mt-0.5" />
+			<p className="text-xs text-slate-700">{error}</p>
 		</div>
 	);
 

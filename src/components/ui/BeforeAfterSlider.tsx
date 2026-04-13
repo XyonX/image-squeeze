@@ -132,56 +132,56 @@ export function BeforeAfterSlider({
 
 	return (
 		<div className={`space-y-4 ${className}`}>
-			{/* Mode selector */}
-			<div className="flex flex-wrap gap-2 justify-center">
-				{modeButtons.map((btn) => {
-					const Icon = btn.icon;
-					const isActive = viewMode === btn.id || (btn.id === "toggle" && viewMode === "toggle");
-					
-					return (
-						<button
-							key={btn.id}
-							onClick={() => {
-								if (btn.id === "toggle") {
-									setShowBefore(!showBefore);
-								}
-								setViewMode(btn.id as any);
-							}}
-							className={`flex items-center gap-2 px-4 py-2 rounded-xl text-sm font-medium border transition-all ${
-								isActive
-									? "border-primary bg-primary/10 text-primary"
-									: "border-slate-200 hover:border-primary/30 text-slate-700"
-							}`}
-						>
-							<Icon className="w-4 h-4" />
-							{btn.label}
-						</button>
-					);
-				})}
-			</div>
+				{/* Mode selector */}
+				<div className="flex flex-wrap gap-2 justify-center">
+					{modeButtons.map((btn) => {
+						const Icon = btn.icon;
+						const isActive = viewMode === btn.id || (btn.id === "toggle" && viewMode === "toggle");
+						
+						return (
+							<button
+								key={btn.id}
+								onClick={() => {
+									if (btn.id === "toggle") {
+										setShowBefore(!showBefore);
+									}
+									setViewMode(btn.id as any);
+								}}
+								className={`flex items-center gap-2 px-3 py-2 text-xs font-bold border transition-all ${
+									isActive
+										? "border-slate-900 bg-slate-900 text-white"
+										: "border-slate-300 hover:border-slate-400 text-slate-900"
+								}`}
+							>
+								<Icon className="w-4 h-4" />
+								{btn.label}
+							</button>
+						);
+					})}
+				</div>
 
 			{/* Stats bar */}
 			{showStats && beforeSize && afterSize && (
-				<div className="grid grid-cols-1 sm:grid-cols-3 gap-4 p-4 bg-slate-50 border border-slate-200 rounded-xl">
+				<div className="grid grid-cols-1 sm:grid-cols-3 gap-3 p-3 bg-white border border-slate-300">
 					<div className="text-center">
-						<p className="text-sm font-medium text-slate-900">{beforeLabel}</p>
-						<p className="text-lg font-bold text-slate-700">{formatFileSize(beforeSize)}</p>
+						<p className="text-xs font-bold text-slate-900">{beforeLabel}</p>
+						<p className="text-sm font-bold text-slate-700 mt-1">{formatFileSize(beforeSize)}</p>
 						{beforeDimensions && (
-							<p className="text-xs text-slate-500">
+							<p className="text-xs text-slate-600 mt-1">
 								{beforeDimensions.width}×{beforeDimensions.height}px
 							</p>
 						)}
 					</div>
 					<div className="text-center">
-						<p className="text-sm font-medium text-slate-900">Savings</p>
-						<p className="text-lg font-bold text-emerald-600">{Math.round(savings)}%</p>
-						<p className="text-xs text-slate-500">{formatFileSize(sizeReduction)} saved</p>
+						<p className="text-xs font-bold text-slate-900">Savings</p>
+						<p className="text-sm font-bold text-slate-700 mt-1">{Math.round(savings)}%</p>
+						<p className="text-xs text-slate-600 mt-1">{formatFileSize(sizeReduction)} saved</p>
 					</div>
 					<div className="text-center">
-						<p className="text-sm font-medium text-slate-900">{afterLabel}</p>
-						<p className="text-lg font-bold text-slate-700">{formatFileSize(afterSize)}</p>
+						<p className="text-xs font-bold text-slate-900">{afterLabel}</p>
+						<p className="text-sm font-bold text-slate-700 mt-1">{formatFileSize(afterSize)}</p>
 						{afterDimensions && (
-							<p className="text-xs text-slate-500">
+							<p className="text-xs text-slate-600 mt-1">
 								{afterDimensions.width}×{afterDimensions.height}px
 							</p>
 						)}
@@ -192,7 +192,7 @@ export function BeforeAfterSlider({
 			{/* Comparison area */}
 			<div
 				ref={containerRef}
-				className={`no-select comparison-container relative rounded-xl overflow-hidden border border-slate-200 bg-slate-100 ${
+				className={`no-select comparison-container relative overflow-hidden border border-slate-300 bg-white ${
 					viewMode === "slider" ? "cursor-col-resize" : ""
 				}`}
 				style={{ minHeight: "300px" }}
@@ -201,10 +201,10 @@ export function BeforeAfterSlider({
 			>
 				{/* Loading overlay */}
 				{(!beforeLoaded || !afterLoaded) && (
-					<div className="absolute inset-0 flex items-center justify-center bg-slate-100 z-10">
+					<div className="absolute inset-0 flex items-center justify-center bg-white z-10">
 						<div className="text-center">
-							<div className="w-8 h-8 border-2 border-primary/30 border-t-primary rounded-full animate-spin mx-auto mb-2" />
-							<p className="text-sm text-slate-500">Loading comparison...</p>
+							<div className="w-6 h-6 border-2 border-slate-200 border-t-slate-700 rounded-full animate-spin mx-auto mb-2" />
+							<p className="text-xs text-slate-600">Loading...</p>
 						</div>
 					</div>
 				)}
