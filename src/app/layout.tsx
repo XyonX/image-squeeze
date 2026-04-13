@@ -13,11 +13,11 @@ const inter = Inter({
 
 export const metadata: Metadata = {
 	title: {
-		default: "GetImgTools — Free Online Image Tools | Compress, Resize, Convert",
+		default: "GetImgTools — Free Online Image Tools | Compress, Resize, Convert Images",
 		template: "%s | GetImgTools",
 	},
 	description:
-		"Free online image tools — compress JPG, PNG, WebP, resize, convert, crop, and more. 100% private, files never leave your browser. No signup required.",
+		"Free online image tools — compress JPG, PNG, WebP, resize, convert, crop, remove EXIF data, and more. 100% private browser-based processing. No signup required.",
 	keywords: [
 		"compress image online",
 		"resize image online",
@@ -25,6 +25,20 @@ export const metadata: Metadata = {
 		"image compressor",
 		"bulk image compressor",
 		"free image tools",
+		"remove exif data",
+		"image to base64",
+		"svg to png",
+		"crop image online",
+		"rotate image online",
+		"add watermark to image",
+		"image filters online",
+		"reduce image size",
+		"compress jpg",
+		"compress png",
+		"compress webp",
+		"convert to webp",
+		"convert to jpg",
+		"convert to png"
 	],
 	metadataBase: new URL("https://getimgtools.com"),
 	alternates: {
@@ -32,7 +46,7 @@ export const metadata: Metadata = {
 	},
 	openGraph: {
 		title: "GetImgTools — Free Online Image Tools",
-		description: "Compress, resize, convert images for free. 100% private — files never leave your browser.",
+		description: "Compress, resize, convert images for free. 100% private browser-based processing. No signup required.",
 		url: "https://getimgtools.com",
 		siteName: "GetImgTools",
 		type: "website",
@@ -40,7 +54,7 @@ export const metadata: Metadata = {
 	twitter: {
 		card: "summary_large_image",
 		title: "GetImgTools — Free Online Image Tools",
-		description: "Compress, resize, convert images for free. 100% private — files never leave your browser.",
+		description: "Compress, resize, convert images for free. 100% private browser-based processing. No signup required.",
 	},
 	robots: {
 		index: true,

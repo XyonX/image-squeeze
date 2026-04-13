@@ -3,8 +3,8 @@ import Link from "next/link";
 import { Calendar, Clock, Share2, BookOpen, CheckCircle, Shield, Lock } from "lucide-react";
 
 export const metadata: Metadata = {
-	title: "Remove EXIF Data from Photos: Why & How to Protect Your Privacy",
-	description: "Complete guide to EXIF metadata: what it contains, privacy risks, and how to safely remove it from your photos. Free tool included.",
+	title: "Remove EXIF Data from Photos: Complete Guide to Protecting Your Privacy | GetImgTools",
+	description: "Learn what EXIF metadata contains, privacy risks, and how to safely remove GPS location, camera info from photos. Free online EXIF remover tool included.",
 	keywords: [
 		"remove exif data",
 		"exif metadata privacy",
@@ -12,10 +12,24 @@ export const metadata: Metadata = {
 		"protect photo privacy",
 		"exif data removal",
 		"image metadata security",
+		"how to remove exif data",
+		"hidden exif data",
+		"remove data from photos",
+		"clear exif",
+		"removing exif data",
+		"removing metadata from images",
+		"how to remove exif",
+		"remove metadata from photos",
+		"erase exif",
+		"remove exif",
+		"gps removal from photos",
+		"camera info removal",
+		"photo privacy guide",
+		"exif data protection"
 	],
 	openGraph: {
-		title: "Remove EXIF Data from Photos: Why & How to Protect Your Privacy",
-		description: "Complete guide to EXIF metadata: what it contains, privacy risks, and how to safely remove it from your photos.",
+		title: "Remove EXIF Data from Photos: Complete Guide to Protecting Your Privacy",
+		description: "Learn what EXIF metadata contains, privacy risks, and how to safely remove GPS location, camera info from photos. Free online EXIF remover tool included.",
 	},
 };
 

@@ -1,5 +1,5 @@
 import { Tool, tools } from "@/lib/tools";
-import { CheckCircle, Info, Lightbulb, AlertCircle, Download, Shield, Zap, Clock, ArrowRight } from "lucide-react";
+import { CheckCircle, Info, Lightbulb, AlertCircle, Download, Shield, Zap, Clock, ArrowRight, Upload, Settings, TrendingUp, HelpCircle } from "lucide-react";
 import Link from "next/link";
 
 interface ToolPageContentProps {
@@ -234,7 +234,8 @@ export function ToolPageContent({ tool, children }: ToolPageContentProps) {
       {/* Main Tool Component - Featured Card */}
       <section className="bg-white border border-slate-300 p-6">
         <div className="mb-4">
-          <span className="inline-block bg-slate-900 text-white text-xs font-bold px-3 py-1 mb-3">
+          <span className="inline-flex items-center gap-1.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-xs font-bold px-3 py-1.5 mb-3 rounded-full">
+            <TrendingUp className="w-3 h-3" />
             POPULAR TOOL
           </span>
           <h2 className="text-xl font-bold text-slate-900">
@@ -298,21 +299,27 @@ export function ToolPageContent({ tool, children }: ToolPageContentProps) {
         
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="text-center p-4 border border-slate-300">
-            <div className="w-10 h-10 bg-slate-200 text-slate-700 font-bold text-sm flex items-center justify-center mx-auto mb-3">1</div>
+            <div className="w-10 h-10 bg-blue-100 text-blue-600 flex items-center justify-center mx-auto mb-3 rounded-full">
+              <Upload className="w-5 h-5" />
+            </div>
             <h3 className="font-bold text-slate-900 mb-2 text-sm">Upload Your Image</h3>
             <p className="text-xs text-slate-600">
               Drag & drop, paste from clipboard, or browse to select your {tool.acceptedFormats.map(f => f.replace('.', '').toUpperCase()).join(', ')} image{tool.acceptedFormats.length > 1 ? 's' : ''}.
             </p>
           </div>
           <div className="text-center p-4 border border-slate-300">
-            <div className="w-10 h-10 bg-slate-200 text-slate-700 font-bold text-sm flex items-center justify-center mx-auto mb-3">2</div>
+            <div className="w-10 h-10 bg-purple-100 text-purple-600 flex items-center justify-center mx-auto mb-3 rounded-full">
+              <Settings className="w-5 h-5" />
+            </div>
             <h3 className="font-bold text-slate-900 mb-2 text-sm">Adjust Settings</h3>
             <p className="text-xs text-slate-600">
               Use our intuitive controls to customize the {tool.name.toLowerCase()} process according to your specific needs.
             </p>
           </div>
           <div className="text-center p-4 border border-slate-300">
-            <div className="w-10 h-10 bg-slate-200 text-slate-700 font-bold text-sm flex items-center justify-center mx-auto mb-3">✓</div>
+            <div className="w-10 h-10 bg-green-100 text-green-600 flex items-center justify-center mx-auto mb-3 rounded-full">
+              <Download className="w-5 h-5" />
+            </div>
             <h3 className="font-bold text-slate-900 mb-2 text-sm">Download Result</h3>
             <p className="text-xs text-slate-600">
               Get your processed image instantly. For multiple images, download all as a ZIP file.
@@ -453,36 +460,33 @@ export function ToolPageContent({ tool, children }: ToolPageContentProps) {
           Quick FAQ
         </h2>
         <div className="space-y-3">
-          <a href="#" className="flex gap-4 p-3 border border-slate-300 hover:shadow-md hover:border-slate-400 transition-all group">
-            <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-slate-100 group-hover:bg-slate-200 transition-colors">
-              <span className="text-xs font-bold text-slate-600">?</span>
+          <div className="flex gap-4 p-3 border border-slate-300">
+            <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-blue-50 text-blue-600 rounded-full">
+              <HelpCircle className="w-4 h-4" />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="font-bold text-slate-900 text-sm group-hover:text-slate-700">Is my data safe?</p>
+              <p className="font-bold text-slate-900 text-sm">Is my data safe?</p>
               <p className="text-xs text-slate-600 mt-0.5">100% processing in your browser. Images never uploaded.</p>
             </div>
-            <span className="text-slate-400 group-hover:text-slate-600">→</span>
-          </a>
-          <a href="#" className="flex gap-4 p-3 border border-slate-300 hover:shadow-md hover:border-slate-400 transition-all group">
-            <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-slate-100 group-hover:bg-slate-200 transition-colors">
-              <span className="text-xs font-bold text-slate-600">?</span>
+          </div>
+          <div className="flex gap-4 p-3 border border-slate-300">
+            <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-green-50 text-green-600 rounded-full">
+              <HelpCircle className="w-4 h-4" />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="font-bold text-slate-900 text-sm group-hover:text-slate-700">File size limits?</p>
+              <p className="font-bold text-slate-900 text-sm">File size limits?</p>
               <p className="text-xs text-slate-600 mt-0.5">Process up to 50MB per image. No daily limits.</p>
             </div>
-            <span className="text-slate-400 group-hover:text-slate-600">→</span>
-          </a>
-          <a href="#" className="flex gap-4 p-3 border border-slate-300 hover:shadow-md hover:border-slate-400 transition-all group">
-            <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-slate-100 group-hover:bg-slate-200 transition-colors">
-              <span className="text-xs font-bold text-slate-600">?</span>
+          </div>
+          <div className="flex gap-4 p-3 border border-slate-300">
+            <div className="w-8 h-8 flex-shrink-0 flex items-center justify-center bg-purple-50 text-purple-600 rounded-full">
+              <HelpCircle className="w-4 h-4" />
             </div>
             <div className="flex-1 min-w-0">
-              <p className="font-bold text-slate-900 text-sm group-hover:text-slate-700">Need an account?</p>
+              <p className="font-bold text-slate-900 text-sm">Need an account?</p>
               <p className="text-xs text-slate-600 mt-0.5">No signup required. Use for free immediately.</p>
             </div>
-            <span className="text-slate-400 group-hover:text-slate-600">→</span>
-          </a>
+          </div>
         </div>
       </section>
     </div>

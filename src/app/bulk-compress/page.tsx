@@ -4,22 +4,26 @@ import { ToolPageContent } from "@/components/ui/ToolPageContent";
 import { tools } from "@/lib/tools";
 
 export const metadata: Metadata = {
-	title: "Bulk Compress Images Online — Free & Private | Batch Compressor",
+	title: "Bulk Compress Images Online - Free Batch Image Compressor Tool | GetImgTools",
 	description:
-		"Free online bulk image compressor tool. Compress up to 50 images at once supporting JPG, PNG, and WebP formats. 100% private browser-based processing. No signup required.",
+		"Compress multiple images at once with our free bulk image compressor. Reduce file sizes of JPG, PNG, WebP images in batch. 100% private, no upload required. Perfect for websites, social media, and email.",
 	keywords: [
-		"bulk compress",
+		"bulk compress images",
 		"batch compressor",
-		"compress multiple images",
+		"compress multiple images at once",
 		"mass image compression",
 		"bulk image optimizer",
-		"batch processing",
-		"multiple file compression",
-		"free image tools"
+		"batch image processing",
+		"compress images in bulk",
+		"free bulk image compressor",
+		"online batch compressor",
+		"compress bulk images",
+		"bulk jpg compress",
+		"compress image bulk"
 	],
 	openGraph: {
-		title: "Bulk Compress Images Online — Free & Private Batch Compressor",
-		description: "Compress up to 50 images at once supporting JPG, PNG, and WebP formats. 100% private browser-based processing.",
+		title: "Bulk Compress Images Online - Free Batch Image Compressor Tool",
+		description: "Compress multiple images at once with our free bulk image compressor. Reduce file sizes of JPG, PNG, WebP images in batch.",
 	},
 };
 

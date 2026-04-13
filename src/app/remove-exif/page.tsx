@@ -4,22 +4,33 @@ import { ToolPageContent } from "@/components/ui/ToolPageContent";
 import { tools } from "@/lib/tools";
 
 export const metadata: Metadata = {
-	title: "Remove EXIF Data Online — Free & Private | Metadata Remover",
+	title: "Remove EXIF Data from Photos Online - Free Metadata Remover Tool | GetImgTools",
 	description:
-		"Free online EXIF data remover tool. Strip metadata, GPS location, camera info from images for privacy. 100% private browser-based processing. No signup required.",
+		"Strip EXIF metadata, GPS location, camera info from images for privacy. Free online EXIF data remover tool. Protect your privacy by removing hidden data from photos. 100% private browser-based processing.",
 	keywords: [
-		"remove exif",
+		"remove exif data",
 		"exif data remover",
-		"strip metadata",
-		"photo privacy",
-		"gps removal",
+		"strip metadata from photos",
+		"photo privacy tool",
+		"gps removal from images",
 		"camera info removal",
-		"image privacy tool",
-		"free image tools"
+		"image privacy",
+		"free exif remover",
+		"online metadata remover",
+		"remove data from photos",
+		"hidden exif data",
+		"how to remove exif data",
+		"clear exif",
+		"removing exif data",
+		"removing metadata from images",
+		"how to remove exif",
+		"remove metadata from photos",
+		"erase exif",
+		"remove exif"
 	],
 	openGraph: {
-		title: "Remove EXIF Data Online — Free & Private Metadata Remover",
-		description: "Strip metadata, GPS location, camera info from images for privacy. 100% private browser-based processing.",
+		title: "Remove EXIF Data from Photos Online - Free Metadata Remover Tool",
+		description: "Strip EXIF metadata, GPS location, camera info from images for privacy. Protect your privacy by removing hidden data from photos.",
 	},
 };
 
