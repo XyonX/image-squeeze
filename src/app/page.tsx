@@ -241,33 +241,83 @@ export default function HomePage() {
 
 				{/* Blog Cards - Horizontal Layout */}
 				<div className="space-y-3">
-					{articles.map((article) => (
-						<a key={article.id} href="#" className="flex gap-4 p-4 bg-white border border-slate-300 hover:border-slate-500 hover:shadow-md transition-all duration-200">
-							{/* Icon/Indicator */}
-							<div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-slate-100">
-								<div className="w-6 h-6 bg-slate-600"></div>
-							</div>
+					<Link href="/blog/jpg-vs-png-vs-webp-which-format" className="flex gap-4 p-4 bg-white border border-slate-300 hover:border-slate-500 hover:shadow-md transition-all duration-200">
+						{/* Icon/Indicator */}
+						<div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-slate-100">
+							<div className="w-6 h-6 bg-slate-600"></div>
+						</div>
 
-							{/* Content */}
-							<div className="flex-1 min-w-0">
-								<div className="flex items-start justify-between gap-3 mb-1">
-									<h3 className="text-sm font-bold text-slate-900 leading-tight">
-										{article.title}
-									</h3>
-									<span className="text-xs text-slate-500 flex-shrink-0">{article.readTime}</span>
-								</div>
-								<p className="text-xs text-slate-600 mb-2 line-clamp-2">{article.description}</p>
-								<span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2 py-0.5">
-									{article.category}
-								</span>
+						{/* Content */}
+						<div className="flex-1 min-w-0">
+							<div className="flex items-start justify-between gap-3 mb-1">
+								<h3 className="text-sm font-bold text-slate-900 leading-tight">
+									JPG vs PNG vs WebP: Which Format Should You Use?
+								</h3>
+								<span className="text-xs text-slate-500 flex-shrink-0">6 min read</span>
 							</div>
+							<p className="text-xs text-slate-600 mb-2 line-clamp-2">Comprehensive comparison of image formats. Learn when to use JPG, PNG, or WebP for best quality and smallest file size.</p>
+							<span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2 py-0.5">
+								Formats
+							</span>
+						</div>
 
-							{/* Arrow */}
-							<div className="flex items-center justify-center flex-shrink-0">
-								<span className="text-slate-400">→</span>
+						{/* Arrow */}
+						<div className="flex items-center justify-center flex-shrink-0">
+							<span className="text-slate-400">→</span>
+						</div>
+					</Link>
+					
+					<Link href="/blog/how-to-compress-images-for-web-performance" className="flex gap-4 p-4 bg-white border border-slate-300 hover:border-slate-500 hover:shadow-md transition-all duration-200">
+						{/* Icon/Indicator */}
+						<div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-slate-100">
+							<div className="w-6 h-6 bg-slate-600"></div>
+						</div>
+
+						{/* Content */}
+						<div className="flex-1 min-w-0">
+							<div className="flex items-start justify-between gap-3 mb-1">
+								<h3 className="text-sm font-bold text-slate-900 leading-tight">
+									How to Compress Images for Web Performance (2025 Guide)
+								</h3>
+								<span className="text-xs text-slate-500 flex-shrink-0">8 min read</span>
 							</div>
-						</a>
-					))}
+							<p className="text-xs text-slate-600 mb-2 line-clamp-2">Complete guide to image compression for faster websites. Learn techniques, tools, and best practices for optimal web performance.</p>
+							<span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2 py-0.5">
+								Performance
+							</span>
+						</div>
+
+						{/* Arrow */}
+						<div className="flex items-center justify-center flex-shrink-0">
+							<span className="text-slate-400">→</span>
+						</div>
+					</Link>
+					
+					<Link href="/blog/remove-exif-data-from-photos-why-how" className="flex gap-4 p-4 bg-white border border-slate-300 hover:border-slate-500 hover:shadow-md transition-all duration-200">
+						{/* Icon/Indicator */}
+						<div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-slate-100">
+							<div className="w-6 h-6 bg-slate-600"></div>
+						</div>
+
+						{/* Content */}
+						<div className="flex-1 min-w-0">
+							<div className="flex items-start justify-between gap-3 mb-1">
+								<h3 className="text-sm font-bold text-slate-900 leading-tight">
+									Remove EXIF Data from Photos: Why & How to Do It
+								</h3>
+								<span className="text-xs text-slate-500 flex-shrink-0">5 min read</span>
+							</div>
+							<p className="text-xs text-slate-600 mb-2 line-clamp-2">Protect your privacy by removing EXIF metadata from images. Learn what EXIF data contains and how to strip it safely.</p>
+							<span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2 py-0.5">
+								Privacy
+							</span>
+						</div>
+
+						{/* Arrow */}
+						<div className="flex items-center justify-center flex-shrink-0">
+							<span className="text-slate-400">→</span>
+						</div>
+					</Link>
 				</div>
 			</section>
 		</div>
