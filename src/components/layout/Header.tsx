@@ -84,15 +84,9 @@ export function Header() {
 
 					{/* Desktop right side */}
 					<div className="hidden md:flex items-center gap-3">
-						<div className="relative group">
-							<div className="absolute inset-0 bg-gradient-to-r from-emerald-500 to-emerald-600 rounded-full blur opacity-20 group-hover:opacity-30 transition-opacity duration-300"></div>
-							<span className="relative text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-full font-medium flex items-center gap-1.5">
-								<svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-									<path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-								</svg>
-								100% Private
-							</span>
-						</div>
+						<span className="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1">
+							100% Private
+						</span>
 					</div>
 
 					{/* Mobile toggle */}

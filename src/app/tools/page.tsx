@@ -1,3 +1,5 @@
+"use client";
+
 import { tools } from "@/lib/tools";
 import { ToolCard } from "@/components/ui/ToolCard";
 import Link from "next/link";
@@ -91,16 +93,14 @@ export default function AllToolsPage() {
 
 			{/* Back to top */}
 			<div className="text-center py-6 border-t border-slate-300">
-				<Link
-					href="#"
+				<button
 					className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-colors"
-					onClick={(e) => {
-						e.preventDefault();
+					onClick={() => {
 						window.scrollTo({ top: 0, behavior: 'smooth' });
 					}}
 				>
 					↑ Back to Top
-				</Link>
+				</button>
 			</div>
 		</div>
 	);

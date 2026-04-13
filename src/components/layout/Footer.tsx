@@ -79,15 +79,9 @@ export function Footer() {
 					<div>
 						<p className="text-xs font-bold text-slate-900 uppercase tracking-widest mb-3">Status</p>
 						<div className="space-y-3">
-							<div className="relative group">
-								<div className="absolute inset-0 bg-gradient-to-r from-emerald-500/20 to-emerald-600/20 rounded-full blur opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-								<span className="relative text-xs text-emerald-700 bg-emerald-50 border border-emerald-200 px-3 py-1.5 rounded-full font-medium flex items-center gap-1.5">
-									<svg className="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-										<path fillRule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clipRule="evenodd" />
-									</svg>
-									100% Browser-Based
-								</span>
-							</div>
+							<span className="text-xs font-bold text-slate-600 bg-slate-100 px-3 py-1">
+								100% Browser-Based
+							</span>
 							<div className="text-xs text-slate-600 flex items-center gap-2">
 								<span className="inline-block w-1.5 h-1.5 bg-slate-400 rounded-full"></span> No Signup Required
 							</div>

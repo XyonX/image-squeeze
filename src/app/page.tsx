@@ -135,29 +135,16 @@ export default function HomePage() {
 				</section>
 			)}
 
-			{/* Popular / Trending Tools - Larger Cards */}
+			{/* Popular / Trending Tools */}
 			<section className="space-y-3 mb-8">
 				<h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
 					<span className="w-8 h-8 bg-orange-50 rounded-lg flex items-center justify-center text-base">🔥</span>
 					<span className="text-orange-500">Popular</span> Right Now
 				</h2>
 				<p className="text-xs text-slate-600">Most-used tools to get started</p>
-				<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4">
+				<div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-3">
 					{popularTools.map((tool) => (
-						<Link key={tool.id} href={tool.route} className="group bg-white/80 backdrop-blur-sm border border-white/40 rounded-2xl hover:border-primary/30 hover:shadow-xl hover:shadow-primary/10 transition-all duration-300 p-5">
-							<div className="flex flex-col items-center text-center h-full">
-								<div
-									className="w-14 h-14 rounded-xl flex items-center justify-center mb-3 transition-all duration-300 group-hover:scale-110 group-hover:shadow-lg"
-									style={{ 
-										background: `linear-gradient(135deg, ${tool.color}15 0%, ${tool.color}10 100%)`,
-										border: `1px solid ${tool.color}20`
-									}}
-								>
-									<tool.icon className="w-7 h-7 transition-transform duration-300 group-hover:scale-110" style={{ color: tool.color }} />
-								</div>
-								<span className="text-sm font-semibold text-slate-900 group-hover:text-primary transition-colors duration-300">{tool.name}</span>
-							</div>
-						</Link>
+						tool && <ToolCard key={tool.id} tool={tool} />
 					))}
 				</div>
 			</section>
@@ -178,7 +165,7 @@ export default function HomePage() {
 							<p className="text-xs text-slate-600 mb-3">{workflow.description}</p>
 							<div className="grid grid-cols-3 gap-2">
 								{workflow.tools.map((tool) => (
-									<ToolCard key={tool.id} tool={tool} />
+									tool && <ToolCard key={tool.id} tool={tool} />
 								))}
 							</div>
 						</div>
@@ -238,7 +225,7 @@ export default function HomePage() {
 			</section>
 
 			{/* Learning & Insights Section */}
-			<section className="space-y-4 bg-gradient-to-br from-slate-50 to-white border border-slate-200 rounded-2xl py-8 px-6 mb-8">
+			<section className="space-y-4 border border-slate-300 py-8 px-6 mb-8">
 				<div className="flex items-center justify-between">
 					<div>
 						<h2 className="text-lg font-bold text-slate-900 flex items-center gap-2">
@@ -247,7 +234,7 @@ export default function HomePage() {
 						</h2>
 						<p className="text-xs text-slate-600 mt-1">Insights about image optimization and performance</p>
 					</div>
-					<Link href="/blog" className="text-xs font-bold text-slate-600 hover:text-primary border border-slate-300 hover:border-primary/30 px-3 py-1.5 rounded-lg transition-colors duration-200">
+					<Link href="/blog" className="text-xs font-bold text-slate-600 hover:text-slate-900 border border-slate-300 hover:border-slate-500 px-3 py-1.5 transition-colors">
 						View All Articles
 					</Link>
 				</div>
@@ -255,29 +242,29 @@ export default function HomePage() {
 				{/* Blog Cards - Horizontal Layout */}
 				<div className="space-y-3">
 					{articles.map((article) => (
-						<a key={article.id} href="#" className="flex gap-4 p-4 bg-white border border-slate-200 rounded-xl hover:border-primary/30 hover:shadow-lg hover:shadow-primary/5 transition-all duration-200 group">
+						<a key={article.id} href="#" className="flex gap-4 p-4 bg-white border border-slate-300 hover:border-slate-500 hover:shadow-md transition-all duration-200">
 							{/* Icon/Indicator */}
-							<div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-gradient-to-br from-cyan-50 to-cyan-100 rounded-lg">
-								<div className="w-6 h-6 rounded-full bg-cyan-500"></div>
+							<div className="w-12 h-12 flex-shrink-0 flex items-center justify-center bg-slate-100">
+								<div className="w-6 h-6 bg-slate-600"></div>
 							</div>
 
 							{/* Content */}
 							<div className="flex-1 min-w-0">
 								<div className="flex items-start justify-between gap-3 mb-1">
-									<h3 className="text-sm font-bold text-slate-900 group-hover:text-primary transition-colors leading-tight">
+									<h3 className="text-sm font-bold text-slate-900 leading-tight">
 										{article.title}
 									</h3>
 									<span className="text-xs text-slate-500 flex-shrink-0">{article.readTime}</span>
 								</div>
 								<p className="text-xs text-slate-600 mb-2 line-clamp-2">{article.description}</p>
-								<span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2 py-0.5 rounded inline-block">
+								<span className="text-xs font-semibold text-slate-500 bg-slate-100 px-2 py-0.5">
 									{article.category}
 								</span>
 							</div>
 
 							{/* Arrow */}
 							<div className="flex items-center justify-center flex-shrink-0">
-								<span className="text-slate-400 group-hover:text-primary transition-colors">→</span>
+								<span className="text-slate-400">→</span>
 							</div>
 						</a>
 					))}
