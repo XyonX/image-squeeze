@@ -118,7 +118,7 @@ export function ImagePreview({
 		<>
 			<div className={`relative group ${className}`}>
 				{/* Preview container */}
-				<div className={`relative ${sizeClasses[size]} rounded-lg overflow-hidden border border-slate-200 bg-slate-50`}>
+				<div className={`relative ${sizeClasses[size]} overflow-hidden border border-slate-300 bg-white`}>
 					{/* Image */}
 					<img
 						ref={imgRef}
@@ -166,11 +166,11 @@ export function ImagePreview({
 				{showInfo && (
 					<div className="mt-2 space-y-1">
 						{displayFileName && (
-							<p className="text-xs font-medium text-slate-900 truncate" title={displayFileName}>
+							<p className="text-xs font-bold text-slate-900 truncate" title={displayFileName}>
 								{displayFileName}
 							</p>
 						)}
-						<div className="flex items-center gap-2 text-xs text-slate-500">
+						<div className="flex items-center gap-2 text-xs text-slate-600">
 							{displayDimensions && (
 								<span>
 									{displayDimensions.width}×{displayDimensions.height}

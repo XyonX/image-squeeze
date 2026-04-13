@@ -235,7 +235,7 @@ export function ToolPageContent({ tool, children }: ToolPageContentProps) {
       <section className="bg-white border border-slate-300 p-6">
         <div className="mb-4">
           <span className="inline-block bg-slate-900 text-white text-xs font-bold px-3 py-1 mb-3">
-            TOOL INTERFACE
+            POPULAR TOOL
           </span>
           <h2 className="text-xl font-bold text-slate-900">
             {tool.name} Tool

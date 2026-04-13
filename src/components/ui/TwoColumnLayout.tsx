@@ -128,7 +128,7 @@ export function CardTwoColumnLayout({
 	leftIcon,
 	rightIcon,
 	collapseOnMobile = true,
-	gap = "gap-8",
+	gap = "gap-4",
 }: {
 	left: ReactNode;
 	right: ReactNode;
@@ -142,22 +142,22 @@ export function CardTwoColumnLayout({
 	return (
 		<div className={`${collapseOnMobile ? 'flex flex-col lg:grid lg:grid-cols-2' : 'grid grid-cols-1 lg:grid-cols-2'} ${gap}`}>
 			{/* Left card */}
-			<div className="bg-white border border-slate-200 rounded-2xl p-6">
+			<div className="bg-white border border-slate-300 p-6">
 				{(leftTitle || leftIcon) && (
 					<div className="flex items-center gap-2 mb-4">
-						{leftIcon && <div className="text-primary">{leftIcon}</div>}
-						{leftTitle && <h3 className="text-lg font-semibold text-slate-900">{leftTitle}</h3>}
+						{leftIcon && <div className="text-slate-700">{leftIcon}</div>}
+						{leftTitle && <h3 className="text-base font-bold text-slate-900">{leftTitle}</h3>}
 					</div>
 				)}
 				{left}
 			</div>
 
 			{/* Right card */}
-			<div className="bg-white border border-slate-200 rounded-2xl p-6">
+			<div className="bg-white border border-slate-300 p-6">
 				{(rightTitle || rightIcon) && (
 					<div className="flex items-center gap-2 mb-4">
-						{rightIcon && <div className="text-primary">{rightIcon}</div>}
-						{rightTitle && <h3 className="text-lg font-semibold text-slate-900">{rightTitle}</h3>}
+						{rightIcon && <div className="text-slate-700">{rightIcon}</div>}
+						{rightTitle && <h3 className="text-base font-bold text-slate-900">{rightTitle}</h3>}
 					</div>
 				)}
 				{right}
@@ -181,7 +181,7 @@ export function UploadPreviewLayout({
 	showPreview?: boolean;
 }) {
 	return (
-		<div className="space-y-8">
+		<div className="space-y-6">
 			{/* Upload section */}
 			{uploadSection}
 
@@ -189,7 +189,7 @@ export function UploadPreviewLayout({
 			{(previewSection || controlsSection) && (
 				<CardTwoColumnLayout
 					left={
-						<div className="space-y-6">
+						<div className="space-y-4">
 							{controlsSection}
 						</div>
 					}
@@ -199,8 +199,8 @@ export function UploadPreviewLayout({
 								{previewSection}
 							</div>
 						) : (
-							<div className="h-full flex items-center justify-center text-slate-400">
-								<p>Preview will appear here after upload</p>
+							<div className="h-full flex items-center justify-center text-slate-500 py-8">
+								<p className="text-sm">Preview will appear here</p>
 							</div>
 						)
 					}
@@ -212,7 +212,7 @@ export function UploadPreviewLayout({
 
 			{/* Results section (full width) */}
 			{resultsSection && (
-				<div className="mt-8">
+				<div className="mt-6">
 					{resultsSection}
 				</div>
 			)}

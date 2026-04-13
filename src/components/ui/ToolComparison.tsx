@@ -28,17 +28,17 @@ export function ToolComparison({
 	className = "",
 }: ToolComparisonProps) {
 	return (
-		<div className={`bg-white border border-slate-200 rounded-xl p-5 ${className}`}>
+		<div className={`bg-white border border-slate-300 p-5 ${className}`}>
 			<div className="mb-6">
-				<h3 className="font-semibold text-slate-900 text-lg mb-1">{title}</h3>
-				{subtitle && <p className="text-sm text-slate-600">{subtitle}</p>}
+				<h3 className="font-bold text-slate-900 text-base mb-1">{title}</h3>
+				{subtitle && <p className="text-xs text-slate-600">{subtitle}</p>}
 			</div>
 
 			<div className="overflow-x-auto">
 				<table className="w-full">
 					<thead>
-						<tr className="border-b border-slate-200">
-							<th className="text-left py-3 px-4 text-sm font-medium text-slate-700 min-w-[200px]">
+						<tr className="border-b border-slate-300">
+							<th className="text-left py-3 px-4 text-xs font-bold text-slate-900 min-w-[200px]">
 								Feature
 							</th>
 							{tools.map((tool, index) => (
@@ -55,11 +55,11 @@ export function ToolComparison({
 					</thead>
 					<tbody>
 						{features.map((feature, featureIndex) => (
-							<tr key={featureIndex} className="border-b border-slate-100 last:border-0">
+							<tr key={featureIndex} className="border-b border-slate-200 last:border-0">
 								<td className="py-3 px-4">
-									<div className="font-medium text-slate-900 text-sm">{feature.name}</div>
+									<div className="font-bold text-slate-900 text-xs">{feature.name}</div>
 									{feature.description && (
-										<div className="text-xs text-slate-500 mt-1">{feature.description}</div>
+										<div className="text-xs text-slate-600 mt-1">{feature.description}</div>
 									)}
 								</td>
 								{tools.map((tool, toolIndex) => {
@@ -93,22 +93,22 @@ export function ToolComparison({
 			</div>
 
 			{/* Legend */}
-			<div className="mt-6 pt-6 border-t border-slate-200">
-				<div className="flex flex-wrap items-center justify-center gap-4 text-sm">
+			<div className="mt-6 pt-6 border-t border-slate-300">
+				<div className="flex flex-wrap items-center justify-center gap-4 text-xs">
 					<div className="flex items-center gap-2">
-						<div className="w-4 h-4 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center">
+						<div className="w-4 h-4 bg-slate-200 text-slate-600 rounded-full flex items-center justify-center">
 							<Check className="w-2.5 h-2.5" />
 						</div>
 						<span className="text-slate-600">Supported</span>
 					</div>
 					<div className="flex items-center gap-2">
-						<div className="w-4 h-4 bg-red-100 text-red-600 rounded-full flex items-center justify-center">
+						<div className="w-4 h-4 bg-slate-200 text-slate-600 rounded-full flex items-center justify-center">
 							<X className="w-2.5 h-2.5" />
 						</div>
 						<span className="text-slate-600">Not Supported</span>
 					</div>
 					<div className="flex items-center gap-2">
-						<div className="w-4 h-4 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center">
+						<div className="w-4 h-4 bg-slate-200 text-slate-600 rounded-full flex items-center justify-center">
 							<Minus className="w-2.5 h-2.5" />
 						</div>
 						<span className="text-slate-600">Partial Support</span>
