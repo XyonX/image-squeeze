@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Calendar, Clock, Share2, BookOpen, CheckCircle, ExternalLink } from "lucide-react";
 
 export const metadata: Metadata = {
-	title: "How to Compress Images for Web Performance (2025 Complete Guide)",
+	title: "How to Compress Images for Web Performance (2025 Complete Guide) | GetImgTools",
 	description: "Complete guide to image compression for faster websites. Learn techniques, tools, and best practices for optimal web performance. Free tools included.",
 	keywords: [
 		"compress images for web",
@@ -12,6 +12,7 @@ export const metadata: Metadata = {
 		"reduce image file size",
 		"fast loading websites",
 		"SEO image optimization",
+		"image format comparison",
 	],
 	openGraph: {
 		title: "How to Compress Images for Web Performance (2025 Complete Guide)",
@@ -23,44 +24,44 @@ export default function CompressionGuidePage() {
 	return (
 		<article className="max-w-4xl mx-auto">
 			{/* Article Header */}
-			<header className="mb-8">
-				<div className="flex items-center gap-3 mb-4">
-					<span className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
+			<header className="mb-8 pb-6 border-b border-slate-300">
+				<div className="flex items-center gap-2 mb-4 flex-wrap">
+					<span className="px-2 py-1 bg-slate-200 text-slate-700 text-xs font-bold">
 						Performance
 					</span>
-					<div className="flex items-center gap-4 text-sm text-slate-500">
+					<div className="flex items-center gap-3 text-xs text-slate-600">
 						<span className="flex items-center gap-1">
-							<Calendar className="w-4 h-4" />
+							<Calendar className="w-3 h-3" />
 							March 22, 2025
 						</span>
 						<span className="flex items-center gap-1">
-							<Clock className="w-4 h-4" />
+							<Clock className="w-3 h-3" />
 							8 min read
 						</span>
 					</div>
 				</div>
 				
-				<h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mb-4">
-					How to Compress Images for Web Performance (2025 Complete Guide)
+				<h1 className="text-4xl font-bold tracking-tight text-slate-900 mb-4">
+					How to Compress Images for Web Performance
 				</h1>
 				
-				<p className="text-lg text-slate-600 mb-6">
+				<p className="text-base text-slate-600 mb-4 leading-relaxed">
 					Images account for <strong>over 50% of webpage weight</strong>. Learn how to compress them properly for faster loading, better SEO, and improved user experience.
 				</p>
 				
-				<div className="flex items-center gap-4 pt-4 border-t border-slate-200">
-					<button className="flex items-center gap-2 px-4 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 rounded-lg transition-colors">
-						<Share2 className="w-4 h-4" />
+				<div className="flex items-center gap-3 pt-4">
+					<button className="flex items-center gap-2 px-3 py-2 bg-slate-100 hover:bg-slate-200 text-slate-700 text-xs font-bold transition-colors">
+						<Share2 className="w-3 h-3" />
 						Share
 					</button>
-					<span className="text-sm text-slate-500">Updated: March 2025</span>
+					<span className="text-xs text-slate-600">Updated: March 2025</span>
 				</div>
 			</header>
 
 			{/* Table of Contents */}
-			<aside className="bg-slate-50 border border-slate-200 rounded-xl p-6 mb-8">
-				<h2 className="text-lg font-bold text-slate-900 mb-3 flex items-center gap-2">
-					<BookOpen className="w-5 h-5" />
+			<aside className="bg-white border border-slate-300 p-5 mb-8">
+				<h2 className="text-base font-bold text-slate-900 mb-3 flex items-center gap-2">
+					<BookOpen className="w-4 h-4" />
 					Table of Contents
 				</h2>
 				<nav className="space-y-2">
@@ -75,7 +76,7 @@ export default function CompressionGuidePage() {
 						<a
 							key={item.id}
 							href={`#${item.id}`}
-							className="block text-slate-700 hover:text-primary transition-colors"
+							className="block text-xs text-slate-700 hover:text-slate-900 font-medium transition-colors"
 						>
 							• {item.title}
 						</a>
@@ -96,13 +97,13 @@ export default function CompressionGuidePage() {
 				<section id="why" className="scroll-mt-20">
 					<h2 className="text-2xl font-bold text-slate-900 mt-8 mb-4">Why Image Compression Matters</h2>
 					
-					<div className="grid md:grid-cols-2 gap-6 mb-6">
-						<div className="bg-white border border-slate-200 rounded-xl p-5">
-							<h3 className="font-bold text-slate-900 mb-2 flex items-center gap-2">
-								<CheckCircle className="w-5 h-5 text-emerald-500" />
+					<div className="grid md:grid-cols-2 gap-4 mb-6">
+						<div className="bg-white border border-slate-300 p-4">
+							<h3 className="font-bold text-slate-900 mb-2 flex items-center gap-2 text-sm">
+								<CheckCircle className="w-4 h-4 text-slate-700" />
 								SEO Benefits
 							</h3>
-							<ul className="space-y-2 text-slate-600">
+							<ul className="space-y-1 text-slate-600 text-xs">
 								<li>• Faster loading = better Google rankings</li>
 								<li>• Reduced bounce rates improve SEO</li>
 								<li>• Mobile-first indexing favors optimized sites</li>
@@ -110,12 +111,12 @@ export default function CompressionGuidePage() {
 							</ul>
 						</div>
 						
-						<div className="bg-white border border-slate-200 rounded-xl p-5">
-							<h3 className="font-bold text-slate-900 mb-2 flex items-center gap-2">
-								<CheckCircle className="w-5 h-5 text-emerald-500" />
+						<div className="bg-white border border-slate-300 p-4">
+							<h3 className="font-bold text-slate-900 mb-2 flex items-center gap-2 text-sm">
+								<CheckCircle className="w-4 h-4 text-slate-700" />
 								User Experience
 							</h3>
-							<ul className="space-y-2 text-slate-600">
+							<ul className="space-y-1 text-slate-600 text-xs">
 								<li>• 53% of mobile users abandon slow sites</li>
 								<li>• Faster sites increase conversion rates</li>
 								<li>• Better performance on mobile data</li>
@@ -135,19 +136,19 @@ export default function CompressionGuidePage() {
 					<h2 className="text-2xl font-bold text-slate-900 mt-8 mb-4">Choosing the Right Format</h2>
 					
 					<div className="overflow-x-auto mb-6">
-						<table className="min-w-full border border-slate-200">
-							<thead className="bg-slate-50">
+						<table className="min-w-full border border-slate-300">
+							<thead className="bg-white">
 								<tr>
-									<th className="border border-slate-200 px-4 py-3 text-left font-semibold">Format</th>
-									<th className="border border-slate-200 px-4 py-3 text-left font-semibold">Best For</th>
-									<th className="border border-slate-200 px-4 py-3 text-left font-semibold">Compression</th>
-									<th className="border border-slate-200 px-4 py-3 text-left font-semibold">Browser Support</th>
+									<th className="border border-slate-300 px-3 py-2 text-left font-bold text-sm">Format</th>
+									<th className="border border-slate-300 px-3 py-2 text-left font-bold text-sm">Best For</th>
+									<th className="border border-slate-300 px-3 py-2 text-left font-bold text-sm">Compression</th>
+									<th className="border border-slate-300 px-3 py-2 text-left font-bold text-sm">Browser Support</th>
 								</tr>
 							</thead>
 							<tbody>
 								<tr>
-									<td className="border border-slate-200 px-4 py-3 font-medium">JPEG/JPG</td>
-									<td className="border border-slate-200 px-4 py-3">Photographs, complex images</td>
+									<td className="border border-slate-300 px-3 py-2 font-bold text-xs">JPEG/JPG</td>
+									<td className="border border-slate-300 px-3 py-2 text-xs">Photographs, complex images</td>
 									<td className="border border-slate-200 px-4 py-3">Lossy (adjustable)</td>
 									<td className="border border-slate-200 px-4 py-3">100%</td>
 								</tr>

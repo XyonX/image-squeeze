@@ -22,29 +22,29 @@ export const metadata: Metadata = {
 export default function ExifGuidePage() {
 	return (
 		<article className="max-w-4xl mx-auto">
-			<header className="mb-8">
-				<div className="flex items-center gap-3 mb-4">
-					<span className="px-3 py-1 bg-primary/10 text-primary text-sm font-medium rounded-full">
+			<header className="mb-8 pb-6 border-b border-slate-300">
+				<div className="flex items-center gap-2 mb-4 flex-wrap">
+					<span className="px-2 py-1 bg-slate-200 text-slate-700 text-xs font-bold">
 						Privacy
 					</span>
-					<div className="flex items-center gap-4 text-sm text-slate-500">
+					<div className="flex items-center gap-3 text-xs text-slate-600">
 						<span className="flex items-center gap-1">
-							<Calendar className="w-4 h-4" />
+							<Calendar className="w-3 h-3" />
 							March 18, 2025
 						</span>
 						<span className="flex items-center gap-1">
-							<Clock className="w-4 h-4" />
+							<Clock className="w-3 h-3" />
 							5 min read
 						</span>
 					</div>
 				</div>
 				
-				<h1 className="text-3xl sm:text-4xl font-extrabold tracking-tight text-slate-900 mb-4">
-					Remove EXIF Data from Photos: Why & How to Protect Your Privacy
+				<h1 className="text-4xl font-bold tracking-tight text-slate-900 mb-4">
+					Remove EXIF Data from Photos: Protect Your Privacy
 				</h1>
 				
-				<p className="text-lg text-slate-600 mb-6">
-					Your photos contain hidden metadata that can reveal your location, camera details, and even when you took the photo. Here's how to remove it.
+				<p className="text-base text-slate-600 mb-4 leading-relaxed">
+					Your photos contain hidden metadata that can reveal your location, camera details, and when you took the photo. Here's how to remove it safely.
 				</p>
 			</header>
 
@@ -57,12 +57,12 @@ export default function ExifGuidePage() {
 					</p>
 					
 					<div className="grid sm:grid-cols-2 gap-4 my-6">
-						<div className="bg-white border border-slate-200 rounded-xl p-5">
-							<h3 className="font-bold text-slate-900 mb-2 flex items-center gap-2">
-								<Shield className="w-5 h-5 text-rose-500" />
+						<div className="bg-white border border-slate-300 p-4">
+							<h3 className="font-bold text-slate-900 mb-2 flex items-center gap-2 text-sm">
+								<Shield className="w-4 h-4 text-slate-700" />
 								Privacy Risks
 							</h3>
-							<ul className="space-y-2 text-slate-600">
+							<ul className="space-y-1 text-slate-600 text-xs">
 								<li>• GPS coordinates (exact location)</li>
 								<li>• Date and time taken</li>
 								<li>• Camera make and model</li>
@@ -71,9 +71,9 @@ export default function ExifGuidePage() {
 							</ul>
 						</div>
 						
-						<div className="bg-white border border-slate-200 rounded-xl p-5">
-							<h3 className="font-bold text-slate-900 mb-2 flex items-center gap-2">
-								<Lock className="w-5 h-5 text-emerald-500" />
+						<div className="bg-white border border-slate-300 p-4">
+							<h3 className="font-bold text-slate-900 mb-2 flex items-center gap-2 text-sm">
+								<Lock className="w-4 h-4 text-slate-700" />
 								Why Remove It?
 							</h3>
 							<ul className="space-y-2 text-slate-600">
