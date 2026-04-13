@@ -88,80 +88,44 @@ export default function HomePage() {
 
 	return (
 		<div className="space-y-0">
-			{/* Hero Section with Stats */}
-			<div className="relative text-center mb-8">
-				{/* Background gradient */}
-				<div className="absolute inset-0 -top-8 -left-8 -right-8 h-64 bg-gradient-to-br from-primary/5 via-purple-500/5 to-emerald-500/5 rounded-3xl blur-3xl opacity-70"></div>
-				
-				<div className="relative">
-					<h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold tracking-tight text-slate-900 mb-4">
-						Free Online <span className="bg-gradient-to-r from-primary to-purple-600 bg-clip-text text-transparent">Image Tools</span>
-					</h1>
-					<p className="text-slate-600 text-lg sm:text-xl max-w-2xl mx-auto mb-8">
-						Compress, resize, convert & edit — all in your browser. 
-						<span className="text-slate-800 font-semibold"> 100% private</span>, no signup needed.
-					</p>
-					
-					{/* Stats */}
-					<div className="flex flex-wrap justify-center gap-6 mb-10">
-						<div className="flex flex-col items-center">
-							<div className="text-2xl font-bold text-slate-900">20+</div>
-							<div className="text-sm text-slate-500">Tools</div>
-						</div>
-						<div className="flex flex-col items-center">
-							<div className="text-2xl font-bold text-slate-900">100%</div>
-							<div className="text-sm text-slate-500">Private</div>
-						</div>
-						<div className="flex flex-col items-center">
-							<div className="text-2xl font-bold text-slate-900">0</div>
-							<div className="text-sm text-slate-500">Signup</div>
-						</div>
-						<div className="flex flex-col items-center">
-							<div className="text-2xl font-bold text-slate-900">∞</div>
-							<div className="text-sm text-slate-500">Free</div>
-						</div>
+			{/* Header with Filter */}
+			<section className="border border-slate-300 p-6 mb-8">
+				<div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+					<div>
+						<h1 className="text-2xl font-bold text-slate-900">Image Tools</h1>
+						<p className="text-xs text-slate-600 mt-2">{tools.length} total tools available</p>
 					</div>
-					
-					{/* Popular tools quick links */}
-					<div className="flex flex-wrap justify-center gap-3 max-w-2xl mx-auto">
-						<a href="/compress-jpg" className="px-4 py-2 bg-gradient-to-r from-primary/10 to-primary/5 border border-primary/20 rounded-full text-sm font-medium text-primary hover:bg-primary/15 transition-colors duration-200">
-							Compress JPG
-						</a>
-						<a href="/resize-image" className="px-4 py-2 bg-gradient-to-r from-purple-600/10 to-purple-600/5 border border-purple-600/20 rounded-full text-sm font-medium text-purple-600 hover:bg-purple-600/15 transition-colors duration-200">
-							Resize Image
-						</a>
-						<a href="/convert-to-webp" className="px-4 py-2 bg-gradient-to-r from-emerald-600/10 to-emerald-600/5 border border-emerald-600/20 rounded-full text-sm font-medium text-emerald-600 hover:bg-emerald-600/15 transition-colors duration-200">
-							Convert to WebP
-						</a>
-						<a href="/bulk-compress" className="px-4 py-2 bg-gradient-to-r from-amber-600/10 to-amber-600/5 border border-amber-600/20 rounded-full text-sm font-medium text-amber-600 hover:bg-amber-600/15 transition-colors duration-200">
-							Bulk Compress
-						</a>
-					</div>
+					<Link
+						href="/tools"
+						className="inline-flex items-center gap-2 px-4 py-2 bg-slate-900 hover:bg-slate-800 text-white text-xs font-bold transition-colors whitespace-nowrap"
+					>
+						View All Tools →
+					</Link>
 				</div>
-			</div>
+			</section>
 
 			{/* Featured Tool Spotlight - Hero Card */}
 			{featuredTool && (
-				<section className="mb-8 bg-gradient-to-r from-primary/10 to-purple-600/10 border border-primary/20 rounded-2xl p-8">
+				<section className="mb-8 bg-slate-900 text-white p-8 border border-slate-800">
 					<div className="flex items-start justify-between gap-8">
 						<div className="flex-1">
-							<div className="inline-block bg-gradient-to-r from-primary to-purple-600 text-white text-xs font-bold px-3 py-1 mb-3 rounded-full">
-								FEATURED TOOL
+							<div className="inline-block bg-orange-500 text-white text-xs font-bold px-3 py-1 mb-3">
+								FEATURED DEAL
 							</div>
-							<h2 className="text-3xl font-bold mb-3 text-slate-900">{featuredTool.name}</h2>
-							<p className="text-slate-600 text-sm mb-4 max-w-lg">
+							<h2 className="text-3xl font-bold mb-3">{featuredTool.name}</h2>
+							<p className="text-slate-300 text-sm mb-4 max-w-lg">
 								The most popular tool for reducing image file sizes without quality loss. Perfect for web optimization and social media.
 							</p>
 							<Link 
 								href={featuredTool.route}
-								className="inline-block bg-gradient-to-r from-primary to-purple-600 hover:from-primary/90 hover:to-purple-600/90 text-white font-bold px-6 py-3 rounded-lg transition-all duration-200 hover:shadow-lg"
+								className="inline-block bg-orange-500 hover:bg-orange-600 text-white font-bold px-6 py-3 transition-colors"
 							>
 								Try Now →
 							</Link>
 						</div>
 						<div className="hidden md:flex items-center justify-center">
 							<div
-								className="w-32 h-32 flex items-center justify-center rounded-2xl"
+								className="w-32 h-32 flex items-center justify-center"
 								style={{ backgroundColor: `${featuredTool.color}20` }}
 							>
 								<featuredTool.icon className="w-16 h-16" style={{ color: featuredTool.color }} />
