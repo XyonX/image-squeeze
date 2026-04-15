@@ -47,6 +47,16 @@ export default function sitemap(): MetadataRoute.Sitemap {
 			title: "Image Optimization for Social Media: Complete 2025 Guide",
 			date: "2025-03-25",
 		},
+		{
+			slug: "how-to-remove-background-from-images-for-free",
+			title: "How to Remove Background from Images for Free: Complete Guide",
+			date: "2025-04-10",
+		},
+		{
+			slug: "ultimate-image-optimization-guide-for-websites",
+			title: "Ultimate Image Optimization Guide for Websites (2025)",
+			date: "2025-04-15",
+		},
 	];
 
 	const blogPages = blogPosts.map((post) => ({

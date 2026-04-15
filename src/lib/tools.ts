@@ -16,6 +16,7 @@ import {
 	Palette,
 	Eye,
 	Smartphone,
+	Sparkles,
 	type LucideIcon,
 } from "lucide-react";
 
@@ -184,6 +185,17 @@ export const tools: Tool[] = [
 		icon: Sliders,
 		acceptedFormats: [".jpg", ".jpeg", ".png", ".webp"],
 		color: "#ec4899",
+		category: "edit",
+	},
+	{
+		id: "remove-background",
+		name: "Remove Background",
+		route: "/remove-background",
+		description: "Remove background from images with AI precision. Perfect for product photos and design.",
+		keyword: "remove background from image",
+		icon: Sparkles,
+		acceptedFormats: [".jpg", ".jpeg", ".png", ".webp", ".gif"],
+		color: "#8b5cf6",
 		category: "edit",
 	},
 	{

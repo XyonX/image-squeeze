@@ -67,16 +67,45 @@ const blogPosts = [
 		category: "Conversion",
 		featured: false,
 	},
+	{
+		slug: "image-optimization-for-social-media-complete-guide",
+		title: "Image Optimization for Social Media: Complete 2025 Guide",
+		description: "Learn how to optimize images for Facebook, Instagram, Twitter, and LinkedIn. Platform-specific sizes, formats, and best practices.",
+		date: "2025-03-25",
+		readTime: "9 min read",
+		category: "Social Media",
+		featured: true,
+	},
+	{
+		slug: "how-to-remove-background-from-images-for-free",
+		title: "How to Remove Background from Images for Free: Complete Guide",
+		description: "Step-by-step guide to removing backgrounds from images using free online tools. Learn techniques for product photos, portraits, and graphics.",
+		date: "2025-04-10",
+		readTime: "7 min read",
+		category: "Editing",
+		featured: true,
+	},
+	{
+		slug: "ultimate-image-optimization-guide-for-websites",
+		title: "Ultimate Image Optimization Guide for Websites (2025)",
+		description: "Comprehensive guide covering everything from compression and formats to lazy loading and CDN strategies for maximum website performance.",
+		date: "2025-04-15",
+		readTime: "12 min read",
+		category: "Performance",
+		featured: true,
+	},
 ];
 
 const categories = [
-	{ name: "All", count: 6 },
-	{ name: "Performance", count: 1 },
+	{ name: "All", count: 9 },
+	{ name: "Performance", count: 2 },
 	{ name: "Formats", count: 1 },
 	{ name: "Privacy", count: 1 },
 	{ name: "Tools", count: 1 },
 	{ name: "WordPress", count: 1 },
 	{ name: "Conversion", count: 1 },
+	{ name: "Social Media", count: 1 },
+	{ name: "Editing", count: 1 },
 ];
 
 export default function BlogPage() {

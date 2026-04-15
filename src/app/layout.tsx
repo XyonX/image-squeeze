@@ -4,6 +4,7 @@ import "./globals.css";
 import { Header } from "@/components/layout/Header";
 import { Footer } from "@/components/layout/Footer";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { KeyboardShortcutHelp } from "@/components/ui/KeyboardShortcutHelp";
 
 const inter = Inter({
 	variable: "--font-inter",
@@ -92,6 +93,7 @@ export default function RootLayout({
 					</main>
 				</div>
 				<Footer />
+				<KeyboardShortcutHelp />
 			</body>
 		</html>
 	);
