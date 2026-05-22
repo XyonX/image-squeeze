@@ -129,17 +129,27 @@ export function BulkCompressClient() {
 							<label className="text-sm font-bold text-slate-900">Quality</label>
 							<span className="text-sm font-semibold text-slate-700">{Math.round(quality * 100)}%</span>
 						</div>
-						<div className="relative pt-1">
+						<div className="relative pt-1 h-8 flex items-center">
+							{/* Visual track background */}
+							<div className="absolute inset-x-0 h-2 bg-slate-200" />
+							{/* Visual filled portion */}
+							<div
+								className="absolute left-0 h-2 bg-blue-600"
+								style={{ width: `${quality * 100}%` }}
+							/>
+							{/* Actual slider input (transparent, sits on top) */}
 							<input
 								type="range"
 								min="10"
 								max="100"
 								value={quality * 100}
 								onChange={(e) => setQuality(Number(e.target.value) / 100)}
-								className="w-full h-2 bg-slate-200 appearance-none cursor-pointer range-slider"
-								style={{
-									background: `linear-gradient(to right, #2563eb ${quality * 100}%, #e2e8f0 ${quality * 100}%)`,
-								}}
+								className="w-full h-2 appearance-none cursor-pointer relative z-10 opacity-0"
+							/>
+							{/* Custom thumb indicator */}
+							<div
+								className="absolute top-1/2 -translate-y-1/2 w-5 h-5 bg-white border-2 border-slate-800 shadow-sm pointer-events-none z-20"
+								style={{ left: `calc(${quality * 100}% - 10px)` }}
 							/>
 						</div>
 					</div>
