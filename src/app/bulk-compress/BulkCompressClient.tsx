@@ -123,65 +123,77 @@ export function BulkCompressClient() {
 			<UploadZone accept=".jpg,.jpeg,.png,.webp,image/jpeg,image/png,image/webp" maxFiles={50} files={files} onFilesChange={(f) => { setFiles(f); setResults([]); setError(null); }} />
 
 			{files.length > 0 && !isProcessing && results.length === 0 && (
-				<div className="mt-8 p-6 bg-white border border-slate-200 rounded-2xl space-y-6">
+				<div className="mt-8 p-6 bg-white border border-slate-300 space-y-6">
 					<div>
 						<div className="flex items-center justify-between mb-2">
-							<label className="text-sm font-semibold text-slate-900">Quality</label>
-							<span className="text-sm text-slate-500">{Math.round(quality * 100)}%</span>
+							<label className="text-sm font-bold text-slate-900">Quality</label>
+							<span className="text-sm font-semibold text-slate-700">{Math.round(quality * 100)}%</span>
 						</div>
-						<input type="range" min="10" max="100" value={quality * 100} onChange={(e) => setQuality(Number(e.target.value) / 100)} className="w-full h-2 bg-slate-100 rounded-lg appearance-none cursor-pointer accent-primary" />
+						<div className="relative pt-1">
+							<input
+								type="range"
+								min="10"
+								max="100"
+								value={quality * 100}
+								onChange={(e) => setQuality(Number(e.target.value) / 100)}
+								className="w-full h-2 bg-slate-200 appearance-none cursor-pointer range-slider"
+								style={{
+									background: `linear-gradient(to right, #2563eb ${quality * 100}%, #e2e8f0 ${quality * 100}%)`,
+								}}
+							/>
+						</div>
 					</div>
-					<div className="text-sm text-slate-500 bg-slate-50 rounded-xl p-3">
+					<div className="text-sm text-slate-600 bg-slate-50 border border-slate-300 p-3">
 						📦 <strong>{files.length}</strong> file{files.length !== 1 ? "s" : ""} selected — {formatFileSize(files.reduce((a, f) => a + f.file.size, 0))} total
 					</div>
-					<button onClick={handleCompress} className="w-full py-3.5 bg-primary hover:bg-blue-700 text-white font-semibold rounded-xl transition-colors text-lg">
+					<button onClick={handleCompress} className="w-full py-3.5 bg-primary hover:bg-blue-700 text-white font-semibold transition-colors text-lg">
 						Compress All {files.length} Images
 					</button>
 				</div>
 			)}
 
 			{isProcessing && (
-				<div className="mt-8 p-8 bg-white border border-slate-200 rounded-2xl text-center space-y-4">
+				<div className="mt-8 p-8 bg-white border border-slate-300 text-center space-y-4">
 					<Loader2 className="w-10 h-10 text-primary animate-spin mx-auto" />
 					<p className="font-semibold text-slate-900">Processing {progress.current} of {progress.total}...</p>
-					<div className="w-full bg-slate-100 rounded-full h-3 overflow-hidden">
-						<div className="h-full bg-primary rounded-full transition-all duration-300 progress-bar-shine" style={{ width: `${(progress.current / progress.total) * 100}%` }} />
+					<div className="w-full bg-slate-200 h-3 overflow-hidden">
+						<div className="h-full bg-primary transition-all duration-300 progress-bar-shine" style={{ width: `${(progress.current / progress.total) * 100}%` }} />
 					</div>
 				</div>
 			)}
 
 			{error && (
-				<div className="mt-4 p-4 bg-red-50 border border-red-200 rounded-xl flex items-start gap-3">
+				<div className="mt-4 p-4 bg-red-50 border border-red-300 flex items-start gap-3">
 					<AlertCircle className="w-5 h-5 text-red-500 flex-shrink-0" /><p className="text-sm text-red-500">{error}</p>
 				</div>
 			)}
 
 			{results.length > 0 && (
 				<div className="mt-8 space-y-4">
-					<div className="p-6 bg-emerald-50 border border-emerald-200 rounded-2xl text-center">
+					<div className="p-6 bg-emerald-50 border border-emerald-300 text-center">
 						<Check className="w-10 h-10 text-emerald-600 mx-auto mb-2" />
 						<p className="font-bold text-xl text-slate-900">Saved {formatFileSize(totalSaved)} across {results.length} image{results.length !== 1 ? "s" : ""}</p>
 						<p className="text-sm text-slate-500 mt-1">Average reduction: {Math.round(results.reduce((a, r) => a + r.saved, 0) / results.length)}%</p>
 					</div>
 					{results.map((r) => (
-						<div key={r.id} className="flex items-center gap-4 p-4 bg-white border border-slate-200 rounded-xl">
+						<div key={r.id} className="flex items-center gap-4 p-4 bg-white border border-slate-300">
 							{/* eslint-disable-next-line @next/next/no-img-element */}
-							<img src={r.preview} alt={r.originalName} className="w-14 h-14 object-cover rounded-lg" />
+							<img src={r.preview} alt={r.originalName} className="w-14 h-14 object-cover" />
 							<div className="flex-1 min-w-0">
 								<p className="text-sm font-medium truncate text-slate-900">{r.originalName}</p>
 								<p className="text-xs text-slate-500">{formatFileSize(r.originalSize)} → {formatFileSize(r.compressedSize)}</p>
 							</div>
-							<span className="text-xs font-medium uppercase text-slate-400 bg-slate-100 px-2 py-0.5 rounded">{r.format}</span>
+							<span className="text-xs font-medium uppercase text-slate-400 bg-slate-100 px-2 py-0.5">{r.format}</span>
 							<span className="text-sm font-bold text-emerald-600">-{Math.round(r.saved)}%</span>
-							<button onClick={() => downloadSingle(r)} className="flex items-center gap-1.5 px-4 py-2 bg-primary hover:bg-blue-700 text-white text-sm font-medium rounded-lg transition-colors">
+							<button onClick={() => downloadSingle(r)} className="flex items-center gap-1.5 px-4 py-2 bg-primary hover:bg-blue-700 text-white text-sm font-medium transition-colors">
 								<Download className="w-4 h-4" />Download
 							</button>
 						</div>
 					))}
-					<button onClick={downloadAll} className="w-full py-3.5 bg-slate-800 hover:bg-slate-900 text-white font-semibold rounded-xl transition-colors flex items-center justify-center gap-2 text-lg">
+					<button onClick={downloadAll} className="w-full py-3.5 bg-slate-800 hover:bg-slate-900 text-white font-semibold transition-colors flex items-center justify-center gap-2 text-lg">
 						<Package className="w-5 h-5" />Download All as ZIP
 					</button>
-					<button onClick={() => { setFiles([]); setResults([]); setError(null); }} className="w-full py-3 border border-slate-200 hover:bg-slate-50 text-sm font-medium rounded-xl transition-colors text-slate-700">
+					<button onClick={() => { setFiles([]); setResults([]); setError(null); }} className="w-full py-3 border border-slate-300 hover:bg-slate-50 text-sm font-medium transition-colors text-slate-700">
 						Compress more images
 					</button>
 				</div>

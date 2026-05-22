@@ -1,6 +1,7 @@
 import { Metadata } from "next";
 import Link from "next/link";
 import { Calendar, Clock, Share2, BookOpen, CheckCircle, Shield, Lock } from "lucide-react";
+import { ArticleJsonLd, BreadcrumbJsonLd } from "@/components/ui/JsonLd";
 
 export const metadata: Metadata = {
 	title: "Remove EXIF Data from Photos: Why & How to Protect Your Privacy",
@@ -12,6 +13,11 @@ export const metadata: Metadata = {
 		"protect photo privacy",
 		"exif data removal",
 		"image metadata security",
+		"hidden exif data",
+		"strip exif data",
+		"remove metadata from photos",
+		"how to remove exif",
+		"stripping exif data",
 	],
 	openGraph: {
 		title: "Remove EXIF Data from Photos: Why & How to Protect Your Privacy",
@@ -20,6 +26,27 @@ export const metadata: Metadata = {
 };
 
 export default function ExifGuidePage() {
+	return (
+		<>
+			<BreadcrumbJsonLd items={[
+				{ name: "Home", url: "https://getimgtools.com" },
+				{ name: "Blog", url: "https://getimgtools.com/blog" },
+				{ name: "Remove EXIF Data from Photos", url: "https://getimgtools.com/blog/remove-exif-data-from-photos-why-how" },
+			]} />
+			<ArticleJsonLd
+				title="Remove EXIF Data from Photos: Why & How to Protect Your Privacy"
+				description="Complete guide to EXIF metadata: what it contains, privacy risks, and how to safely remove it from your photos."
+				url="https://getimgtools.com/blog/remove-exif-data-from-photos-why-how"
+				datePublished="2025-03-18"
+				dateModified="2025-05-22"
+				category="Privacy"
+			/>
+			<ExifGuideContent />
+		</>
+	);
+}
+
+function ExifGuideContent() {
 	return (
 		<article className="max-w-4xl mx-auto">
 			<header className="mb-8 pb-6 border-b border-slate-300">

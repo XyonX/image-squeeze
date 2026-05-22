@@ -1,8 +1,22 @@
 import { tools } from "@/lib/tools";
 import { ToolCard } from "@/components/ui/ToolCard";
 import Link from "next/link";
+import { WebSiteJsonLd, BreadcrumbJsonLd } from "@/components/ui/JsonLd";
 
 export default function HomePage() {
+	return (
+		<>
+			<WebSiteJsonLd />
+			<BreadcrumbJsonLd items={[
+				{ name: "Home", url: "https://getimgtools.com" },
+				{ name: "All Image Tools", url: "https://getimgtools.com" },
+			]} />
+			<HomeContent />
+		</>
+	);
+}
+
+function HomeContent() {
 	const compressTools = tools.filter((t) => t.category === "compress");
 	const convertTools = tools.filter((t) => t.category === "convert");
 	const editTools = tools.filter((t) => t.category === "edit" || t.category === "utility");

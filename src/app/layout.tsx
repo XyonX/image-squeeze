@@ -60,11 +60,19 @@ export const metadata: Metadata = {
 	robots: {
 		index: true,
 		follow: true,
+		googleBot: {
+			index: true,
+			follow: true,
+			"max-video-preview": -1,
+			"max-image-preview": "large",
+			"max-snippet": -1,
+		},
 	},
 	verification: {
 		google: "-d279xGg82co8lEwK9BxHRoJhwgLF-clvIsjw63jZRA",
 	},
 };
+
 
 export default function RootLayout({
 	children,
